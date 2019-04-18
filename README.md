@@ -15,6 +15,8 @@
 *使用black库格式化你的代码*
 #### autopep8_code
 *使用autopep8库格式化你的python代码*
+#### pyaudio
+*使用pyaudio实现录音并保存*
 ## 声明
 <table>
   <tr>
