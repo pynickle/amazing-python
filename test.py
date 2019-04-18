@@ -24,7 +24,7 @@ choice = input('enter b to begin,enter q to quit')
 if choice == "q":
     sys.exit()
 if choice == "b":
-    print("开始录音,请说话......")
+    print("录音开始")
 
     frames = []
 
@@ -32,7 +32,7 @@ if choice == "b":
         data = stream.read(CHUNK)
         frames.append(data)
 
-    print("录音结束,请闭嘴!")
+    print("录音结束")
 
     stream.stop_stream()
     stream.close()
