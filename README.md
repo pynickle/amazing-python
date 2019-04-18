@@ -11,7 +11,7 @@
 *解压zip文件*
 #### how_many_code
 *算算你曾经写过多少python代码*
-#### beautify-your-code
+#### beautify_your_code
 *使用black库格式化你的代码*
 #### autopep8_code
 *使用autopep8库格式化你的python代码*
