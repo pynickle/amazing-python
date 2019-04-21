@@ -3,8 +3,8 @@ Q&A
 
 Question
 ^^^^^^^^
-**l find exe files' and py files' running results are different**
+**l find my_function.py is different from some py files**
 
 Answer
 ^^^^^^
-**It may cause by not updating exe on time,the py files are the latest**
+**All py files are the latest,all_function may be updated later**
