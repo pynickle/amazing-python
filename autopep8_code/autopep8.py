@@ -19,10 +19,9 @@ def autopep8():
                 for file in files:
                     if file.endswith(".py"):
                         try:
-                            call("autopep8 --in-place " +
-                                 root + "/" + file, shell=True)
+                            call("autopep8 --in-place " + root + "/" + file, shell=True)
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except:
                             continue
         except:
@@ -31,7 +30,7 @@ def autopep8():
         tkinter.messagebox.showerror("wrong!", "path wrong!")
 
 
-def main():
+def autopep8_main():
     global path, success
     top = tkinter.Tk()
     path = tkinter.StringVar()
@@ -44,9 +43,7 @@ def main():
     path_show.pack()
     success_entry = tkinter.Entry(top, textvariable=success)
     success_entry.pack()
-    success.set("success:")
     top.mainloop()
 
-
-if __name__ == "__main__":
-    main()
+if __name__=="__main__":
+    autopep8_main()

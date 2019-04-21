@@ -19,25 +19,58 @@ import pip
 import re
 import os
 from subprocess import call
+import pyaudio
+
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 1.beautify_your_code
+def black():
+    success_files = 0
+    file_path = path.get()
+    if os.path.exists(file_path):
+        try:
+            for root, dirs, files in os.walk(file_path):
+                for file in files:
+                    if file.endswith(".py"):
+                        try:
+                            call("black " + root + "/" + file, shell=True)
+                            success_files += 1
+                            success.set("success:" + str(success_files))
+                        except:
+                            continue
+        except:
+            tkinter.messagebox.showerror("wrong!", "path wrong!")
+    else:
+        tkinter.messagebox.showerror("wrong!", "path wrong!")
 
 
 def black_main():
-    success = 0
-    file_path = input("path:")
-    try:
-        for root, dirs, files in os.walk(file_path):
-            for file in files:
-                if file.endswith(".py"):
-                    try:
-                        call("black " + root + "/" + file, shell=True)
-                        success += 1
-                    except:
-                        continue
-    except:
-        print("path wrong!")
-    print("success:" + str(success))
+    global path, success
+    top = tkinter.Tk()
+    path = tkinter.StringVar()
+    success = tkinter.StringVar()
+    button = tkinter.Button(top, text="begin black", command=black)
+    button.pack()
+    choose_path = tkinter.Button(top, text="choose path", command=selectPath)
+    choose_path.pack()
+    path_show = tkinter.Entry(top, textvariable=path)
+    path_show.pack()
+    success_entry = tkinter.Entry(top, textvariable=success)
+    success_entry.pack()
+    top.mainloop()
 
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 2.how_many_code
 def analyze_code(codefile_source):
     total_line = 0
     comment_line = 0
@@ -65,10 +98,8 @@ def analyze_code(codefile_source):
     print("在%s中:" % codefile_source)
     if total_line != 0:
         print("代码行数：", total_line)
-        print("注释行数:", comment_line, "占%0.2f%%" %
-              (comment_line * 100 / total_line))
-        print("空行数:", blank_line, "占%0.2f%%" %
-              (blank_line * 100 / total_line), "\n")
+        print("注释行数:", comment_line, "占%0.2f%%" % (comment_line * 100 / total_line))
+        print("空行数:", blank_line, "占%0.2f%%" % (blank_line * 100 / total_line), "\n")
     else:
         print("代码行数：", total_line)
     return [total_line, comment_line, blank_line]
@@ -111,20 +142,33 @@ def code_main():
     os.system("pause")
 
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 3.pip_update
 def pip_main():
     update_now = 1
     package_number = len(get_installed_distributions())
     for dist in get_installed_distributions():
         try:
             call("pip install --upgrade " + dist.project_name, shell=True)
-            print("all package:{},update now:{}".format(
-                package_number, update_now))
+            print("all package:{},update now:{}".format(package_number, update_now))
             update_now += 1
         except:
-            continuer
+            continue
     print("all is finished:{}".format(s))
 
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 4.scrapy_images
 def selectPath():
     path_ = askdirectory()
     path.set(path_)
@@ -148,8 +192,7 @@ def scrapy():
     soup = BeautifulSoup(response.text, "lxml")
     img_list = soup.find_all("img")
     if img_list == []:
-        tkinter.messagebox.showinfo(
-            "wrong!", "no images on the website\n在网站上未发现图片")
+        tkinter.messagebox.showinfo("wrong!", "no images on the website\n在网站上未发现图片")
         return
     for img in img_list:
         img_url = img["src"]
@@ -182,6 +225,8 @@ def is_entry_right():
 def scrapy_main():
     top = tkinter.Tk()
 
+    global path, link_entry, save_entry
+
     path = tkinter.StringVar()
 
     top.title("scrapy img")
@@ -193,8 +238,7 @@ def scrapy_main():
     choice = tkinter.StringVar()
     choice.set(".png")
 
-    button = tkinter.Button(
-        top, text="start scrapy images", command=is_entry_right)
+    button = tkinter.Button(top, text="start scrapy images", command=is_entry_right)
     button.pack()
 
     link_add = tkinter.Label(top, text="scrapy url:")
@@ -212,18 +256,23 @@ def scrapy_main():
     path_choose = tkinter.Button(top, text="choose path", command=selectPath)
     path_choose.place(x=110, y=145)
 
-    choose_jpg = tkinter.Radiobutton(
-        top, text=".jpg", variable=choice, value=".jpg")
+    choose_jpg = tkinter.Radiobutton(top, text=".jpg", variable=choice, value=".jpg")
     choose_jpg.place(x=25, y=180)
-    choose_png = tkinter.Radiobutton(
-        top, text=".png", variable=choice, value=".png")
+    choose_png = tkinter.Radiobutton(top, text=".png", variable=choice, value=".png")
     choose_png.place(x=125, y=180)
-    choose_png = tkinter.Radiobutton(
-        top, text=".gif", variable=choice, value=".gif")
+    choose_png = tkinter.Radiobutton(top, text=".gif", variable=choice, value=".gif")
     choose_png.place(x=225, y=180)
 
     top.mainloop()
 
+
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 5.translate_app
 
 headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36"
@@ -404,6 +453,13 @@ def translate_main():
         print("谷歌翻译结果：", google, "\n")
 
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 6.zip_to_see
 def un_zip(file_name):
     i = 0
     try:
@@ -416,8 +472,7 @@ def un_zip(file_name):
                     extracted_path.rename(fn.encode("cp437").decode("gbk"))
                 except:
                     tkinter.messagebox.showwarning("wrong!", "wrong zip!")
-            tkinter.messagebox.showinfo(
-                "success!", "finish zip " + str(i) + "!")
+            tkinter.messagebox.showinfo("success!", "finish zip " + str(i) + "!")
     except:
         tkinter.messagebox.showwarning("wrong!", "wrong zip!")
 
@@ -429,6 +484,7 @@ def choose_file():
 
 def zip_main():
     top = tkinter.Tk()
+    global path, file_choose_1
     path = tkinter.StringVar()
     button_begin = tkinter.Button(
         top, text="begin", command=lambda: un_zip(file_name=path)
@@ -441,6 +497,13 @@ def zip_main():
     top.mainloop()
 
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 7.autopep8_code
 def autopep8():
     success_files = 0
     file_path = path.get()
@@ -450,10 +513,9 @@ def autopep8():
                 for file in files:
                     if file.endswith(".py"):
                         try:
-                            call("autopep8 --in-place " +
-                                 root + "/" + file, shell=True)
+                            call("autopep8 --in-place " + root + "/" + file, shell=True)
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except:
                             continue
         except:
@@ -478,42 +540,13 @@ def autopep8_main():
     top.mainloop()
 
 
-def black():
-    success_files = 0
-    file_path = path.get()
-    if os.path.exists(file_path):
-        try:
-            for root, dirs, files in os.walk(file_path):
-                for file in files:
-                    if file.endswith(".py"):
-                        try:
-                            call("black " + root + "/" + file, shell=True)
-                            success_files += 1
-                            success.set('success:'+str(success_files))
-                        except:
-                            continue
-        except:
-            tkinter.messagebox.showerror("wrong!", "path wrong!")
-    else:
-        tkinter.messagebox.showerror("wrong!", "path wrong!")
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
 
-
-def black_main():
-    global path, success
-    top = tkinter.Tk()
-    path = tkinter.StringVar()
-    success = tkinter.StringVar()
-    button = tkinter.Button(top, text="begin black", command=black)
-    button.pack()
-    choose_path = tkinter.Button(top, text="choose path", command=selectPath)
-    choose_path.pack()
-    path_show = tkinter.Entry(top, textvariable=path)
-    path_show.pack()
-    success_entry = tkinter.Entry(top, textvariable=success)
-    success_entry.pack()
-    top.mainloop()
-
-
+# 8.pyinstaller_all
 def py_to_exe():
     success_files = 0
     file_path = path.get()
@@ -523,18 +556,18 @@ def py_to_exe():
                 for file in files:
                     if file.endswith(".py"):
                         try:
-                            root.replace('\\', '/')
-                            call("cd " + root + "&pyinstaller -F " +
-                                 file, shell=True)
-                            shutil.rmtree(root+'/build')
-                            shutil.rmtree(root+'/__pycache__')
+                            root.replace("\\", "/")
+                            call("cd " + root + "&pyinstaller -F " + file, shell=True)
+                            shutil.rmtree(root + "/build")
+                            shutil.rmtree(root + "/__pycache__")
                             shutil.copyfile(
-                                root+'/dist/'+file[0:len(file)-3]+'.exe', root+'/'+file[0:len(file)-3]+'.exe')
-                            shutil.rmtree(root+'/dist')
-                            os.remove(
-                                root + '/' + file[0:len(file)-3] + '.spec')
+                                root + "/dist/" + file[0 : len(file) - 3] + ".exe",
+                                root + "/" + file[0 : len(file) - 3] + ".exe",
+                            )
+                            shutil.rmtree(root + "/dist")
+                            os.remove(root + "/" + file[0 : len(file) - 3] + ".spec")
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except Exception as e:
                             print(e)
                             continue
@@ -553,9 +586,9 @@ def remove_exe():
                 for file in files:
                     if file.endswith(".exe"):
                         try:
-                            os.remove(root+'/'+file)
+                            os.remove(root + "/" + file)
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except:
                             continue
         except:
@@ -569,8 +602,7 @@ def pyinstaller_main():
     top = tkinter.Tk()
     path = tkinter.StringVar()
     success = tkinter.StringVar()
-    button_py = tkinter.Button(
-        top, text="begin pyinstaller", command=py_to_exe)
+    button_py = tkinter.Button(top, text="begin pyinstaller", command=py_to_exe)
     button_py.pack()
     button_exe = tkinter.Button(top, text="remove exe", command=remove_exe)
     button_exe.pack()
@@ -584,12 +616,106 @@ def pyinstaller_main():
     top.mainloop()
 
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# 9.pyaudio
+def voice():
+    try:
+        audio_info.set("---录音开始---")
+
+        frames = []
+
+        for i in range(0, int(RATE / CHUNK * int(second_choose.get()))):
+            data = stream.read(CHUNK)
+            frames.append(data)
+
+        audio_info.set("---录音结束---")
+
+        stream.stop_stream()
+        stream.close()
+        p.terminate()
+
+        global file_name
+        file_name = file_choose.get() + choice.get()
+
+        wf = wave.open("./" + file_name, "wb")
+        wf.setnchannels(CHANNELS)
+        wf.setsampwidth(p.get_sample_size(FORMAT))
+        wf.setframerate(RATE)
+        wf.writeframes(b"".join(frames))
+        wf.close()
+    except:
+        tkinter.messagebox.showerror("wrong!", "input wrong!")
+
+
+def play_voice():
+    os.system(os.getcwd() + "/" + file_name)
+
+
+def pyaudio_main():
+    global audio_info
+    CHUNK = 1024
+    FORMAT = pyaudio.paInt16
+    CHANNELS = 2
+    RATE = 16000
+
+    file_name = ""
+
+    p = pyaudio.PyAudio()
+    stream = p.open(
+        format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK
+    )
+    top = tkinter.Tk()
+    audio_info = tkinter.StringVar()
+    choice = tkinter.StringVar()
+    choice.set(".mp3")
+
+    begin = tkinter.Button(top, text="begin", command=voice)
+    begin.pack()
+
+    second_label = tkinter.Label(top, text="seconds:")
+    second_label.pack()
+
+    second_choose = tkinter.Entry(top)
+    second_choose.pack()
+
+    file_label = tkinter.Label(top, text="filename:")
+    file_label.pack()
+
+    file_choose = tkinter.Entry(top)
+    file_choose.pack()
+
+    choose_mp3 = tkinter.Radiobutton(top, text=".mp3", variable=choice, value=".mp3")
+    choose_mp3.pack()
+    choose_wav = tkinter.Radiobutton(top, text=".wav", variable=choice, value=".wav")
+    choose_wav.pack()
+
+    get_voice = tkinter.Button(top, text="playback of audio", command=play_voice)
+    get_voice.pack()
+
+    info = tkinter.Entry(top, textvariable=audio_info)
+    info.pack()
+    audio_info.set("提示信息")
+
+    top.mainloop()
+
+
 colorama.init()
 
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
 
+# main()
 def main():
-    print('\n')
-    print('all function'.center(50))
+    print("\n")
+    print("all function".center(50))
     cprint("please choose:", "red")
     print("1.use black to beautify your code")
     print("2.count how many python code have you written")
@@ -597,8 +723,9 @@ def main():
     print("4.scrapy images you like on any website")
     print("5.translate word with various website")
     print("6.unzip the zip files you want")
-    print('7.use autopep8 to beautify your code')
-    print('8.use pyinstaller to package your code to exe')
+    print("7.use autopep8 to beautify your code")
+    print("8.use pyinstaller to package your code to exe")
+    print("9.use pyaudio to record sound")
     choose_function = input()
     if choose_function == "1":
         black_main()
@@ -616,8 +743,18 @@ def main():
         autopep8_main()
     elif choose_function == "8":
         pyinstaller_main()
+    elif choose_function == "9":
+        pyaudio_main()
     else:
         print("wrong input!")
 
 
-main()
+"""
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+"""
+
+# __name__=="__main__"
+if __name__ == "__main__":
+    main()

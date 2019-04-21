@@ -21,7 +21,7 @@ def black():
                         try:
                             call("black " + root + "/" + file, shell=True)
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except:
                             continue
         except:
@@ -30,7 +30,7 @@ def black():
         tkinter.messagebox.showerror("wrong!", "path wrong!")
 
 
-def main():
+def black_main():
     global path, success
     top = tkinter.Tk()
     path = tkinter.StringVar()
@@ -43,9 +43,8 @@ def main():
     path_show.pack()
     success_entry = tkinter.Entry(top, textvariable=success)
     success_entry.pack()
-    success.set("success:")
     top.mainloop()
 
 
 if __name__ == "__main__":
-    main()
+    black_main()

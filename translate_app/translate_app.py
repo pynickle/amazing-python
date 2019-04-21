@@ -166,7 +166,7 @@ def get_translate_google(text):
         return res
 
 
-if __name__ == "__main__":
+def translate_main():
     while True:
         print("翻译内容（q退出）：")
         translate_text = input()
@@ -181,3 +181,6 @@ if __name__ == "__main__":
         print("有道翻译结果：", youdao)
         print("百度翻译结果：", baidu)
         print("谷歌翻译结果：", google, "\n")
+
+if __name__=="__main__":
+    translate_main()

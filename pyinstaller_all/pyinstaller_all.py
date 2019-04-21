@@ -20,15 +20,18 @@ def py_to_exe():
                 for file in files:
                     if file.endswith(".py"):
                         try:
-                            root.replace('\\','/')
+                            root.replace("\\", "/")
                             call("cd " + root + "&pyinstaller -F " + file, shell=True)
-                            shutil.rmtree(root+'/build')
-                            shutil.rmtree(root+'/__pycache__')
-                            shutil.copyfile(root+'/dist/'+file[0:len(file)-3]+'.exe',root+'/'+file[0:len(file)-3]+'.exe')
-                            shutil.rmtree(root+'/dist')
-                            os.remove(root + '/' + file[0:len(file)-3] +'.spec')
+                            shutil.rmtree(root + "/build")
+                            shutil.rmtree(root + "/__pycache__")
+                            shutil.copyfile(
+                                root + "/dist/" + file[0 : len(file) - 3] + ".exe",
+                                root + "/" + file[0 : len(file) - 3] + ".exe",
+                            )
+                            shutil.rmtree(root + "/dist")
+                            os.remove(root + "/" + file[0 : len(file) - 3] + ".spec")
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except Exception as e:
                             print(e)
                             continue
@@ -36,6 +39,7 @@ def py_to_exe():
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
         tkinter.messagebox.showerror("wrong!", "path wrong!")
+
 
 def remove_exe():
     success_files = 0
@@ -46,9 +50,9 @@ def remove_exe():
                 for file in files:
                     if file.endswith(".exe"):
                         try:
-                            os.remove(root+'/'+file)
+                            os.remove(root + "/" + file)
                             success_files += 1
-                            success.set('success:'+str(success_files))
+                            success.set("success:" + str(success_files))
                         except:
                             continue
         except:
@@ -57,7 +61,7 @@ def remove_exe():
         tkinter.messagebox.showerror("wrong!", "path wrong!")
 
 
-def main():
+def pyinstaller_main():
     global path, success
     top = tkinter.Tk()
     path = tkinter.StringVar()
@@ -77,4 +81,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    pyinstaller_main()
