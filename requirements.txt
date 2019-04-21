@@ -1,0 +1,7 @@
+colorama
+termcolor
+pyexecjs
+validators
+requests
+bs4
+pyaudio
