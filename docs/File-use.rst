@@ -37,3 +37,7 @@ autopep8\_code
 pyinstaller\_all
 ^^^^^^^^^^^^^^^^
 *批量以-F开启时使用pyinstaller打包文件并自动删除冗余文件*
+
+voice\_picture
+^^^^^^^^^^^^^^
+*音频可视化每一帧，以图片形式更清晰*
