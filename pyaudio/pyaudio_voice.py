@@ -4,7 +4,8 @@ import sys
 import tkinter
 import tkinter.messagebox
 import os
-from playsound import playsound  
+from playsound import playsound
+
 
 def voice():
     try:
@@ -31,7 +32,8 @@ def voice():
         wf.setframerate(RATE)
         wf.writeframes(b"".join(frames))
         wf.close()
-    except:
+    except Exception as e:
+        print(e)
         tkinter.messagebox.showerror("wrong!", "input wrong!")
 
 
@@ -40,7 +42,9 @@ def play_voice():
 
 
 def pyaudio_main():
-    global audio_info
+    global audio_info,second_choose,file_choose,choice
+    global CHUNK,FORMAT,CHANNELS,RATE
+    global p,stream
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
     CHANNELS = 2
@@ -72,12 +76,15 @@ def pyaudio_main():
     file_choose = tkinter.Entry(top)
     file_choose.pack()
 
-    choose_mp3 = tkinter.Radiobutton(top, text=".mp3", variable=choice, value=".mp3")
+    choose_mp3 = tkinter.Radiobutton(
+        top, text=".mp3", variable=choice, value=".mp3")
     choose_mp3.pack()
-    choose_wav = tkinter.Radiobutton(top, text=".wav", variable=choice, value=".wav")
+    choose_wav = tkinter.Radiobutton(
+        top, text=".wav", variable=choice, value=".wav")
     choose_wav.pack()
 
-    get_voice = tkinter.Button(top, text="playback of audio", command=play_voice)
+    get_voice = tkinter.Button(
+        top, text="playback of audio", command=play_voice)
     get_voice.pack()
 
     info = tkinter.Entry(top, textvariable=audio_info)
@@ -86,5 +93,6 @@ def pyaudio_main():
 
     top.mainloop()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     pyaudio_main()
