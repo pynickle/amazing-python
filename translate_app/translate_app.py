@@ -3,6 +3,8 @@ import json
 from bs4 import BeautifulSoup
 import execjs
 import sys
+import argparse
+
 
 headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36"
@@ -167,20 +169,22 @@ def get_translate_google(text):
 
 
 def translate_main():
-    while True:
-        print("翻译内容（q退出）：")
-        translate_text = input()
-        js = Py4Js()
-        if translate_text == "q":
-            sys.exit()
+    parser = argparse.ArgumentParser(description="Translate with youdao,baidu and google")
+    parser.add_argument('-t','--trans', default='',help="Enter what you want to translate")
+    args = parser.parse_args()
+    translate_text=args.trans
+    js = Py4Js()
 
-        youdao = get_translate_youdao(translate_text)
-        baidu = get_translate_baidu(translate_text)
-        google = get_translate_google(translate_text)
+    youdao = get_translate_youdao(translate_text)
+    baidu = get_translate_baidu(translate_text)
+    google = get_translate_google(translate_text)
 
-        print("有道翻译结果：", youdao)
-        print("百度翻译结果：", baidu)
-        print("谷歌翻译结果：", google, "\n")
+    print("=========================")
+    print("有道翻译结果：", youdao)
+    print("百度翻译结果：", baidu)
+    print("谷歌翻译结果：", google)
+    print("=========================")
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     translate_main()
