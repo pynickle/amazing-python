@@ -1,0 +1,20 @@
+Metadata-Version: 1.0
+Name: quicktranslate
+Version: 0.0.13
+Summary: translate with youdao,baidu and google
+Home-page: UNKNOWN
+Author: code-nick-python
+Author-email: 2330458484@qq.com
+License: MIT License
+Description: 
+            you can use this in the command line,this is a example::
+        
+                trans -t example
+        
+            or::
+                
+                trans --trans example
+            
+            'example' means what you want to translate
+            
+Platform: any
