@@ -41,3 +41,7 @@ voice\_picture
 test
 ^^^^
 *用cProfile测试你的代码并将结果写入csv文件*
+
+pyaudio
+^^^^^^^
+*录音并保存到文件，也可播放*
