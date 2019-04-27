@@ -17,14 +17,20 @@ def wavread(path):
 
 
 def main():
+    global path
     path = input("music file path:")
-    wavdata, wavtime = wavread(path)
-    plt.title(path + "'s Frames")
-    plt.subplot(211)
-    plt.plot(wavtime, wavdata[0], color="green")
-    plt.subplot(212)
-    plt.plot(wavtime, wavdata[1])
-    plt.show()
+    try:
+        wavdata, wavtime = wavread(path)
+        title = path + "'s frames"
+        plt.title(title)
+        plt.subplot(211)
+        plt.plot(wavtime, wavdata[0], color="green")
+        plt.subplot(212)
+        plt.plot(wavtime, wavdata[1])
+        plt.show()
+    except:
+        print("path wrong!")
 
 
-main()
+if __name__ == "__main__":
+    main()
