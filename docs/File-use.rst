@@ -37,3 +37,7 @@ pyinstaller\_all
 voice\_picture
 ^^^^^^^^^^^^^^
 *音频可视化每一帧，以图片形式更清晰*
+
+test
+^^^^
+*用cProfile测试你的代码并将结果写入csv文件*
