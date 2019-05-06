@@ -1,4 +1,4 @@
-Welcome to daily-tools's documentation!
+Welcome to awesome-python-tools's documentation!
 =======================================
 
 Contents
