@@ -25,3 +25,24 @@ print("sorted([3,4,2,1,5]) : " + str(sorted([3,4,2,1,5]))+"\n")
 #求和
 print("sum((1,2,3,4,5,6)) : " + str(sum((1,2,3,4,5,6))))
 print("sum([[1,2],[3,4],[5,6]],[]) : " + str(sum([[1,2],[3,4],[5,6]],[])) + "\n")
+
+#聚合每个可迭代对象的元素
+zip1=['1','2','3']
+zip2=['4','5','6']
+for i in zip(zip1,zip2):
+    print(i)
+print()
+
+#转二进制
+print("bin(14) : " + bin(14))
+print("f'{14:b}' : " + f'{14:b}' + "\n")
+
+#迭代
+iter_list=[1,2,3,4,5]
+iter_element=iter(iter_list)
+print("iter the list[1,2,3,4,5]:")
+while True:
+    try:
+        print(next(iter_element))
+    except:
+        break
