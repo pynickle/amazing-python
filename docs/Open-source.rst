@@ -8,5 +8,5 @@ daily-tools
 ===========  ================
 license      author
 -----------  ----------------
-MIT license  code-nick-python
+Apache2.0    code-nick-python
 ===========  ================
