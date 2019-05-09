@@ -1,14 +1,17 @@
+def find_blank(string):
+    for i,num in enumerate(string):
+	    if num==" ":
+		    print("blank position:"+str(i))
+    print()
+			
 string="   test   "
-print("origin:"+string)
+print("origin:"+string+"\n")
+
 print("lstrip:"+string.lstrip())
-for i,num in enumerate(string.lstrip()):
-	if num==" ":
-		print("blank position:"+str(i))
+find_blank(string.lstrip())
+
 print("rstrip:"+string.rstrip())
-for i,num in enumerate(string.rstrip()):
-	if num==" ":
-		print("blank position:"+str(i))
+find_blank(string.rstrip())
+
 print("strip:"+string.strip())
-for i,num in enumerate(string.strip()):
-	if num==" ":
-		print("blank position:"+str(i))
+find_blank(string.strip())
