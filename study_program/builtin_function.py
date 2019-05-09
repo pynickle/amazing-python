@@ -1,5 +1,5 @@
 #绝对值
-print("abs(-10) : "+str(abs(-10))+"\n")
+print("abs(-10) : " + str(abs(-10)) + "\n")
 
 #遍历下标和元素
 print("In ['first','second','third']")
@@ -8,7 +8,13 @@ for i,num in enumerate(["first","second","third"]):
 print()
 
 #判断类型
-print("isinstance('str',str) : "+str(isinstance("str",str))+"\n")
+print("isinstance('str',str) : " + str(isinstance("str",str)))
+print("isinstance(5.5,int) : " + str(isinstance(5.5,int)) + "\n")
 
 #得到类型
-print("type(False) : "+str(type(False)))
+print("type(False) : " + str(type(False)))
+print("type(5.5) : " + str(type(5.5)) + "\n")
+
+#获取长度
+print("len('Hello World!') : " + str(len('Hello World!')))
+print("len([1,2,3,4,5]) : " + str(len([1,2,3,4,5])))
