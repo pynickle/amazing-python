@@ -1,8 +1,8 @@
-Metadata-Version: 1.0
+Metadata-Version: 1.1
 Name: quicktranslate
-Version: 0.0.13
+Version: 1.0.1
 Summary: translate with youdao,baidu and google
-Home-page: UNKNOWN
+Home-page: https://github.com/code-nick-python/daily-tools/tree/master/translate_app
 Author: code-nick-python
 Author-email: 2330458484@qq.com
 License: MIT License
@@ -18,3 +18,6 @@ Description:
             'example' means what you want to translate
             
 Platform: any
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 2

@@ -1,3 +1,6 @@
+# -*- coding:UTF-8 -*-
+
+from __future__ import print_function,unicode_literals
 import requests
 import json
 from bs4 import BeautifulSoup
@@ -168,11 +171,13 @@ def get_translate_google(text):
         return res
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Translate with youdao,baidu and google")
-    parser.add_argument('-t','--trans', default='',help="Enter what you want to translate")
+def translate_main():
+    parser = argparse.ArgumentParser(
+        description="Translate with youdao,baidu and google")
+    parser.add_argument('-t', '--trans', required=True,
+                        help="Enter what you want to translate")
     args = parser.parse_args()
-    translate_text=args.trans
+    translate_text = args.trans
     js = Py4Js()
 
     youdao = get_translate_youdao(translate_text)
@@ -180,10 +185,11 @@ def main():
     google = get_translate_google(translate_text)
 
     print("=========================")
-    print("有道翻译结果：", youdao)
-    print("百度翻译结果：", baidu)
-    print("谷歌翻译结果：", google)
+    print("youdao translate result：", youdao)
+    print("baidu translate result：", baidu)
+    print("google translate result：", google)
     print("=========================")
 
-if __name__=="__main__":
-    main()
+
+if __name__ == "__main__":
+    translate_main()
