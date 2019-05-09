@@ -2,9 +2,13 @@
 文件功能介绍
 ------------
 
+study\_program
+^^^^^^^^^^^^^^
+*通过简单的程序学习python*
+
 interesting\_program
 ^^^^^^^^^^^^^^^^^^^^
-*简单的python程序*
+*练习的python程序*
 
 pip\_update 
 ^^^^^^^^^^^
