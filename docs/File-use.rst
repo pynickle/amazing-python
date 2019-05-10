@@ -2,6 +2,14 @@
 文件功能介绍
 ------------
 
+requirements.txt
+^^^^^^^^^^^^^^^^
+这个项目需要用到的所有第三方库，用::
+
+    pip install -r requirements.txt
+    
+安装所有第三方库
+
 study\_program
 ^^^^^^^^^^^^^^
 *通过简单的程序学习python*
