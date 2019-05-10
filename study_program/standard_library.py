@@ -1,8 +1,9 @@
 import calendar
 
-year = int(input("enter the year : "))
-month = int(input("enter the month : "))
+year = 2019
+month = 5
 
+print(f"year : {year} , month : {month}")
 print(calendar.month(year,month))
 
 
@@ -43,4 +44,14 @@ count = itertools.count(10)
 run_itertools(count)
 print()
 
-print("itertools.combinations('1234', 2) : " + str(list(itertools.combinations("1234", 2))))
+print("itertools.combinations('1234', 2) : " + str(list(itertools.combinations("1234", 2))) + "\n")
+
+
+
+import time
+print("time now : " + time.strftime("%Y-%m-%d %H:%M:%S"))
+
+start=time.time()
+time.sleep(1)
+end=time.time()
+print("it takes " + str(end-start))
