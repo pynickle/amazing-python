@@ -32,11 +32,15 @@
 - PIL
 - pylab
 - skimage
+- turtle
 ## game
 - pygame
 - cocos2d
 ## internet
 - socket
+## send-email
+- smtplib
+- poplib
 ## audio
 - pyaudio
 - wave
@@ -45,6 +49,10 @@
 - tix
 - wxpython
 - pyqt5
+## environmental isolation
+- virtualenv
+- pipenv
+- buildbot
 ## python2-3
 - 2to3
 - <p>__future__</p>
