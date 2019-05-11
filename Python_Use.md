@@ -1,13 +1,13 @@
 # Python-tools
 ## web
- - flask
- - django
- - bottle
- - web2py
- - weppy
- - falcon
- - pyramid
- - tornado
+- flask
+- django
+- bottle
+- web2py
+- weppy
+- falcon
+- pyramid
+- tornado
 ## web-spider
 - scrapy
 - requests
@@ -37,15 +37,27 @@
 - cocos2d
 ## internet
 - socket
+## audio
+- pyaudio
+- wave
 ## GUI programming
 - tkinter
 - tix
 - wxpython
 - pyqt5
+## python2-3
+- 2to3
+- <p>__future__</p>
+- six
 ## python-shell
 - ipython
 - bpython
 - ptpython
+## code-quality
+- pep8
+- pylint
+- flake8
+- autopep8
 ## python and c
 - ctypes
 - cffi
