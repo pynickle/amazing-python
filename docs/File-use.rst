@@ -10,6 +10,14 @@ requirements.txt
     
 安装所有第三方库
 
+Pull\_Requests\_Template
+^^^^^^^^^^^^^^^^^^^^^^^^
+*用于pull requests的模板*
+
+Python\_Use
+^^^^^^^^^^^
+*Python的用处以及工具*
+
 study\_program
 ^^^^^^^^^^^^^^
 *通过简单的程序学习python*
