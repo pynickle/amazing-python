@@ -15,16 +15,15 @@
 - [lxml](https://lxml.de)
 - [urllib3](https://urllib3.readthedocs.io/en/latest/)
 ## data analysis
-- numpy
-- scipy
-- scikit-learn
-- panda
-- pattern
+- [numpy](http://www.numpy.org)
+- [scipy](https://www.scipy.org)
+- [scikit-learn](http://scikit-learn.org)
+- [panda](http://pandas.pydata.org)
 ## artificial intelligence
-- keras
-- tensorflow
-- pytorch
-- spark
+- [keras](https://keras-cn.readthedocs.io/en/latest/)
+- [tensorflow](https://tensorflow.google.cn)
+- [pytorch](https://pytorch.org)
+- [spark](http://spark.apache.org)
 ## data visualization
 - matplotlib
 - pyecharts
