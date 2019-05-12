@@ -15,3 +15,4 @@ num1 = int(input("enter the first number : "))
 num2 = int(input("enter the second number : "))
 
 print("The least common multiple of " + str(num1) + " and " + str(num2) + " is " + lcm(num1,num2))
+
