@@ -55,3 +55,25 @@ start=time.time()
 time.sleep(1)
 end=time.time()
 print("it takes " + str(end-start))
+
+
+
+import timeit
+
+string=["a very very long long string" for i in range(1000)]
+
+def join_test():
+	return "".join(string)
+
+def plus_test():
+	result=""
+	for i in string:
+	    result+=i
+	return result
+
+times=1000
+jointimer=timeit.Timer("join_test()","from __main__ import join_test")
+plustimer=timeit.Timer("plus_test()","from __main__ import plus_test")
+	
+print("join : {}".format(jointimer.timeit(number=times)))
+print("plus : {}".format(plustimer.timeit(number=times)))
