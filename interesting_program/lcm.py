@@ -11,7 +11,7 @@ def lcm(num1:int, num2:int)->str:
 		counter += 1
 	return str(lcm)
 
-num1 = int(input("输入第一个数字: "))
-num2 = int(input("输入第二个数字: "))
+num1 = int(input("enter the first number : "))
+num2 = int(input("enter the second number : "))
 
 print("The least common multiple of " + str(num1) + " and " + str(num2) + " is " + lcm(num1,num2))
