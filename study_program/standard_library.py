@@ -81,7 +81,7 @@ print()
 
 
 
-import sys,pprint
+import sys
 print("version : " + sys.version + "\n")
 print("path : ")
 pprint.pprint(sys.path)
