@@ -18,3 +18,21 @@ print(str(method.__code__) + "\n")
 
 print("dis.show_code(method) : ")
 print(str(dis.show_code(method)) + "\n")
+
+class Base():
+	'''document there'''
+	name="nick"
+	__secret__="123456"
+	def say_hello(name):
+		print("hello," + name)
+
+Base.another="hello world"
+
+print("Base.another : ")
+print(Base.another + "\n")
+
+print("Base.__doc__ : ")
+print(Base.__doc__ + '\n')
+
+print("Base.__module__ : ")
+print(Base.__module__ + '\n')
