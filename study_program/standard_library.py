@@ -77,3 +77,14 @@ plustimer=timeit.Timer("plus_test()","from __main__ import plus_test")
 	
 print("join : {}".format(jointimer.timeit(number=times)))
 print("plus : {}".format(plustimer.timeit(number=times)))
+print()
+
+
+
+import sys,pprint
+print("version : " + sys.version + "\n")
+print("path : ")
+pprint.pprint(sys.path)
+print()
+print("getfilesystemencoding : " + sys.getfilesystemencoding() + "\n")
+print("platform : " + sys.platform + "\n")
