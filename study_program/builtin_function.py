@@ -46,3 +46,11 @@ while True:
         print(next(iter_element))
     except:
         break
+
+#判断True False
+print(bool(None))
+print(bool([1,2,3]))
+
+#转为bytes
+print(bytes('string',encoding="utf-8"))
+print(bytes('我是中文',encoding="utf-8"))
