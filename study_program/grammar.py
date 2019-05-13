@@ -51,3 +51,30 @@ yield_nums=yield_test()
 print(yield_nums)
 for num in yield_nums:
 	print(num)
+
+print("decorator : ")
+def do():
+	def real_decorator(function):
+		def wrapped(*args,**kwargs):
+			result=function(*args,**kwargs)
+			print("l am a decorator!")
+			return result
+		return wrapped
+	return real_decorator
+
+@do()
+def hello():
+	print("Hello World!")
+
+hello()
+
+print("yield and send")
+def yield_send():
+	print("please tell me what you want to say")
+	while True:
+		words= yield
+		print("l receive your words : " + str(words))
+
+send_test=yield_send()
+next(send_test)
+send_test.send("hello")
