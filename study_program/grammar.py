@@ -34,3 +34,20 @@ class With():
 bug=1
 with With() as opr:
 	opr.operate("nick",bug)
+print()
+
+print("yield : ")
+
+def yield_test():
+	for i in range(10):
+		yield i
+def normal_test():
+	num_list=[]
+	for i in range(10):
+		num_list.append(i)
+	return num_list()
+
+yield_nums=yield_test()
+print(yield_nums)
+for num in yield_nums:
+	print(num)
