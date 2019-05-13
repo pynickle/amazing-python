@@ -36,3 +36,9 @@ print(Base.__doc__ + '\n')
 
 print("Base.__module__ : ")
 print(Base.__module__ + '\n')
+
+print("Base.__class__ : ")
+print(str(Base.__class__) + "\n")
+
+print("Base.__dict__ : ")
+print(Base.__dict__)
