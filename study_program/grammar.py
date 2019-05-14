@@ -100,3 +100,37 @@ class my_friend_with_super(me):
 		print("l am his friend")
 		
 my_friend_with_super().hello()
+print()
+
+print("property : ")
+class property_test:
+	def __init__(self,height,weight):
+		self.w = weight
+		self.h = height
+		
+	def __repr__(self):
+		return f"{self.__class__.__name__}({self.weight},{self.height})"
+		
+	@property
+	def weight(self):
+		return self.w
+	
+	@weight.setter
+	def weight(self,new_weight):
+		self.w = new_weight
+	
+	@property
+	def height(self):
+		return self.h
+	
+	@height.setter
+	def height(self,new_height):
+		self.h = new_height
+
+you=property_test(50,170)
+print(you.weight,you.height)
+you.weight = 55
+print(you)
+you.height = 175
+print(you)
+print(help(property_test))
