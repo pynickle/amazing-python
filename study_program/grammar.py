@@ -78,3 +78,25 @@ def yield_send():
 send_test=yield_send()
 next(send_test)
 send_test.send("hello")
+
+print("with no super : ")
+class me:
+	def hello(self):
+		print("Hello,everyone!")
+
+class my_friend(me):
+	def hello(self):
+		me.hello(self)
+		print("l am his friend")
+	
+my_friend().hello()
+print()
+
+print("with super : ")
+class my_friend_with_super(me):
+	def hello(self):
+		#super(my_friend_with_super,self).hello()
+		super().hello()
+		print("l am his friend")
+		
+my_friend_with_super().hello()
