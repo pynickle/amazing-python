@@ -134,3 +134,12 @@ print(you)
 you.height = 175
 print(you)
 print(help(property_test))
+print()
+
+print("kwargs and args")
+def kwargs_args(name,*args,**kwargs):
+	print(name)
+	print(args)
+	print(kwargs)
+
+kwargs_args("nick", "foo", "bar", sex="male")
