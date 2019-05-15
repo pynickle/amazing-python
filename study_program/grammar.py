@@ -143,3 +143,8 @@ def kwargs_args(name,*args,**kwargs):
 	print(kwargs)
 
 kwargs_args("nick", "foo", "bar", sex="male")
+
+nums=[i**2 for i in range(10)]
+dict_nums={i:i**2 for i in range(10)}
+print(nums)
+print(dict_nums)
