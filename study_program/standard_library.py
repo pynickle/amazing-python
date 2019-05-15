@@ -108,3 +108,50 @@ def lcm(num1:int, num2:int)->str:
 
 
 dis.dis("lcm(1,100)")
+
+
+
+import re
+def print_re(result):
+	print(result)
+	if result==None:
+		return
+	elif isinstance(result,list):
+		return
+	else:
+		try:
+			print(result.span())
+		except:
+			pass
+		try:
+			print(result.groups())
+		except:
+			pass
+
+pattern1 = "ll"
+pattern2 = "j"
+string1 = "hello ll"
+string2 = "ll hello"
+string3 = "17 jh 2h"
+string4 = "JY 1768 jh"
+compile_pattern1 = re.compile(r"\D")
+
+result1 = re.search(pattern1, string1)
+
+result2 = re.match(pattern1, string1)
+result3 = re.match(pattern1, string2)
+
+result4 = re.findall(pattern1, string1)
+result5 = re.findall(pattern1, string2)
+
+result6 = compile_pattern1.findall(string3)
+
+result7 = re.split('\W+', string3) 
+result8 = re.split('\W+', string3, 1)
+
+result9 = re.findall(pattern=pattern2, string=string4, flags=re.I)
+
+for i in range(1,10):
+	print("result" + str(i))
+	exec("print_re(result" + str(i) + ")")
+	print()
