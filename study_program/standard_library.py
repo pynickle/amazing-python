@@ -72,11 +72,19 @@ def plus_test():
 	return result
 
 times=1000
-jointimer=timeit.Timer("join_test()","from __main__ import join_test")
-plustimer=timeit.Timer("plus_test()","from __main__ import plus_test")
+#jointimer=timeit.Timer("join_test()","from __main__ import join_test")
+#plustimer=timeit.Timer("plus_test()","from __main__ import plus_test")
 	
-print("join : {}".format(jointimer.timeit(number=times)))
-print("plus : {}".format(plustimer.timeit(number=times)))
+print("join : {}".format(timeit.timeit("""
+string=['a very very long long string' for i in range(1000)]
+result=''.join(string)
+""", number=times)))
+print("plus : {}".format(timeit.timeit("""
+string=['a very very long long string' for i in range(1000)]
+result='';
+for i in string:
+	result+=i
+""", number=times)))
 print()
 
 
