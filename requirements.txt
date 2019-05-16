@@ -10,3 +10,4 @@ numpy
 pyinstaller
 autopep8
 black
+redis
