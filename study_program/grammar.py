@@ -148,3 +148,7 @@ nums=[i**2 for i in range(10)]
 dict_nums={i:i**2 for i in range(10)}
 print(nums)
 print(dict_nums)
+
+print("lambda : ")
+lambda_add = lambda a,b:a + b
+print(lambda_add(1,4))
