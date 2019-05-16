@@ -68,6 +68,19 @@ def hello():
 
 hello()
 
+import time
+def time_c():
+	def wrapper(func):
+		start=time.time()
+		func()
+		end=time.time()
+		print(end - start)
+	return wrapper
+
+@time_c()
+def sleep_test():
+	time.sleep(2)
+
 print("yield and send")
 def yield_send():
 	print("please tell me what you want to say")
