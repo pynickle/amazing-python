@@ -4,7 +4,6 @@ pyexecjs
 validators
 requests
 bs4
-pyaudio
 matplotlib
 numpy
 pyinstaller
