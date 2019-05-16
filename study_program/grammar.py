@@ -165,3 +165,16 @@ print(dict_nums)
 print("lambda : ")
 lambda_add = lambda a,b:a + b
 print(lambda_add(1,4))
+
+print("classmethod : ")
+class klassmethod:
+	name="nick"
+	def hello():
+		print("l am called with classmethod cls")
+	
+	@classmethod
+	def kmethod(cls):
+		print("l am classmethod")
+		print("cls.name : " + cls.name)
+		cls.hello()
+klassmethod.kmethod()
