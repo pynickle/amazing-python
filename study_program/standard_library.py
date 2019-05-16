@@ -155,3 +155,21 @@ for i in range(1,10):
 	print("result" + str(i))
 	exec("print_re(result" + str(i) + ")")
 	print()
+
+	
+	
+import gc
+
+a = ["a"]
+b = ["b"]
+a.append(b)
+b.append(a)
+sys.getrefcount(a)    
+sys.getrefcount(b)    
+del a
+del b
+try:
+    sys.getrefcount(a)
+except Exception as e:
+	print(e)
+print(gc.collect())
