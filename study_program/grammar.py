@@ -45,7 +45,7 @@ def normal_test():
 	num_list=[]
 	for i in range(10):
 		num_list.append(i)
-	return num_list()
+	return num_list
 
 yield_nums=yield_test()
 print(yield_nums)
