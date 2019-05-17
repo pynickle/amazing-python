@@ -181,3 +181,23 @@ try:
 except Exception as e:
 	print(e)
 print(gc.collect())
+
+
+
+import functools
+
+reduce_lst=[1,2,3,4,5]
+def add(x, y):
+	return x + y
+print(functools.reduce(lambda x,y:x + y, reduce_lst))
+print(functools.reduce(add, reduce_lst, 5))
+
+@functools.lru_cache(None)
+def fibonacci(n):
+	if n < 2:
+		return 1
+	else:
+		return fibonacci(n - 1) + fibonacci(n - 2)
+
+for i in range(5):
+	print(fibonacci(i))
