@@ -54,3 +54,16 @@ print(bool([1,2,3]))
 #转为bytes
 print(bytes('string',encoding="utf-8"))
 print(bytes('我是中文',encoding="utf-8"))
+
+#筛选
+def number_odd(a):
+	if a % 2==0:
+		return True
+	else:
+		return False
+print(list(filter(number_odd,[1,6,9,8])))
+
+#批量处理
+def number_pow(a):
+	return a**2
+print(list(map(number_pow,[1,2,3,4])))
