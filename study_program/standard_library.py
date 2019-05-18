@@ -206,7 +206,7 @@ for i in range(5):
 	
 import ast
 
-print(ast.parse("def hello():print('Hello world')"import ast,pprint
+print(ast.parse("def hello():print('Hello world')"))
 ast_tree=ast.parse("def hello():print('Hello world')")
 ast_dump=ast.dump(ast_tree).replace('(','(\n\t')
 print(ast_dump)
