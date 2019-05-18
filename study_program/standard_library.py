@@ -201,3 +201,18 @@ def fibonacci(n):
 
 for i in range(5):
 	print(fibonacci(i))
+	
+	
+	
+import ast
+
+print(ast.parse("def hello():print('Hello world')"import ast,pprint
+ast_tree=ast.parse("def hello():print('Hello world')")
+ast_dump=ast.dump(ast_tree).replace('(','(\n\t')
+print(ast_dump)
+				
+print(ast.literal_eval("1+2"))
+try:
+	  ast.literal_eval("__import__('os').system('dir')")
+except:
+	  print("ast.literal_eval is safe than eval"))
