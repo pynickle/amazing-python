@@ -178,3 +178,8 @@ class klassmethod:
 		print("cls.name : " + cls.name)
 		cls.hello()
 klassmethod.kmethod()
+
+first, second, *third = 1,2,3,4
+print(first, second, third)
+first, *second, third = 1,2,3,4
+print(first, second, third)
