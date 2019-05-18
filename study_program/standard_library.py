@@ -215,7 +215,7 @@ print(ast.literal_eval("1+2"))
 try:
 	  ast.literal_eval("__import__('os').system('dir')")
 except:
-	  print("ast.literal_eval is safe than eval"))
+	  print("ast.literal_eval is safe than eval")
 
       
       
