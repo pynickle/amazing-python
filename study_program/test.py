@@ -1,6 +1,6 @@
 def test_ok():    
-    from builtin_function import *
-    from function_class import *
-    from grammar import *
-    from standard_library import *
-    from string_method import *
+    import builtin_function
+    import function_class
+    import grammar
+    import standard_library
+    import string_method
