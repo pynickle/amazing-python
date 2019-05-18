@@ -1,0 +1,13 @@
+.pypirc
+MANIFEST.in
+README.rst
+pack_tk.py
+quickpack.py
+setup.cfg
+setup.py
+quickpack.egg-info/PKG-INFO
+quickpack.egg-info/SOURCES.txt
+quickpack.egg-info/dependency_links.txt
+quickpack.egg-info/entry_points.txt
+quickpack.egg-info/requires.txt
+quickpack.egg-info/top_level.txt
