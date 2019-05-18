@@ -216,3 +216,17 @@ try:
 	  ast.literal_eval("__import__('os').system('dir')")
 except:
 	  print("ast.literal_eval is safe than eval"))
+
+      
+      
+import asyncio
+async def print_num(num):
+    print(num)
+
+loop=asyncio.get_event_loop()
+loop.run_until_complete(
+    asyncio.wait([
+        print_num(num)
+        for num in range(10)
+    ])
+)
