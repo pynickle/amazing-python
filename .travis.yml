@@ -3,3 +3,4 @@ python:
   - "3.6"
 script:
     - py.test study_program/test.py
+    - python interesting/test.py
