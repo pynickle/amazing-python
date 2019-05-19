@@ -1,4 +1,5 @@
-def mcd(num1:int, num2:int)->str:
+def get_mcd(num1:int, num2:int)->str:
+	mcd = 0
 	if num1 > num2:
 		counter = num2
 	else:
@@ -9,7 +10,7 @@ def mcd(num1:int, num2:int)->str:
 		
 	return str(mcd)
  
-num1 = int(input("enter the first nunber : "))
-num2 = int(input("enter the second number : "))
+num1 = int(input())
+num2 = int(input())
 
-print("The maximum common divisor of " + str(num1) + " and " + str(num2) + " is " + mcd(num1, num2))
+print(get_mcd(num1,num2))
