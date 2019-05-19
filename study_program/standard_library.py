@@ -230,3 +230,15 @@ loop.run_until_complete(
         for num in range(10)
     ])
 )
+
+
+
+from enum import Enum, auto
+class EnumTest(Enum):
+    first = 6 
+    second = auto()
+    third = "hello"
+
+    
+for i in EnumTest:
+	print(str(i) + " : " + str(i.value))
