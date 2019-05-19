@@ -8,11 +8,11 @@ requirements.txt
 
     pip install -r requirements.txt
     
-安装所有第三方库
+安装所有第三方库，pyaudio库由于会安装失败，请自行到 `pyaudio-install`_ 下载
 
 Pull\_Requests\_Template
 ^^^^^^^^^^^^^^^^^^^^^^^^
-*用于pull requests的模板*
+*用于pull requests的模板文档*
 
 Python\_Use
 ^^^^^^^^^^^
@@ -70,16 +70,27 @@ pyaudio
 ^^^^^^^
 *录音并保存到文件，也可播放*
 
----
-Q&A
----
+------------
+开源项目声明
+------------
 
-Question1
-^^^^^^^^^
-**l use pip install -r requirements.txt but pyaudio was failed**
+daily-tools
+^^^^^^^^^^^
 
-Answer1
-^^^^^^^
-**Pyaudio through pip is not available now,you can go to** `pyaudio-install`_
+===========  ================
+license      author
+-----------  ----------------
+Apache2.0    code-nick-python
+===========  ================
+
+-----------------
+How to contribute
+-----------------
+
+1. Fork the repository to your own repository
+2. Commit your code in your fork repository
+3. Change the document accordingly
+4. Use the document `Pull_Requests_Template`_ to pull requests
 
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
+.. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
