@@ -16,15 +16,15 @@ Pull\_Requests\_Template
 
 Python\_Use
 ^^^^^^^^^^^
-*Python的用处以及工具*
+*Python的框架和它们的网站*
 
 study\_program
 ^^^^^^^^^^^^^^
-*通过简单的程序学习python*
+*通过程序学习python及其高极用法*
 
 interesting\_program
 ^^^^^^^^^^^^^^^^^^^^
-*练习的python程序*
+*可以用来练手或有用的的小型python程序*
 
 pip\_update 
 ^^^^^^^^^^^
@@ -44,7 +44,7 @@ zip\_to\_see
 
 how\_many\_code
 ^^^^^^^^^^^^^^^
-*算算你曾经写过多少python代码* 
+*计算路径下你曾经写过多少python代码* 
 
 beautify-your-code
 ^^^^^^^^^^^^^^^^^^
@@ -56,7 +56,7 @@ autopep8\_code
 
 pyinstaller\_all
 ^^^^^^^^^^^^^^^^
-*批量以-F开启时使用pyinstaller打包文件并自动删除冗余文件*
+*批量以-F开启时使用pyinstaller打包文件并自动删除冗余文件，也可删除路径下所有exe文件*
 
 voice\_picture
 ^^^^^^^^^^^^^^
