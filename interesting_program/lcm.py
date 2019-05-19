@@ -1,4 +1,4 @@
-def lcm(num1:int, num2:int)->str:
+def get_lcm(num1:int, num2:int)->str:
 	if num1 > num2:
 		counter = num1
 	else:
@@ -11,8 +11,8 @@ def lcm(num1:int, num2:int)->str:
 		counter += 1
 	return str(lcm)
 
-num1 = int(input("enter the first number : "))
-num2 = int(input("enter the second number : "))
+num1 = int(input())
+num2 = int(input())
 
-print("The least common multiple of " + str(num1) + " and " + str(num2) + " is " + lcm(num1,num2))
+print(get_lcm(num1,num2))
 
