@@ -3,4 +3,4 @@ python:
   - "3.6"
 script:
     - py.test study_program/test.py
-    - python interesting_program/test.py
+    - python -m unittest interesting_program/test.py.Test
