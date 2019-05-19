@@ -23,13 +23,13 @@ class Test(unittest.TestCase):
 	def test(self):
 		stub_stdin(self, '24\n30\n')
 		stub_stdout(self)
-		lcm_test()
+		import lcm
 		#print("first:",sys.stdout.getvalue())
 		self.assertEqual(sys.stdout.getvalue(), '120\n')
 		
 		stub_stdin(self, '24\n30\n')
 		stub_stdout(self) # 重置输出
-		mcd_test()
+		import mcd
 		#print("second:",sys.stdout.getvalue())
 		self.assertEqual(sys.stdout.getvalue(), '6\n')
 
