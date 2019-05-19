@@ -3,4 +3,3 @@ python:
   - "3.6"
 script:
     - py.test study_program/test.py
-    - py.test interesting_program/test.py
