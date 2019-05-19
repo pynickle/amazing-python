@@ -1,5 +1,5 @@
 def test():
-    import carculator
+    import calculator
     import fibonacci
     import lcm
     import mcd
