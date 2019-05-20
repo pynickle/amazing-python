@@ -183,3 +183,7 @@ first, second, *third = 1,2,3,4
 print(first, second, third)
 first, *second, third = 1,2,3,4
 print(first, second, third)
+
+print("num_use_ :　")
+num_use_=1_000_000_500
+print(num_use_)
