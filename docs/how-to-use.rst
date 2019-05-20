@@ -16,7 +16,7 @@ Pull\_Requests\_Template
 
 Python\_Use
 ^^^^^^^^^^^
-*Python的框架和它们的网站*
+*Python的框架和它们的网站整理*
 
 study\_program
 ^^^^^^^^^^^^^^
@@ -28,15 +28,29 @@ interesting\_program
 
 pip\_update 
 ^^^^^^^^^^^
-*使用pip库一键升级python第三方库* 
+*使用pip库一键升级python第三方库*
+
+no thread的文件代表不使用redis数据库，在速度方面会慢一些。
+
+而with thread使用redis数据库，在使用前请自行查询相关教程安装好redis！首先运行一遍主程序（注意，只运行一遍！）。然后在多个命令行里运行slave1.py，然后等待完成。
 
 scrapy\_images 
 ^^^^^^^^^^^^^^
 *抓取任意网站图片并保存到指定路径* 
 
+你可以制定抓取网址，存储位置和存储格式。
+
 translate\_app 
 ^^^^^^^^^^^^^^
 *多种方式翻译你的文本*
+
+目前已发布到pypi上，可以使用如下命令下载::
+
+    pip install quicktranslate
+
+使用方式如下::
+
+    trans -t example
 
 zip\_to\_see 
 ^^^^^^^^^^^^
@@ -57,6 +71,16 @@ autopep8\_code
 pyinstaller\_all
 ^^^^^^^^^^^^^^^^
 *批量以-F开启时使用pyinstaller打包文件并自动删除冗余文件，也可删除路径下所有exe文件*
+
+目前已发布到pypi上，可以使用如下方式下载::
+
+    pip install quickpack
+    
+如下方式使用::
+
+    pack -r -p path
+    
+-r代表在打包前去除所有exe文件。
 
 voice\_picture
 ^^^^^^^^^^^^^^
