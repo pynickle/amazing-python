@@ -255,3 +255,8 @@ a=dataklass('nick')
 print(a.name)
 a.hello()
 print(a)
+
+
+
+import keyword
+print(keyword.kwlist)
