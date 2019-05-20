@@ -242,3 +242,16 @@ class EnumTest(Enum):
     
 for i in EnumTest:
 	print(str(i) + " : " + str(i.value))
+
+	
+	
+from dataclasses import dataclass
+@dataclass
+class dataklass:
+    name:str
+    def hello(self):
+        print("hello " + self.name)
+a=dataklass('nick')
+print(a.name)
+a.hello()
+print(a)
