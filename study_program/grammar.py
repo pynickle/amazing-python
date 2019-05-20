@@ -187,3 +187,10 @@ print(first, second, third)
 print("num_use_ :　")
 num_use_=1_000_000_500
 print(num_use_)
+
+def add(x):
+    class AddNum(int):
+        def __call__(self, x):
+            return AddNum(self.numerator + x)
+    return AddNum(x)
+print(add(1)(2)(3)(4))
