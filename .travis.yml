@@ -4,3 +4,7 @@ python:
 script:
     - py.test study_program/test.py
     - cd interesting_program; python test.py
+notifications:
+  slack:
+    on_success: never
+    on_failure: never
