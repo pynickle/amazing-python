@@ -265,3 +265,32 @@ print(keyword.kwlist)
 
 import glob
 print(glob.glob('*.py'))
+
+
+
+import logging
+FORMATLOG = "[%(asctime)s] %(filename)s . %(funcName)s . %(name)s : %(levelname)s : %(message)s"
+def logger1():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format=FORMATLOG
+    )
+
+    logging.debug('debug')
+    logging.info('info')
+    logging.warn('warn')
+    logging.error('error')
+    logging.critical('critical')
+
+
+def logger2():
+    logger = logging.getLogger('foo')
+    logger.setLevel(logging.DEBUG)
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter(FORMATLOG)
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.debug('debug without BasicConfig')
+
+logger1()
+logger2()
