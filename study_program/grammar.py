@@ -194,3 +194,15 @@ def add(x):
             return AddNum(self.numerator + x)
     return AddNum(x)
 print(add(1)(2)(3)(4))
+
+print("slots in class : ")
+class SlotTest:
+	__slots__ = ("ice", "sugar")
+
+tea = SlotTest()
+tea.ice = "no ice"
+tea.sugar = "a little sugar"
+try:
+	tea.service = "send to my home"
+except Exception as e:
+	print("you can't add attribute that is not in slots")
