@@ -260,3 +260,8 @@ print(a)
 
 import keyword
 print(keyword.kwlist)
+
+
+
+import glob
+print(glob.glob('*.py'))
