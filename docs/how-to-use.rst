@@ -94,6 +94,16 @@ pyaudio
 ^^^^^^^
 *录音并保存到文件，也可播放*
 
+command\_to\_code
+^^^^^^^^^^^^^^^^^^^^^
+*将python命令行转换为可运行的python代码*
+
+目前已发布置我的GitHub pages，网址为::
+
+    https://code-nick-python.github.io/ctc.html
+
+左边的输入框用来输入命令行，右边会实时显现出转换后的代码
+
 ------------
 开源项目声明
 ------------
