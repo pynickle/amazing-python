@@ -294,3 +294,14 @@ def logger2():
 
 logger1()
 logger2()
+
+
+
+import traceback
+def wrong():
+	print("l am a wrong sentence!" + 1)
+
+try:
+	wrong()
+except Exception as e:
+	traceback.print_exc()
