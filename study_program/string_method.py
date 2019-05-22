@@ -25,3 +25,10 @@ find_blank(no_blank.rstrip())
 
 print("strip:"+no_blank.strip())
 find_blank(no_blank.strip())
+
+byte_test = "我是中文"
+print("origin : " + byte_test)
+byte = byte_test.encode("utf-8")
+print("after encode : " + str(byte))
+byte_decode = byte.decode("utf-8")
+print("after decode : " + byte_decode)
