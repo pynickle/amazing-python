@@ -215,3 +215,13 @@ try:
 	hello("a")
 except Exception as e:
 	print(e)
+	
+import traceback
+class ExitBye(Exception):pass
+try:
+    print(1 / 0)
+except Exception as e:
+	try:
+		raise ExitBye("have an error with raise") from e
+	except Exception as e:
+		traceback.print_exc()
