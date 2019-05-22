@@ -206,3 +206,12 @@ try:
 	tea.service = "send to my home"
 except Exception as e:
 	print("you can't add attribute that is not in slots")
+
+def hello(name:str):
+	assert len(name)>1,"your name is too short!"
+	print("hello,", name)
+hello("nick")
+try:
+	hello("a")
+except Exception as e:
+	print(e)
