@@ -225,3 +225,18 @@ except Exception as e:
 		raise ExitBye("have an error with raise") from e
 	except Exception as e:
 		traceback.print_exc()
+
+def counter_nonlocal(): 
+    count = 0 
+    def count_add(): 
+        nonlocal count 
+        count += 1 
+        return count 
+    return count_add
+       
+def counter_test(): 
+	num = counter_nonlocal()
+	print(num())
+	print(num())
+
+counter_test()
