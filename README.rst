@@ -7,6 +7,12 @@ Welcome to awesome-python-tools's documentation!
 .. image:: https://hits.b3log.org/b3log/awesome-python-tools.svg
     :target: https://github.com/b3log/awesome-python-tools
 
+.. image:: https://img.shields.io/badge/language-python-blue.svg
+    :target: https://www.python.org
+
+.. image:: https://img.shields.io/badge/license-Apache-orange.svg
+    :target: https://www.apache.org/licenses/LICENSE-2.0
+
 Contents
 ^^^^^^^^
 
