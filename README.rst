@@ -10,7 +10,7 @@ Welcome to awesome-python-tools's documentation!
 .. image:: https://img.shields.io/badge/language-python-blue.svg
     :target: https://www.python.org
 
-.. image:: https://img.shields.io/badge/license-Apache-orange.svg
+.. image:: https://img.shields.io/badge/license-Apache2.0-orange.svg
     :target: https://www.apache.org/licenses/LICENSE-2.0
 
 Contents
