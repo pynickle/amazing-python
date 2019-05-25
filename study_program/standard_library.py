@@ -96,6 +96,21 @@ pprint.pprint(sys.path)
 print()
 print("getfilesystemencoding : " + sys.getfilesystemencoding() + "\n")
 print("platform : " + sys.platform + "\n")
+"""
+only run successfully in the command line
+>>> import sys
+>>> sys.ps1
+'>>> '
+>>> sys.ps2
+'... '
+>>> sys.ps1="py3.7>>> "
+py3.7>>> sys.ps2="py3.7... "
+py3.7>>> def hello():
+py3.7...     print("Hello World")
+py3.7... 
+py3.7>>> hello()
+Hello World
+"""
 
 
 
