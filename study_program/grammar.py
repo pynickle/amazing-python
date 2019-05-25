@@ -240,3 +240,8 @@ def counter_test():
 	print(num())
 
 counter_test()
+
+print(type(...))
+def hello():
+	...
+	
