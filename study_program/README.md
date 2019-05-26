@@ -4,4 +4,6 @@
 * standard_library : 内置库
 * string_method : 字符串方法
 
-**PS : dataclasses in standard_library requires Python3.7**
+<b>PS : </b>
+- dataclasses in standard_library requires Python3.7
+- the result file is not always the latest
