@@ -1,7 +1,7 @@
 Welcome to awesome-python-tools's documentation!
 ================================================
 
-.. image:: https://travis-ci.org/code-nick-python/awesome-python-tools.svg?branch=master
+.. image:: https://travis-ci.org/b3log/amazing-python.svg?branch=master
     :target: https://travis-ci.org/code-nick-python/awesome-python-tools
 
 .. image:: https://img.shields.io/badge/language-python-blue.svg
