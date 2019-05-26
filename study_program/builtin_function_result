@@ -1,0 +1,41 @@
+abs(-10) : 10
+
+In ['first','second','third']
+0 first
+1 second
+2 third
+
+isinstance('str',str) : True
+isinstance(5.5,int) : False
+
+type(False) : <class 'bool'>
+type(5.5) : <class 'float'>
+
+len('Hello World!') : 12
+len([1,2,3,4,5]) : 5
+
+sorted([3,4,2,1,5]) : [1, 2, 3, 4, 5]
+
+sum((1,2,3,4,5,6)) : 21
+sum([[1,2],[3,4],[5,6]],[]) : [1, 2, 3, 4, 5, 6]
+
+('1', '4')
+('2', '5')
+('3', '6')
+
+bin(14) : 0b1110
+f'{14:b}' : 1110
+
+iter the list[1,2,3,4,5]:
+1
+2
+3
+4
+5
+False
+True
+b'string'
+b'\xe6\x88\x91\xe6\x98\xaf\xe4\xb8\xad\xe6\x96\x87'
+[6, 8]
+[1, 4, 9, 16]
+
