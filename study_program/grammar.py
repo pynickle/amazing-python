@@ -68,13 +68,15 @@ def hello():
 
 hello()
 
-import time
 def time_c(func):
-    def wrapper(*args, **kwargs):
-        start = time.perf_counter()
-        func(*args, **kwargs)
-        elapsed = (time.perf_counter() - start)
-        print("Time used: ", elapsed)
+	def wrapper(*args, **kwargs):
+		#start = time.perf_counter()
+		start = time.time()
+		func(*args, **kwargs)
+		#elapsed = (time.perf_counter() - start)
+		elapsed = (time.time() - start)
+		print("{} : Time used: {}".format(func.__name__, elapsed))
+	return wrapper
 
 @time_c
 def sleep_test():
