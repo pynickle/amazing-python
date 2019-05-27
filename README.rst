@@ -1,8 +1,8 @@
 Welcome to awesome-python-tools's documentation!
 ================================================
 
-.. image:: https://travis-ci.org/b3log/amazing-python.svg?branch=master
-    :target: https://travis-ci.org/code-nick-python/awesome-python-tools
+.. image:: https://badges.gitter.im/amazing-python/community.svg
+    :target: https://gitter.im/amazing-python/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 
 .. image:: https://img.shields.io/badge/language-python-blue.svg
     :target: https://www.python.org
