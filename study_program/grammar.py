@@ -1,3 +1,13 @@
+ALL_GRAMMAR = ("for else", "函数注解", "with", 
+			   "yield", "decorator", "super", 
+			   "property", "kwargs and args", 
+			   "lambda", "classmethod", "* and =", 
+			   "int with _", "class in def", 
+			   "slots in class", "assert",
+			   "raise", "nonlocal", "...")
+
+
+
 print("for ... else ... : ")
 for i in range(1,10):
 	if i==5:
