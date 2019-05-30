@@ -1,3 +1,13 @@
+ALL_GRAMMAR = ("for else", "函数注解", "with", 
+			   "yield", "decorator", "super", 
+			   "property", "kwargs and args", 
+			   "lambda", "classmethod", "* and =", 
+			   "int with _", "class in def", 
+			   "slots in class", "assert",
+			   "raise", "nonlocal", "...")
+
+
+
 print("for ... else ... : ")
 for i in range(1,10):
 	if i==5:
@@ -68,16 +78,17 @@ def hello():
 
 hello()
 
-import time
-def time_c():
-	def wrapper(func):
-		start=time.time()
-		func()
-		end=time.time()
-		print(end - start)
+def time_c(func):
+	def wrapper(*args, **kwargs):
+		#start = time.perf_counter()
+		start = time.time()
+		func(*args, **kwargs)
+		#elapsed = (time.perf_counter() - start)
+		elapsed = (time.time() - start)
+		print("{} : Time used: {}".format(func.__name__, elapsed))
 	return wrapper
 
-@time_c()
+@time_c
 def sleep_test():
 	time.sleep(2)
 
@@ -206,3 +217,42 @@ try:
 	tea.service = "send to my home"
 except Exception as e:
 	print("you can't add attribute that is not in slots")
+
+def hello(name:str):
+	assert len(name)>1,"your name is too short!"
+	print("hello,", name)
+hello("nick")
+try:
+	hello("a")
+except Exception as e:
+	print(e)
+	
+import traceback
+class ExitBye(Exception):pass
+try:
+    print(1 / 0)
+except Exception as e:
+	try:
+		raise ExitBye("have an error with raise") from e
+	except Exception as e:
+		traceback.print_exc()
+
+def counter_nonlocal(): 
+    count = 0 
+    def count_add(): 
+        nonlocal count 
+        count += 1 
+        return count 
+    return count_add
+       
+def counter_test(): 
+	num = counter_nonlocal()
+	print(num())
+	print(num())
+
+counter_test()
+
+print(type(...))
+def hello():
+	...
+	

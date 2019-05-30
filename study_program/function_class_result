@@ -1,0 +1,48 @@
+help(method) : 
+Help on function method in module __main__:
+
+method()
+    this function print my name
+
+None
+
+method.__doc__ : 
+this function print my name
+
+method.__name__ : 
+method
+
+method.__code__ : 
+<code object method at 0x7f01429c39c0, file "/tmp/133080033/main.py", line 3>
+
+dis.show_code(method) : 
+Name:              method
+Filename:          /tmp/133080033/main.py
+Argument count:    0
+Kw-only arguments: 0
+Number of locals:  0
+Stack size:        2
+Flags:             OPTIMIZED, NEWLOCALS, NOFREE
+Constants:
+   0: 'this function print my name'
+   1: 'l am nick'
+   2: None
+Names:
+   0: print
+None
+
+Base.another : 
+hello world
+
+Base.__doc__ : 
+document there
+
+Base.__module__ : 
+__main__
+
+Base.__class__ : 
+<class 'type'>
+
+Base.__dict__ : 
+{'__module__': '__main__', '__doc__': 'document there', 'name': 'nick', '__secret__': '123456', 'say_hello': <function Base.say_hello at 0x7f014206b1e0>, '__dict__': <attribute '__dict__' of 'Base' objects>, '__weakref__': <attribute '__weakref__' of 'Base' objects>, 'another': 'hello world'}
+

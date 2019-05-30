@@ -1,0 +1,24 @@
+------------title-------------
+content1                                             content2
+
+origin : test-str
+string[::-1] : rts-tset
+
+origin:   test   
+
+lstrip:test   
+blank position:4
+blank position:5
+blank position:6
+
+rstrip:   test
+blank position:0
+blank position:1
+blank position:2
+
+strip:test
+
+origin : 我是中文
+after encode : b'\xe6\x88\x91\xe6\x98\xaf\xe4\xb8\xad\xe6\x96\x87'
+after decode : 我是中文
+

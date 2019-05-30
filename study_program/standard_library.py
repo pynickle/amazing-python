@@ -96,6 +96,21 @@ pprint.pprint(sys.path)
 print()
 print("getfilesystemencoding : " + sys.getfilesystemencoding() + "\n")
 print("platform : " + sys.platform + "\n")
+"""
+only run successfully in the command line
+>>> import sys
+>>> sys.ps1
+'>>> '
+>>> sys.ps2
+'... '
+>>> sys.ps1="py3.7>>> "
+py3.7>>> sys.ps2="py3.7... "
+py3.7>>> def hello():
+py3.7...     print("Hello World")
+py3.7... 
+py3.7>>> hello()
+Hello World
+"""
 
 
 
@@ -260,6 +275,7 @@ print(a)
 
 import keyword
 print(keyword.kwlist)
+print(keyword.iskeyword("nonlocal"))
 
 
 
@@ -294,3 +310,14 @@ def logger2():
 
 logger1()
 logger2()
+
+
+
+import traceback
+def wrong():
+	print("l am a wrong sentence!" + 1)
+
+try:
+	wrong()
+except Exception as e:
+	traceback.print_exc()
