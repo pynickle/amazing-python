@@ -321,3 +321,11 @@ try:
 	wrong()
 except Exception as e:
 	traceback.print_exc()
+	
+	
+	
+import typing
+Vector = typing.List[str]
+def double(vector:Vector)->list:
+	return [i*2 for i in vector]
+print(double(["hello","world"]))
