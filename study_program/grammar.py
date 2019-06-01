@@ -61,6 +61,13 @@ yield_nums=yield_test()
 print(yield_nums)
 for num in yield_nums:
 	print(num)
+while True:
+	try:
+		print(yield_nums.__next__())
+		print(next(yield_nums))
+	except StopIteration as e:
+		print(e)
+		break
 
 print("decorator : ")
 def do():
