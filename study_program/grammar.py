@@ -85,6 +85,7 @@ def hello():
 
 hello()
 
+import time
 def time_c(func):
 	def wrapper(*args, **kwargs):
 		#start = time.perf_counter()
