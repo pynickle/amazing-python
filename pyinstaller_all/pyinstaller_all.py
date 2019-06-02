@@ -10,6 +10,25 @@ def selectPath():
     path_ = askdirectory()
     path.set(path_)
 
+def exe(root, dirs, files, successful_files):
+    for file in files:
+        if file.endswith(".py"):
+            try:
+                root.replace("\\", "/")
+                call("cd " + root + "&pyinstaller -F " + file, shell=True)
+                shutil.rmtree(root + "/build")
+                shutil.rmtree(root + "/__pycache__")
+                shutil.copyfile(
+                    root + "/dist/" + file[0 : len(file) - 3] + ".exe",
+                    root + "/" + file[0 : len(file) - 3] + ".exe",
+                )
+                shutil.rmtree(root + "/dist")
+                os.remove(root + "/" + file[0 : len(file) - 3] + ".spec")
+                success_files += 1
+                success.set("success:" + str(success_files))
+            except Exception as e:
+                print(e)
+                continue
 
 def py_to_exe():
     success_files = 0
@@ -17,44 +36,29 @@ def py_to_exe():
     if os.path.exists(file_path):
         try:
             for root, dirs, files in os.walk(file_path):
-                for file in files:
-                    if file.endswith(".py"):
-                        try:
-                            root.replace("\\", "/")
-                            call("cd " + root + "&pyinstaller -F " + file, shell=True)
-                            shutil.rmtree(root + "/build")
-                            shutil.rmtree(root + "/__pycache__")
-                            shutil.copyfile(
-                                root + "/dist/" + file[0 : len(file) - 3] + ".exe",
-                                root + "/" + file[0 : len(file) - 3] + ".exe",
-                            )
-                            shutil.rmtree(root + "/dist")
-                            os.remove(root + "/" + file[0 : len(file) - 3] + ".spec")
-                            success_files += 1
-                            success.set("success:" + str(success_files))
-                        except Exception as e:
-                            print(e)
-                            continue
+                exe(root, dirs, files, successful_files)
         except:
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
         tkinter.messagebox.showerror("wrong!", "path wrong!")
 
-
+def remove(root, dirs, files, successful_files):
+    for file in files:
+        if file.endswith(".exe"):
+            try:
+                os.remove(root + "/" + file)
+                success_files += 1
+                success.set("success:" + str(success_files))
+            except:
+                continue
+        
 def remove_exe():
     success_files = 0
     file_path = path.get()
     if os.path.exists(file_path):
         try:
             for root, dirs, files in os.walk(file_path):
-                for file in files:
-                    if file.endswith(".exe"):
-                        try:
-                            os.remove(root + "/" + file)
-                            success_files += 1
-                            success.set("success:" + str(success_files))
-                        except:
-                            continue
+                remove(root, dirs, files, successful_files)
         except:
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
