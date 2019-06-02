@@ -9,21 +9,23 @@ def selectPath():
     path_ = askdirectory()
     path.set(path_)
 
-
+def black_file(root,dir,files,success_files):
+    for file in files:
+        if file.endswith(".py"):
+            try:
+                call("black " + root + "/" + file, shell=True)
+                success_files += 1
+                success.set("success:" + str(success_files))
+            except:
+                continue
+    
 def black():
     success_files = 0
     file_path = path.get()
     if os.path.exists(file_path):
         try:
             for root, dirs, files in os.walk(file_path):
-                for file in files:
-                    if file.endswith(".py"):
-                        try:
-                            call("black " + root + "/" + file, shell=True)
-                            success_files += 1
-                            success.set("success:" + str(success_files))
-                        except:
-                            continue
+                black_file(root,dir,files,successful_files)
         except:
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
