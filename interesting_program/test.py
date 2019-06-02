@@ -34,7 +34,7 @@ class Test(unittest.TestCase):
 	def test(self):
 		test_import(self, "fibonacci", "1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n")
 		test_import(self, "24\n30\n", "lcm", "120\n")
-		test_import(self "24\n30\n", "mcd", "6\n")
+		test_import(self, "24\n30\n", "mcd", "6\n")
 		test_import(self, "2000\n", "leap_year", True)
 		
 unittest.main()
