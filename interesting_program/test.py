@@ -35,6 +35,6 @@ class Test(unittest.TestCase):
 		test_import(self, "fibonacci", "1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n")
 		test_import(self, "lcm", "120\n", "24\n30\n")
 		test_import(self, "mcd", "6\n", "24\n30\n")
-		test_import(self, "leap_year", True, "2000\n")
+		test_import(self, "leap_year", "True\n", "2000\n")
 		
 unittest.main()
