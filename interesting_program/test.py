@@ -23,7 +23,7 @@ def stub_stdout(testcase_inst):
     sys.stderr = io.StringIO()
     sys.stdout = io.StringIO()
 
-def test_import(input_value=None, file, result):
+def test_import(file, result, input_value = None):
 	if input is not None:
 		stub_stdin(self, input_value)
 	stub_stdout(self)
@@ -32,7 +32,7 @@ def test_import(input_value=None, file, result):
 
 class Test(unittest.TestCase):
 	def test(self):
-		test_import(file = "fibonacci", result = "1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n")
+		test_import("fibonacci", "1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n")
 		test_import("24\n30\n", "lcm", "120\n")
 		test_import("24\n30\n", "mcd", "6\n")
 		test_import("2000\n", "leap_year", True)
