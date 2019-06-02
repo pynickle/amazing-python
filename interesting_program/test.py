@@ -23,9 +23,9 @@ def stub_stdout(testcase_inst):
     sys.stderr = io.StringIO()
     sys.stdout = io.StringIO()
 
-def test_import(input=None, file, result):
+def test_import(input_value=None, file, result):
 	if input is not None:
-		stub_stdin(self, input)
+		stub_stdin(self, input_value)
 	stub_stdout(self)
 	exec("import " + file)
 	self.assertEqual(sys.stdout.getvalue(), result)
