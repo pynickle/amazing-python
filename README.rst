@@ -10,13 +10,13 @@ Welcome to awesome-python-tools's documentation!
     :target: https://gitter.im/amazing-python/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 
 .. image:: https://hits.b3log.org/b3log/awesome-python-tools.svg
-    :target: https://github.com/b3log/awesome-python-tools
+    :target: https://github.com/pynickle/awesome-python-tools
     
 .. image:: https://img.shields.io/github/languages/code-size/b3log/awesome-python-tools.svg
-    :target: https://github.com/b3log/awesome-python-tools
+    :target: https://github.com/pynickle/awesome-python-tools
 
 .. image:: https://img.shields.io/github/last-commit/b3log/awesome-python-tools.svg
-    :target: https://github.com/b3log/awesome-python-tools
+    :target: https://github.com/pynickle/awesome-python-tools
 
 Contents
 ^^^^^^^^
