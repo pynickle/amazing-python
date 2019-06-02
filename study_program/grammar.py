@@ -134,6 +134,26 @@ class my_friend_with_super(me):
 my_friend_with_super().hello()
 print()
 
+class Tea:
+	def __init__(self, things):
+		self.things = things
+	def __repr__(self):
+		return self.things
+	@classmethod
+	def need(cls):
+		return cls(["sugar", "pearl", "water"])
+class PearlTea(Tea):
+	@classmethod
+	def need(cls):
+		needed = super().need().things
+		needed += ["pearl"] * 2
+		return needed
+mytea = Tea.need()
+mypearltea = PearlTea.need()
+print(mytea.things)
+print(mypearltea)
+print()
+
 print("property : ")
 class property_test:
 	def __init__(self,height,weight):
