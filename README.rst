@@ -27,3 +27,14 @@ Contents
 - `使用`_ 
 
 .. _使用: docs/how-to-use.rst
+
+Addition
+^^^^^^^^
+
+expert-python3_
+
+**this book is related to this project(study_program folder)**
+
+**-- written by me**
+
+.. _expert-python3 : https://github.com/pynickle/expert-python3
