@@ -1,6 +1,8 @@
 Welcome to awesome-python-tools's documentation!
 ================================================
-
+.. image:: https://travis-ci.org/pynickle/amazing-python.svg?branch=master
+    :target: https://travis-ci.org/pynickle/amazing-python
+    
 .. image:: https://badges.gitter.im/amazing-python/community.svg
     :target: https://gitter.im/amazing-python/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 
@@ -9,8 +11,6 @@ Welcome to awesome-python-tools's documentation!
 
 .. image:: https://img.shields.io/badge/license-Apache2.0-orange.svg
     :target: https://www.apache.org/licenses/LICENSE-2.0
-    
-----
 
 .. image:: https://hits.b3log.org/b3log/awesome-python-tools.svg
     :target: https://github.com/b3log/awesome-python-tools
