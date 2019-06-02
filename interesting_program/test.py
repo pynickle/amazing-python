@@ -28,7 +28,7 @@ def test_import(slf, file, result, input_value = None):
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
 	exec("import " + file)
-	self.assertEqual(sys.stdout.getvalue(), result)
+	slf.assertEqual(sys.stdout.getvalue(), result)
 
 class Test(unittest.TestCase):
 	def test(self):
