@@ -3,14 +3,11 @@ Welcome to awesome-python-tools's documentation!
 .. image:: https://travis-ci.org/pynickle/amazing-python.svg?branch=master
     :target: https://travis-ci.org/pynickle/amazing-python
     
+.. image:: https://codebeat.co/badges/c73daf98-d5a4-44b5-aed3-f09d389c07ff
+    :target: https://codebeat.co/projects/github-com-pynickle-amazing-python-master
+    
 .. image:: https://badges.gitter.im/amazing-python/community.svg
     :target: https://gitter.im/amazing-python/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-
-.. image:: https://img.shields.io/badge/language-python-blue.svg
-    :target: https://www.python.org
-
-.. image:: https://img.shields.io/badge/license-Apache2.0-orange.svg
-    :target: https://www.apache.org/licenses/LICENSE-2.0
 
 .. image:: https://hits.b3log.org/b3log/awesome-python-tools.svg
     :target: https://github.com/b3log/awesome-python-tools
