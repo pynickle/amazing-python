@@ -32,7 +32,7 @@ def test_import(slf, file, result, input_value = None, second = False):
 		exec("importlib.reload(" + file + "mark)")
 	else:
 		exec("global " + file + "mark")
-		exec(file + "mark = __import__(" + file + ")")
+		exec(file + "mark = __import__('" + file + "')")
 	slf.assertEqual(str(sys.stdout.getvalue()), result)
 
 class Test(unittest.TestCase):
