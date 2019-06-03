@@ -29,7 +29,7 @@ def test_import(slf, file, result, input_value = None, second = False):
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
 	if second:
-		importlib.reload(file)
+		exec("importlib.reload(" + file + ")")
 	else:
 		exec("import " + file)
 	slf.assertEqual(str(sys.stdout.getvalue()), result)
