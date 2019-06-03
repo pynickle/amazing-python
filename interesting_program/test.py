@@ -33,9 +33,9 @@ def test_import(slf, file, result, input_value = None, original = None):
 
 class Test(unittest.TestCase):
 	def test(self):
-		fib = test_import(self, "fibonacci", "1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n")
-		lcm = test_import(self, "lcm", "120\n", "24\n30\n")
-		mcd = test_import(self, "mcd", "6\n", "24\n30\n")
-		lea = test_import(self, "leap_year", "True\n", "2000\n")
-		cal = test_import(self, "calculator", ">>>3.0*5.0 = 15.0\n>>>4.5-3.5*2.0 = -2.5\n", "3*5\n4.5-3.5*2\n")
+		test_import(self, "fibonacci", "1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n")
+		test_import(self, "lcm", "120\n", "24\n30\n")
+		test_import(self, "mcd", "6\n", "24\n30\n")
+		test_import(self, "leap_year", "True\n", "2000\n")
+		test_import(self, "calculator", ">>>4.5-3.5*2.0 = -2.5\n", "4.5-3.5*2\n")
 unittest.main()
