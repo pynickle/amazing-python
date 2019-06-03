@@ -37,5 +37,5 @@ class Test(unittest.TestCase):
 		test_import(self, "mcd", "6\n", "24\n30\n")
 		test_import(self, "leap_year", "True\n", "2000\n")
 		test_import(self, "calculator", ">>>3.0*5.0 = 15.0\n", "3*5\n")
-		test_import(self, "calculator", ">>>4.5-3.5*2 = -2.5\n", "4.5-3.5*2\n")
+		test_import(self, "calculator", ">>>4.5-3.5*2.0 = -2.5\n", "4.5-3.5*2\n")
 unittest.main()
