@@ -31,7 +31,7 @@ def test_import(slf, file, result, input_value = None, second = False):
 	if second:
 		exec("importlib.reload(" + file + "mark)")
 	else:
-		exec("global " + file + "mark")
+		exec("nonlocal " + file + "mark")
 		exec(file + "mark = __import__('" + file + "')")
 	slf.assertEqual(str(sys.stdout.getvalue()), result)
 
