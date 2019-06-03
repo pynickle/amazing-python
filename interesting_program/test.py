@@ -1,6 +1,7 @@
 import sys
 import io
 import unittest
+import imp
 
 
 def stub_stdin(testcase_inst, inputs):
@@ -24,11 +25,14 @@ def stub_stdout(testcase_inst):
     sys.stdout = io.StringIO()
 
 def test_import(slf, file, result, input_value = None):
+	exec("global " + file)
 	if input is not None:
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
-	exec("import " + file)
+	exec("if " + file + ":import " + file)
+	exec("else:imp.reload(" + file + ")")
 	slf.assertEqual(sys.stdout.getvalue(), result)
+	exec(file + " = False")
 
 class Test(unittest.TestCase):
 	def test(self):
