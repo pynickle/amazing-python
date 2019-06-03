@@ -14,6 +14,8 @@ def exe(root, dirs, files, successful_files):
     for file in files:
         if file.endswith(".py"):
             try:
+                get_file = "now update : " + file
+                print("\033[33m" + get_file.center(50, '='))
                 root.replace("\\", "/")
                 call("cd " + root + "&pyinstaller -F " + file, shell=True)
                 shutil.rmtree(root + "/build")
@@ -36,11 +38,13 @@ def py_to_exe():
     if os.path.exists(file_path):
         try:
             for root, dirs, files in os.walk(file_path):
-                exe(root, dirs, files, successful_files)
+                exe(root, dirs, files, success_files)
         except:
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
         tkinter.messagebox.showerror("wrong!", "path wrong!")
+    get_success = "pack success : " + str(success_files)
+    print(get_success.center(50, '-'))
 
 def remove(root, dirs, files, successful_files):
     for file in files:
@@ -58,11 +62,13 @@ def remove_exe():
     if os.path.exists(file_path):
         try:
             for root, dirs, files in os.walk(file_path):
-                remove(root, dirs, files, successful_files)
+                remove(root, dirs, files, success_files)
         except:
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
         tkinter.messagebox.showerror("wrong!", "path wrong!")
+    get_success = "remove exe success : " + str(success_files)
+    print(get_success.center(50, '-'))
 
 
 def pyinstaller_main():
