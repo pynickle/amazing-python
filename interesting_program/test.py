@@ -25,14 +25,12 @@ def stub_stdout(testcase_inst):
     sys.stdout = io.StringIO()
 
 def test_import(slf, file, result, input_value = None):
-	exec("global " + file)
 	if input is not None:
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
-	exec("if " + file + ":import " + file)
-	exec("else:imp.reload(" + file + ")")
+	with open(file + ".py", "r") as f:
+		exec(f.read)
 	slf.assertEqual(sys.stdout.getvalue(), result)
-	exec(file + " = False")
 
 class Test(unittest.TestCase):
 	def test(self):
