@@ -29,9 +29,11 @@ def test_import(slf, file, result, input_value = None, second = False):
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
 	if second:
-		exec("importlib.reload(" + file + ")")
+		exec("importlib.reload(" + file + "mark)")
 	else:
 		exec("import " + file)
+		exec("global " + file + "mark")
+		exec(file + "mark = " + file)
 	slf.assertEqual(str(sys.stdout.getvalue()), result)
 
 class Test(unittest.TestCase):
@@ -41,5 +43,5 @@ class Test(unittest.TestCase):
 		test_import(self, "mcd", "6\n", "24\n30\n")
 		test_import(self, "leap_year", "True\n", "2000\n")
 		test_import(self, "calculator", ">>>3.0*5.0 = 15.0\n", "3*5\n")
-		test_import(self, "calculator", ">>>4.5-3.5*2.0 = -2.5\n", "4.5-3.5*2\n",second = True)
+		test_import(self, "calculator", ">>>4.5-3.5*2.0 = -2.5\n", "4.5-3.5*2\n", second = True)
 unittest.main()
