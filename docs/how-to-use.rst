@@ -1,4 +1,15 @@
 ------------
+开源项目声明
+------------
+
+amazing-python
+^^^^^^^^^^^^^^
+
+author : pynickle
+
+license : MIT License
+
+------------
 文件功能介绍
 ------------
 
@@ -105,19 +116,6 @@ command\_to\_code
     https://code-nick-python.github.io/ctc.html
 
 左边的输入框用来输入命令行，右边会实时显现出转换后的代码
-
-------------
-开源项目声明
-------------
-
-daily-tools
-^^^^^^^^^^^
-
-===========  ================
-license      author
------------  ----------------
-Apache2.0    code-nick-python
-===========  ================
 
 -----------------
 How to contribute
