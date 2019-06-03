@@ -24,6 +24,17 @@ def stub_stdout(testcase_inst):
     sys.stderr = io.StringIO()
     sys.stdout = io.StringIO()
 
+class LazyImport:  
+    def __init__(self, module_name):  
+        self.module_name = module_name  
+        self.module = None  
+
+    def __getattr__(self, funcname):  
+        if self.module is None:  
+            self.module = __import__(self.module_name)  
+            print(self.module)  
+        return getattr(self.module, funcname)  
+
 def test_import(slf, file, result, input_value = None, second = False):
 	if input is not None:
 		stub_stdin(slf, input_value)
@@ -31,9 +42,7 @@ def test_import(slf, file, result, input_value = None, second = False):
 	if second:
 		exec("importlib.reload(" + file + "mark)")
 	else:
-		exec("import " + file)
-		exec("global " + file + "mark")
-		exec(file + "mark = " + file)
+		exec(file + "mark = LazyImport('" + file + "')")
 	slf.assertEqual(str(sys.stdout.getvalue()), result)
 
 class Test(unittest.TestCase):
