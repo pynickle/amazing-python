@@ -6,9 +6,7 @@ def replace_command_to_code(str):
 			i=i.replace('>>> ','')
 		elif i.startswith('... '):
 			i=i.replace('... ','')
-		elif i=='...':
-			i=''
-		elif i=='>>>':
+		elif i=='...' or i=='>>>':
 			i=''
 		result=result+i+'\n'
 	return result
