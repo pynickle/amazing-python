@@ -28,12 +28,8 @@ def test_import(slf, file, result, input_value = None, original = None):
 	if input is not None:
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
-	if original:
-		importlib.reload(original)
-	else:
-		exec(file + "mark = __import__('" + file + "')")
+	exec("import " + file)
 	slf.assertEqual(str(sys.stdout.getvalue()), result)
-	exec("return " + file + "mark")
 
 class Test(unittest.TestCase):
 	def test(self):
@@ -41,6 +37,5 @@ class Test(unittest.TestCase):
 		lcm = test_import(self, "lcm", "120\n", "24\n30\n")
 		mcd = test_import(self, "mcd", "6\n", "24\n30\n")
 		lea = test_import(self, "leap_year", "True\n", "2000\n")
-		cal = test_import(self, "calculator", ">>>3.0*5.0 = 15.0\n", "3*5\n")
-		test_import(self, "calculator", ">>>4.5-3.5*2.0 = -2.5\n", "4.5-3.5*2\n", original = cal)
+		cal = test_import(self, "calculator", ">>>3.0*5.0 = 15.0\n>>>4.5-3.5*2.0 = -2.5\n", "3*5\n4.5-3.5*2\n")
 unittest.main()
