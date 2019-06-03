@@ -29,8 +29,8 @@ def test_import(slf, file, result, input_value = None):
 		stub_stdin(slf, input_value)
 	stub_stdout(slf)
 	with open(file + ".py", "r") as f:
-		exec(f.read)
-	slf.assertEqual(sys.stdout.getvalue(), result)
+		exec(f.read())
+	slf.assertEqual(str(sys.stdout.getvalue()), result)
 
 class Test(unittest.TestCase):
 	def test(self):
