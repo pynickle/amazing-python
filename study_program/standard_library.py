@@ -220,13 +220,18 @@ for i in range(5):
 	
 	
 import ast
+def eval_code(code):
+    parsed = ast.parse(code, mode='eval')
+    fixed = ast.fix_missing_locations(parsed)
+    compiled = compile(fixed, '<string>', 'eval')
+    return eval(compiled)
 
 print(ast.parse("def hello():print('Hello world')"))
 ast_tree=ast.parse("def hello():print('Hello world')")
 ast_dump=ast.dump(ast_tree).replace('(','(\n\t')
 print(ast_dump)
 				
-print(ast.literal_eval("1+2"))
+print(eval_code("1+2"))
 try:
 	  ast.literal_eval("__import__('os').system('dir')")
 except:
