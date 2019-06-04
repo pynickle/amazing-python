@@ -169,8 +169,8 @@ result5 = re.findall(pattern1, string2)
 
 result6 = compile_pattern1.findall(string3)
 
-result7 = re.split('\W+', string3) 
-result8 = re.split('\W+', string3, 1)
+result7 = re.split(r'\W+', string3) 
+result8 = re.split(r'\W+', string3, 1)
 
 result9 = re.findall(pattern=pattern2, string=string4, flags=re.I)
 
@@ -299,7 +299,7 @@ def logger1():
 
     logging.debug('debug')
     logging.info('info')
-    logging.warn('warn')
+    logging.warning('warn')
     logging.error('error')
     logging.critical('critical')
 
