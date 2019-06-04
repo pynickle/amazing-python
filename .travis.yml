@@ -1,6 +1,7 @@
+dist: xenial
 language: python
 python:
-  - "3.6"
+  - "3.7"
 script:
     - py.test study_program/test.py
     - cd interesting_program; python test.py
