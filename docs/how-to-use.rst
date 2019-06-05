@@ -71,13 +71,9 @@ how\_many\_code
 ^^^^^^^^^^^^^^^
 *计算路径下你曾经写过多少python代码* 
 
-beautify-your-code
+beautify-code
 ^^^^^^^^^^^^^^^^^^
-*使用black库全自动格式化格式化你的代码* 
-
-autopep8\_code
-^^^^^^^^^^^^^^
-*使用autopep8库全自动格式化你的python代码* 
+*使用gofmt（格式化go代码），autopep8或black格式化你的代码*
 
 pyinstaller\_all
 ^^^^^^^^^^^^^^^^
