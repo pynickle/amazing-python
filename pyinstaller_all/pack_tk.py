@@ -28,6 +28,7 @@ def exe(root, dirs, files, successful_files):
                 os.remove(root + "/" + file[0 : len(file) - 3] + ".spec")
                 success_files += 1
                 success.set("success:" + str(success_files))
+                top.update()
             except Exception as e:
                 print(e)
                 continue
@@ -39,7 +40,8 @@ def py_to_exe():
         try:
             for root, dirs, files in os.walk(file_path):
                 exe(root, dirs, files, success_files)
-        except:
+        except Exception as e:
+            print(e)
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
         tkinter.messagebox.showerror("wrong!", "path wrong!")
@@ -53,6 +55,7 @@ def remove(root, dirs, files, successful_files):
                 os.remove(root + "/" + file)
                 success_files += 1
                 success.set("success:" + str(success_files))
+                top.update()
             except:
                 continue
         
@@ -72,7 +75,7 @@ def remove_exe():
 
 
 def pyinstaller_main():
-    global path, success
+    global path, success, top
     top = tkinter.Tk()
     path, success = tkinter.StringVar(), tkinter.StringVar()
     button_py = tkinter.Button(top, text="begin pyinstaller", command=py_to_exe).pack()
