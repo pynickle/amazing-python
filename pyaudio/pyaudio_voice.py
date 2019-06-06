@@ -10,6 +10,7 @@ from playsound import playsound
 def voice():
     try:
         audio_info.set("---录音开始---")
+        top.update()
 
         frames = []
 
@@ -18,6 +19,7 @@ def voice():
             frames.append(data)
 
         audio_info.set("---录音结束---")
+        top.update()
 
         stream.stop_stream()
         stream.close()
@@ -42,9 +44,9 @@ def play_voice():
 
 
 def pyaudio_main():
-    global audio_info,second_choose,file_choose,choice
-    global CHUNK,FORMAT,CHANNELS,RATE
-    global p,stream
+    global audio_info, second_choose, file_choose, choice, top
+    global CHUNK, FORMAT, CHANNELS, RATE
+    global p, stream
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
     CHANNELS = 2
