@@ -50,8 +50,6 @@ def pyaudio_main():
     CHANNELS = 2
     RATE = 16000
 
-    file_name = ""
-
     p = pyaudio.PyAudio()
     stream = p.open(
         format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK
@@ -61,34 +59,25 @@ def pyaudio_main():
     choice = tkinter.StringVar()
     choice.set(".mp3")
 
-    begin = tkinter.Button(top, text="begin", command=voice)
-    begin.pack()
+    begin = tkinter.Button(top, text="begin", command=voice).pack()
 
-    second_label = tkinter.Label(top, text="seconds:")
-    second_label.pack()
+    second_label = tkinter.Label(top, text="seconds:").pack()
 
-    second_choose = tkinter.Entry(top)
-    second_choose.pack()
+    second_choose = tkinter.Entry(top).pack()
 
-    file_label = tkinter.Label(top, text="filename:")
-    file_label.pack()
+    file_label = tkinter.Label(top, text="filename:").pack()
 
-    file_choose = tkinter.Entry(top)
-    file_choose.pack()
+    file_choose = tkinter.Entry(top).pack()
 
     choose_mp3 = tkinter.Radiobutton(
-        top, text=".mp3", variable=choice, value=".mp3")
-    choose_mp3.pack()
+        top, text=".mp3", variable=choice, value=".mp3").pack()
     choose_wav = tkinter.Radiobutton(
-        top, text=".wav", variable=choice, value=".wav")
-    choose_wav.pack()
+        top, text=".wav", variable=choice, value=".wav").pack()
 
     get_voice = tkinter.Button(
-        top, text="playback of audio", command=play_voice)
-    get_voice.pack()
+        top, text="playback of audio", command=play_voice).pack()
 
-    info = tkinter.Entry(top, textvariable=audio_info)
-    info.pack()
+    info = tkinter.Entry(top, textvariable=audio_info).pack()
     audio_info.set("提示信息")
 
     top.mainloop()
