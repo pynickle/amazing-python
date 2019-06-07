@@ -28,7 +28,7 @@ def main():
         plt.subplot(212)
         plt.plot(wavtime, wavdata[1])
         plt.show()
-    except:
+    except BaseException:
         print("path wrong!")
 
 

@@ -12,7 +12,7 @@ def pip_main():
             print("all package:{},update now:{}".format(
                 package_number, update_now))
             update_now += 1
-        except:
+        except BaseException:
             continue
     print("all is finished:{}".format(s))
 

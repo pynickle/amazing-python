@@ -59,7 +59,7 @@ def remove(root, dirs, files, successful_files):
                 success_files += 1
                 success.set("success:" + str(success_files))
                 top.update()
-            except:
+            except BaseException:
                 continue
 
 
@@ -70,7 +70,7 @@ def remove_exe():
         try:
             for root, dirs, files in os.walk(file_path):
                 remove(root, dirs, files, success_files)
-        except:
+        except BaseException:
             tkinter.messagebox.showerror("wrong!", "path wrong!")
     else:
         tkinter.messagebox.showerror("wrong!", "path wrong!")

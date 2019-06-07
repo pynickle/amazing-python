@@ -47,7 +47,7 @@ def binary_test():
 def index_test():
     try:
         print((binary_list.index(data), data in binary_list))
-    except:
+    except BaseException:
         print(False)
 
 

@@ -25,7 +25,7 @@ def scrapy():
     path = save_entry.get()
     try:
         response = requests.get(url, timeout=20)
-    except:
+    except BaseException:
         tkinter.messagebox.showerror("wrong!", "can not get the url\n请求网址失败")
         return
     soup = BeautifulSoup(response.text, "lxml")
@@ -42,7 +42,7 @@ def scrapy():
             f = open(path + "\\" + str(name) + choice.get(), "wb")
             f.write(img_get.content)
             f.close()
-        except:
+        except BaseException:
             try:
                 img_url_retry = "https:" + img_url
                 img_get = requests.get(img_url_retry, timeout=20)
@@ -50,7 +50,7 @@ def scrapy():
                 f = open(path + "\\" + str(name) + choice.get(), "wb")
                 f.write(img_get.content)
                 f.close()
-            except:
+            except BaseException:
                 continue
     tkinter.messagebox.showinfo("success!", "successfully download images!")
 

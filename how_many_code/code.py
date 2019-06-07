@@ -14,14 +14,14 @@ def analyze_code(codefile_source):
             line = lines[line_index]
             if line.startswith("#"):
                 comment_line += 1
-            elif re.match("\s*'''", line) is not None:
+            elif re.match(r"\s*'''", line) is not None:
                 comment_line += 1
                 while re.match(".*'''$", line) is None:
                     try:
                         line = lines[line_index]
                         comment_line += 1
                         line_index += 1
-                    except:
+                    except BaseException:
                         continue
             elif line == "\n":
                 blank_line += 1

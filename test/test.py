@@ -11,7 +11,7 @@ with open('test_result.csv', 'a', newline='') as f:
 
 
 def eval_cmd(path):
-    cmd = 'python -m cProfile '+path
+    cmd = 'python -m cProfile ' + path
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, bufsize=1)
     write = False
     count = 0
@@ -19,10 +19,10 @@ def eval_cmd(path):
     for line in iter(p.stdout.readline, b''):
         try:
             line = bytes.decode(line)
-        except:
+        except BaseException:
             try:
                 line = str(line, encoding="gbk")
-            except:
+            except BaseException:
                 continue
         print(line)
         if write == True:

@@ -8,7 +8,7 @@ def replace_command_to_code(str):
             i = i.replace('... ', '')
         elif i == '...' or i == '>>>':
             i = ''
-        result = result+i+'\n'
+        result = result + i + '\n'
     return result
 
 

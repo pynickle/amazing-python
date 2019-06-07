@@ -20,7 +20,7 @@ print("len('Hello World!') : " + str(len('Hello World!')))
 print("len([1,2,3,4,5]) : " + str(len([1, 2, 3, 4, 5])) + "\n")
 
 # 排序
-print("sorted([3,4,2,1,5]) : " + str(sorted([3, 4, 2, 1, 5]))+"\n")
+print("sorted([3,4,2,1,5]) : " + str(sorted([3, 4, 2, 1, 5])) + "\n")
 
 # 求和
 print("sum((1,2,3,4,5,6)) : " + str(sum((1, 2, 3, 4, 5, 6))))
@@ -45,7 +45,7 @@ print("iter the list[1,2,3,4,5]:")
 while True:
     try:
         print(next(iter_element))
-    except:
+    except BaseException:
         break
 
 # 判断True False
