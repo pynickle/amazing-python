@@ -208,7 +208,7 @@ print(lambda_add(1,4))
 print("classmethod : ")
 class klassmethod:
 	name="nick"
-	def hello(self):
+	def hello():
 		print("l am called with classmethod cls")
 	
 	@classmethod
