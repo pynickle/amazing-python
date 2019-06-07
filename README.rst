@@ -13,9 +13,6 @@ Welcome to awesome-python-tools's documentation!
 .. image:: https://img.shields.io/github/languages/code-size/b3log/awesome-python-tools.svg
     :target: https://github.com/pynickle/amazing-python
 
-.. image:: https://img.shields.io/github/last-commit/b3log/awesome-python-tools.svg
-    :target: https://github.com/pynickle/amazing-python
-
 =================== =====
 **Travis CI**       .. image:: https://travis-ci.org/pynickle/amazing-python.svg?branch=master
                         :target: https://travis-ci.org/pynickle/amazing-python  
