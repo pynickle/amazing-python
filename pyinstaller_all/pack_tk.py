@@ -10,6 +10,7 @@ def selectPath():
     path_ = askdirectory()
     path.set(path_)
 
+
 def exe(root, dirs, files, successful_files):
     for file in files:
         if file.endswith(".py"):
@@ -21,17 +22,18 @@ def exe(root, dirs, files, successful_files):
                 shutil.rmtree(root + "/build")
                 shutil.rmtree(root + "/__pycache__")
                 shutil.copyfile(
-                    root + "/dist/" + file[0 : len(file) - 3] + ".exe",
-                    root + "/" + file[0 : len(file) - 3] + ".exe",
+                    root + "/dist/" + file[0: len(file) - 3] + ".exe",
+                    root + "/" + file[0: len(file) - 3] + ".exe",
                 )
                 shutil.rmtree(root + "/dist")
-                os.remove(root + "/" + file[0 : len(file) - 3] + ".spec")
+                os.remove(root + "/" + file[0: len(file) - 3] + ".spec")
                 success_files += 1
                 success.set("success:" + str(success_files))
                 top.update()
             except Exception as e:
                 print(e)
                 continue
+
 
 def py_to_exe():
     success_files = 0
@@ -48,6 +50,7 @@ def py_to_exe():
     get_success = "pack success : " + str(success_files)
     print(get_success.center(50, '-'))
 
+
 def remove(root, dirs, files, successful_files):
     for file in files:
         if file.endswith(".exe"):
@@ -58,7 +61,8 @@ def remove(root, dirs, files, successful_files):
                 top.update()
             except:
                 continue
-        
+
+
 def remove_exe():
     success_files = 0
     file_path = path.get()
@@ -78,9 +82,12 @@ def pyinstaller_main():
     global path, success, top
     top = tkinter.Tk()
     path, success = tkinter.StringVar(), tkinter.StringVar()
-    button_py = tkinter.Button(top, text="begin pyinstaller", command=py_to_exe).pack()
-    button_exe = tkinter.Button(top, text="remove exe", command=remove_exe).pack()
-    choose_path = tkinter.Button(top, text="choose path", command=selectPath).pack()
+    button_py = tkinter.Button(
+        top, text="begin pyinstaller", command=py_to_exe).pack()
+    button_exe = tkinter.Button(
+        top, text="remove exe", command=remove_exe).pack()
+    choose_path = tkinter.Button(
+        top, text="choose path", command=selectPath).pack()
     path_show = tkinter.Entry(top, textvariable=path).pack()
     success_entry = tkinter.Entry(top, textvariable=success).pack()
     success.set("success:")

@@ -4,6 +4,7 @@ from tkinter import filedialog
 import tkinter.messagebox
 from pathlib import Path
 
+
 def un_zip(file_name):
     i = 0
     try:
@@ -17,7 +18,8 @@ def un_zip(file_name):
                 except Exception as e:
                     print(e)
                     tkinter.messagebox.showwarning("wrong!", "wrong zip!")
-            tkinter.messagebox.showinfo("success!", "finish zip " + str(i) + "!")
+            tkinter.messagebox.showinfo(
+                "success!", "finish zip " + str(i) + "!")
     except Exception as e:
         print(e)
         tkinter.messagebox.showwarning("wrong!", "wrong zip!")
@@ -32,15 +34,17 @@ def zip_main():
     global path, file_choose_1
     top = tkinter.Tk()
     path = tkinter.StringVar()
-    
+
     button_begin = tkinter.Button(
         top, text="begin", command=lambda: un_zip(file_name=path)
     ).pack()
-    
-    button = tkinter.Button(top, text="choose zip file", command=choose_file).pack()
-    
+
+    button = tkinter.Button(top, text="choose zip file",
+                            command=choose_file).pack()
+
     file_choose_1 = tkinter.Entry(top, textvariable=path, width=50).pack()
     top.mainloop()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     zip_main()
