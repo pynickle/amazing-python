@@ -149,7 +149,7 @@ How to contribute
 1. **Fork the repository to your own repository**
 2. **Commit your code in your fork repository**
 3. **Change the document accordingly**
-4. **Use the document `Pull_Requests_Template`_ to pull requests**
+4. **Use the document** `Pull_Requests_Template`_ **to pull requests**
 
 License
 ^^^^^^^
