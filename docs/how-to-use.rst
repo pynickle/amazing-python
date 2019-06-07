@@ -71,9 +71,25 @@ how\_many\_code
 ^^^^^^^^^^^^^^^
 *计算路径下你曾经写过多少python代码* 
 
-beautify-code
+beautify\_code
 ^^^^^^^^^^^^^^^^^^
-*使用gofmt（格式化go代码），autopep8或black格式化你的代码*
+*使用gofmt（格式化go代码），autopep8或black格式化你的代码，目前支持自定义参数*
+
+**自定义参数规则如下**::
+
+    file_type ** parameters_run
+    
+file_type代表文件类型，示例：.py .go
+
+parameters_run代表你要执行的命令，其中可以包括两个变量，他们用{{ }}包裹：
+- root ： 代表你输入的文件路径
+- file ： 代表该路径下的所有文件
+
+file_type和parameters_run用 ** 分割
+
+一个示例自定义参数如下::
+
+    .py ** autopep8 --in-place -a {{root}}/{{file}}
 
 pyinstaller\_all
 ^^^^^^^^^^^^^^^^
