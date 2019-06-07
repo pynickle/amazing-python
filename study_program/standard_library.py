@@ -89,6 +89,17 @@ print()
 
 
 
+import traceback
+def wrong():
+	print("l am a wrong sentence!" + 1)
+
+try:
+	wrong()
+except Exception as e:
+	traceback.print_exc()
+
+
+
 import sys
 print("version : " + sys.version + "\n")
 print("path : ")
@@ -96,6 +107,21 @@ pprint.pprint(sys.path)
 print()
 print("getfilesystemencoding : " + sys.getfilesystemencoding() + "\n")
 print("platform : " + sys.platform + "\n")
+
+def print_exc():
+	print("Error Occured:")
+	e_type, e_value, e_traceback = sys.exc_info()
+	print(f"Error Type : {e_type.__name__}" )
+	print(f"Error Message : {e_value}")
+	print(f"File Name : {e_traceback.tb_frame.f_code.co_filename}")
+	print(f"Line Number : {e_traceback.tb_lineno}")
+	print(f"Func Name : {e_traceback.tb_frame.f_code.co_name}")
+	
+try:
+	1/0
+except Exception as e:
+	print_exc()
+	
 """
 only run successfully in the command line
 >>> import sys
@@ -315,17 +341,6 @@ def logger2():
 
 logger1()
 logger2()
-
-
-
-import traceback
-def wrong():
-	print("l am a wrong sentence!" + 1)
-
-try:
-	wrong()
-except Exception as e:
-	traceback.print_exc()
 	
 	
 	
