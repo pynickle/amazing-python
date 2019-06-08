@@ -46,6 +46,12 @@ study\_program
 ^^^^^^^^^^^^^^
 *通过程序学习python及其高极用法*
 
+expert-python3_
+
+**这本书关联到此文件夹**
+
+**-- written by me**
+
 interesting\_program
 ^^^^^^^^^^^^^^^^^^^^
 *可以用来练手或有用的的小型python程序*
@@ -80,9 +86,13 @@ zip\_to\_see
 ^^^^^^^^^^^^
 *快速解压zip文件* 
 
+选择zip文件并按下按钮，该文件会被解压到当前目录下
+
 how\_many\_code
 ^^^^^^^^^^^^^^^
 *计算路径下你曾经写过多少python代码* 
+
+输入路径，程序会输出每个文件的注释行数，空行数和代码行数以及总的数据
 
 beautify\_code
 ^^^^^^^^^^^^^^^^^^
@@ -132,6 +142,8 @@ pyaudio
 ^^^^^^^
 *录音并保存到文件，也可播放*
 
+可以选择秒数，文件名，按下按钮开始。保存到当前目录，也可以使用下面的按钮直接回收。
+
 command\_to\_code
 ^^^^^^^^^^^^^^^^^^^^^
 *将python命令行转换为可运行的python代码*
@@ -158,17 +170,7 @@ author : **pynickle**
 
 license : **MIT License**
 
-Addition
-^^^^^^^^
 
-expert-python3_
-
-**this book is related to this project(study_program folder)**
-
-**-- written by me**
-
-.. _expert-python3 : https://github.com/pynickle/expert-python3
-
-
+.. _expert-python3: https://github.com/pynickle/expert-python3
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
 .. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
