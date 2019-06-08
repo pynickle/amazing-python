@@ -23,7 +23,7 @@ class Base():
 	'''document there'''
 	name="nick"
 	__secret__="123456"
-	def say_hello(name):
+	def say_hello(self, name):
 		print("hello," + name)
 
 Base.another="hello world"

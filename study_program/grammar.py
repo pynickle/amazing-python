@@ -237,7 +237,6 @@ you.weight = 55
 print(you)
 you.height = 175
 print(you)
-print(help(property_test))
 print()
 
 print("kwargs and args")
@@ -270,14 +269,14 @@ print("classmethod : ")
 class klassmethod:
     name = "nick"
 
-    def hello():
+    def hello(self):
         print("l am called with classmethod cls")
 
     @classmethod
     def kmethod(cls):
         print("l am classmethod")
         print("cls.name : " + cls.name)
-        cls.hello()
+        cls().hello()
 
 
 klassmethod.kmethod()
@@ -292,14 +291,14 @@ num_use_ = 1_000_000_500
 print(num_use_)
 
 
-def add(x):
+def add_more_nums(x):
     class AddNum(int):
         def __call__(self, x):
             return AddNum(self.numerator + x)
     return AddNum(x)
 
 
-print(add(1)(2)(3)(4))
+print(add_more_nums(1)(2)(3)(4))
 
 print("slots in class : ")
 
@@ -311,20 +310,17 @@ class SlotTest:
 tea = SlotTest()
 tea.ice = "no ice"
 tea.sugar = "a little sugar"
-try:
-    tea.service = "send to my home"
-except Exception as e:
-    print("you can't add attribute that is not in slots")
+print("you can't add attribute not defined in __slots__")
 
 
-def hello(name: str):
+def assert_hello(name: str):
     assert len(name) > 1, "your name is too short!"
     print("hello,", name)
 
 
-hello("nick")
+assert_hello("nick")
 try:
-    hello("a")
+    assert_hello("a")
 except Exception as e:
     print(e)
 
@@ -363,5 +359,5 @@ counter_test()
 print(type(...))
 
 
-def hello():
+def ellipsis_test():
     ...

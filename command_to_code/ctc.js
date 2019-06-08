@@ -5,21 +5,21 @@ function replace_command_to_code(command) {
 	for (i in lst) {
 		i = lst[i]
 		if (i.startsWith(">>> ")) {
-			i = i.replace(/>>> /,"");
+			i = i.replace(/>>> /, "");
 		} else if (i.startsWith('... ')) {
-			i = i.replace(/... /,"");
+			i = i.replace(/... /, "");
 		} else if (i == "...") {
 			i = '';
 		} else if (i == ">>>") {
 			i = '';
 		}
-		result = result+i+'\n';
+		result = result + i + '\n';
 	}
 	return result;
 }
 window.onload = function () {
 	var command = document.getElementById('input');
-	command.addEventListener('input',function () {
+	command.addEventListener('input', function () {
 		var code = replace_command_to_code(this.value);
 		document.getElementById('out').innerHTML = code;
 	});
