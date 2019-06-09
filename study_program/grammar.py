@@ -259,8 +259,7 @@ print(dict_nums)
 print("lambda : ")
 
 
-def lambda_add(a, b): return a + b
-
+lambda_add = lambda a, b:a + b
 
 print(lambda_add(1, 4))
 
