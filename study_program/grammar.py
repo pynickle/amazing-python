@@ -40,6 +40,13 @@ print("函数注解 : def add(num1:int,num2:int)->int:")
 
 def add(num1: int, num2: int) -> int:
     return num1 + num2
+print(add.__annotations__)
+print(add(1,2))
+add.__annotations__["num1"] = str
+add.__annotations__["num2"] = str
+add.__annotations__["return"] = str
+print(add.__annotations__)
+print(add("hello ", "world"))
 
 
 print()
