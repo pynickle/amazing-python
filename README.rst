@@ -163,6 +163,8 @@ How to contribute
 3. **Change the document accordingly**
 4. **Use the document** `Pull_Requests_Template`_ **to pull requests**
 
+**PS : If you have any good idea, welcome talk and pull requests!**
+
 License
 ^^^^^^^
 
