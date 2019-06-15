@@ -72,3 +72,30 @@ How to explain this!
 eee...Oh, it's because True == 1 and False == 0!
 That is really confusing but reasonable...
 """
+
+
+
+"""
+You are changing the tuple all the time.How can you do this!
+"""
+another_tuple = ([1, 2], [3, 4], [5, 6])
+another_tuple[2].append(1000)
+print(another_tuple)
+try:
+	another_tuple[2] += [99, 999]
+except Exception as e:
+	print(e)
+print(another_tuple)
+a = [10,20]
+tuple_first = (50, 60, a)
+print(tuple_first)
+a += [30,40]
+print(tuple_first)
+"""
+Yeah, l am wrong...
+only one error...
+It seems like if there is a changeable thing like list in a tuple,you can change the list with append or extend.
+But += is the combination of extend and =,so...
+Oh, l understand!Extend has no error, so the tuple has been changed, and then = has an error.
+That's amazing!l can change the tuple, l can not wait to show this skill to my friends!
+"""
