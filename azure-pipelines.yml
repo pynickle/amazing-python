@@ -27,5 +27,6 @@ steps:
 - script: |
     pip install pytest pytest-azurepipelines
     py.test study_program/test.py
+    py.test what_the_fuck/test.py
     cd interesting_program; python test.py
   displayName: 'pytest'
