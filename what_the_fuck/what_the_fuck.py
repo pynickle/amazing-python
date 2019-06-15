@@ -50,3 +50,25 @@ You can use three double quotes or three single quotes to end a string.
 But if the scanner first get three double quotes or single,it will try to find another.
 If there is not another,it will raise a Syntax Error.Surprising?Yes?
 """
+
+
+
+"""
+Let me see...
+one int, two bool...
+"""
+various_list = [1.5, 3, "string", True, False]
+integers = 0
+booleans = 0
+for item in various_list:
+    if isinstance(item, int):
+        integers += 1
+    elif isinstance(item, bool):
+        booleans += 1
+print(integers, booleans)
+"""
+what!three and zero!
+How to explain this!
+eee...Oh, it's because True == 1 and False == 0!
+That is really confusing but reasonable...
+"""
