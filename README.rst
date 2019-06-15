@@ -1,6 +1,10 @@
 Welcome to amazing-python!
 ==========================
 
+**Enjoy the amazing tools here!**
+
+**And also study more from study program and interesting program!**
+
 **Code here all run in the latest python stable version python3.7**
 
 .. image:: https://codebeat.co/assets/svg/badges/A-398b39-669406e9e1b136187b91af587d4092b0160370f271f66a651f444b990c2730e9.svg
@@ -170,7 +174,15 @@ License
 
 author : **pynickle**
 
-license : **MIT License**
+license : 
+
+*FOR STUDY PROGRAM AND INTERESTING PROGRAM:*
+
+**MIT License**
+
+*FOR ELSE:*
+
+**WTFPL License**
 
 
 .. _expert-python3: https://github.com/pynickle/expert-python3
