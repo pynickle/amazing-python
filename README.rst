@@ -60,6 +60,10 @@ interesting\_program
 ^^^^^^^^^^^^^^^^^^^^
 *可以用来练手或有用的的小型python程序*
 
+what\_the\_fuck
+^^^^^^^^^^^^^^^
+*为wtfpython所启发，收集各种令人难以理解的输出并解释*
+
 pip\_update 
 ^^^^^^^^^^^
 *使用pip库一键升级python第三方库*
