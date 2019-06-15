@@ -33,3 +33,20 @@ constant folding in python will convert a string with less than twenty character
 But if the string has more than two characters, python will not convert it.
 Think about pyc's feeling!
 """
+
+
+
+"""
+If the first two is correct...
+It seems like all the sentences below can run correctly...
+"""
+print('right?''')
+print("right?""")
+#print('''right?')
+#print("""right?")
+"""
+But actually not!It will cause a Syntax Error.
+You can use three double quotes or three single quotes to end a string.
+But if the scanner first get three double quotes or single,it will try to find another.
+If there is not another,it will raise a Syntax Error.Surprising?Yes?
+"""
