@@ -3,9 +3,18 @@ Welcome to amazing-python!
 
 .. image:: https://pynickle.github.io/E672842F-C224-4F2C-9620-6917B62F30B2.jpeg
 
-**Enjoy the amazing tools here!**
+-----
 
-**And also study more from study program and interesting program!**
+**Enjoy the amazing tools here!**
+*****
+
+**And study more from study program and interesting program!**
+*****
+
+**Do not forget to have fun from what the fuck!**
+*****
+
+-----
 
 **Code here all run in the latest python stable version python3.7**
 
