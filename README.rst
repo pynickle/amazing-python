@@ -1,7 +1,7 @@
 Welcome to amazing-python!
 ==========================
 
-.. image:: https://pynickle.github.io/931332F2-92C7-4AF9-A32C-F4E0EE024D88.jpeg
+.. image:: https://pynickle.github.io/6A7BE72D-1425-4BFD-80CD-38D9B80D1610.jpeg
 
 -----
 
