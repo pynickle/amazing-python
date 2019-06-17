@@ -178,3 +178,27 @@ The first and second situation let python to create two objects, judge and del t
 But the third and the fourth sutuation let python to create an object, the del it, then the same as another object.
 So The two objects's id is the same.You can observe the result to prove this.
 """
+
+
+
+"""
+count>0?And for x in array?Every one in the list can satisfy the if sentence.
+"""
+array = [1, 8, 15]
+g = (x for x in array if array.count(x) > 0)
+array = [2, 8, 22]
+print(list(g))
+
+array_1 = [1,2,3,4]
+g1 = (x for x in array_1)
+array_1 = [1,2,3,4,5]
+array_2 = [1,2,3,4]
+g2 = (x for x in array_2)
+array_2[:] = [1,2,3,4,5]
+print(list(g1), list(g2))
+"""
+Only 8?That's confusing!
+Truly, the generator object is lazy!It do not calculate a value until you need it.
+So when you use list to let the generator run,the list has changed!
+Then the result is transformed.But if you change the list copy, the result can not be altered.
+"""
