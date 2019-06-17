@@ -156,3 +156,25 @@ actually list_2 and list_4 is [2,4]...
 When you remove an item from a list,the length is changed,but the index is not changed.
 That's why 1 and 3 is removed, but 2 and 4 survived...
 """
+
+
+
+"""
+==, is, id and hash?They are two different objects, l guess four False
+"""
+class wtf():
+	def __init__(self):
+		print(id(self), "init!")
+	def __del__(self):
+		print(id(self), "del!")
+print(wtf() == wtf())
+print(wtf() is wtf())
+print(hash(wtf()) == hash(wtf()))
+print(id(wtf()) == id(wtf()))
+"""
+Two False and two True?when hash and id is the same?
+Ok,it depends on the method python deals with an object.
+The first and second situation let python to create two objects, judge and del them.
+But the third and the fourth sutuation let python to create an object, the del it, then the same as another object.
+So The two objects's id is the same.You can observe the result to prove this.
+"""
