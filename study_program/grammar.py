@@ -18,7 +18,8 @@ ALL_GRAMMAR = (
     "assert",
     "raise",
     "nonlocal",
-    "...")
+    "...",
+    "print")
 
 
 print("for ... else ... : ")
@@ -371,3 +372,15 @@ print(type(...))
 
 def hello():
     ...
+
+    
+    
+print("a", "b", sep="", end="\nend\n")
+print("a", "b", sep="\t", end=" end\n")
+asc = "你好"
+print(f"ascii : {asc!a}")
+print(f"repr : {asc!r}")
+print(f"str : {asc!s}")
+dct = {"John":98, "Alice":89, "Steven":95}
+for i,j in dct.items():
+	print(f"{i:10} : {j:10d}")
