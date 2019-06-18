@@ -19,7 +19,8 @@ ALL_GRAMMAR = (
     "raise",
     "nonlocal",
     "...",
-    "print")
+    "print",
+    "iter")
 
 
 print("for ... else ... : ")
@@ -384,3 +385,38 @@ print(f"str : {asc!s}")
 dct = {"John":98, "Alice":89, "Steven":95}
 for i,j in dct.items():
 	print(f"{i:10} : {j:10d}")
+
+	from functools import lru_cache
+
+@lru_cache(None)
+def fibonacci(n):
+	if n < 2:
+		return 1
+	else:
+		return fibonacci(n - 1) + fibonacci(n - 2)
+	
+class Fibonacci:
+	def __init__(self, a, origin=False, reverse=False):
+		self.a = a
+		self.origin = origin
+		self.reverse = reverse
+	def __iter__(self):
+		return self
+ 
+	def __next__(self):
+		x = self.a
+		if self.reverse:
+			self.a -= 1
+		else:
+			self.a += 1
+		x = fibonacci(x)
+		if self.origin:
+			return (self.a, x)
+		else:
+			return x
+
+fibon = Fibonacci(50, origin=True, reverse=True)
+iterfibon = iter(fibon)
+
+for i in range(10):
+	print(next(iterfibon))
