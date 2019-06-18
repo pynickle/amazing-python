@@ -55,3 +55,34 @@ print(str(Base.__dict__) + "\n")
 
 print("Base.__bases__ : ")
 print(Base.__bases__)
+
+class Meta(type):
+    def __new__(meta, *args, **kwargs):
+        clsname, bases, namespace = args
+
+        print(clsname, 'Meta new called')
+        return super().__new__(meta, *args)
+
+    def __init__(cls, *args, **kwargs):
+        print(cls.__name__, 'Meta init called')
+        super().__init__(*args)
+
+
+    @classmethod
+    def __prepare__(meta, name, bases):
+        print(name, "Meta prepare called")
+        return {}
+
+class Base(metaclass=Meta):
+
+    def __new__(cls, *args, **kwargs):
+        print(cls.__name__, 'Base new called')
+        return super().__new__(cls)
+
+    def __init__(self, *args, **kwargs):
+        print(type(self).__name__, 'Base init called')
+    def hello(self):
+        pass
+
+b = Base("metaclass expert")
+print(type(Base))
