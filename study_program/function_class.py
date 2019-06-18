@@ -130,3 +130,31 @@ member = Attr("nick", 13)
 print(member.__dict__)
 del member.age
 print(member.__dict__)
+
+
+class Item:
+	def __init__(self, *args):
+		self.name, self.age = args
+	def __getitem__(self, key):
+		print("__getitem__ called.")
+		self.__dict__.get(key, ValueError)
+		return key
+	def __setitem__(self, key, value):
+		print("__setitem__ called.")   
+		self.__dict__.update({key: value})
+		return {key:value}
+	def __delitem__(self, key):
+		print("__delitem__ called.")
+		del self.__dict__[key]
+
+a = Item("nick", 13)
+print(a.__dict__)
+
+print(a["name"])
+print(a.__dict__)
+
+a["name"] = "pynickle"
+print(a.__dict__)
+
+del a["age"]
+print(a.__dict__)
