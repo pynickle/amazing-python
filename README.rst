@@ -5,13 +5,13 @@ Welcome to amazing-python!
 
 -----
 
-**Enjoy the amazing tools here!**
+Enjoy the amazing tools here!
 *****
 
-**And study more from study program and interesting program!**
+And study more from study program and interesting program!
 *****
 
-**Do not forget to have fun from what the fuck!**
+Do not forget to have fun from what the f*ck!
 *****
 
 -----
