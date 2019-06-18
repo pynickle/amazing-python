@@ -86,3 +86,26 @@ class Base(metaclass=Meta):
 
 b = Base("metaclass expert")
 print(type(Base))
+
+
+
+class GetAttr:
+	def __init__(self, name, age):
+		self.name = name
+		self.age = age
+    
+	def __getattribute__(self, obj):
+		print("__getattribute__ called.")
+		return object.__getattribute__(self, obj)
+    
+	def __getattr__(self, obj):
+		print("__getattr__ called.")
+		raise AttributeError(f"Attribute {obj} not assgined!")
+		
+member = GetAttr("nick", 24)
+
+print(member.name)
+try:
+	print(member.gender)
+except Exception as e:
+	print(e)
