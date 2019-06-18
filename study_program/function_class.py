@@ -109,3 +109,24 @@ try:
 	print(member.gender)
 except Exception as e:
 	print(e)
+
+class Attr:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __setattr__(self, old, new):
+        print(f"{old} = {new} created.")
+        object.__setattr__(self, old, new)
+
+    def __delattr__(self, key):
+        print(f"{key} deleted.")
+        del self.__dict__[key]
+        
+    def __getattr__(self, item):
+        return self.__dict__[item] 
+
+member = Attr("nick", 13)
+print(member.__dict__)
+del member.age
+print(member.__dict__)
