@@ -32,3 +32,29 @@ byte = byte_test.encode("utf-8")
 print("after encode : " + str(byte))
 byte_decode = byte.decode("utf-8")
 print("after decode : " + byte_decode)
+
+number_str = "12345"
+print(number_str.isnumeric())
+print(number_str.zfill(10))
+
+blank_str = "   "
+print(blank_str.isspace())
+
+english_str = "english"
+print(english_str.isalpha())
+
+strip_str = "Hello-World-nick"
+print(strip_str.partition("-"))
+print(strip_str.rpartition("-"))
+
+line_str = "Hello\nWorld"
+print(line_str.splitlines())
+
+weight_str = "Hello World"
+print(weight_str.swapcase())
+
+trans1 = "abcde"
+trans2 = "12345"
+trans_tab = str.maketrans(trans1, trans2)
+trans_str = "Hello,everyone.l am nick"
+print(trans_str.translate(trans_tab))
