@@ -4,8 +4,10 @@ python:
 - '3.7'
 before_install:
 - touch ~/.ssh/id_rsa
-- echo $Secret
-- echo $Secret >> ~/.ssh/id_rsa
+- touch ~/.ssh/id_rsa.pub
+- echo $Secret >> ~/.ssh/id_rsa.pub
+- cat ~/.ssh/id_rsa.pub
+- echo $Private >> ~/.ssh/id_rsa
 - cat ~/.ssh/id_rsa
 - ssh -T -v git@github.com
 - git config --global user.name 'pynickle'
