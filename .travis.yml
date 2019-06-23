@@ -8,6 +8,7 @@ env:
 before_install:
 - touch ~/.ssh/id_rsa.pub
 - echo $Secret >> ~/.ssh/id_rsa.pub
+- cat ~/.ssh/id_rsa.pub
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
 - git config --global credential.helper store
