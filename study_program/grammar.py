@@ -37,7 +37,7 @@ else:
     print("2.without break")
 print()
 
-print("函数注解 : def add(num1:int,num2:int)->int:")
+print("annotation: def add(num1:int,num2:int)->int:")
 
 
 def add(num1: int, num2: int) -> int:

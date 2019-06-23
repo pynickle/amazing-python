@@ -43,10 +43,10 @@ itertools.count(10) :
 
 itertools.combinations('1234', 2) : [('1', '2'), ('1', '3'), ('1', '4'), ('2', '3'), ('2', '4'), ('3', '4')]
 
-time now : 2019-06-23 16:21:08
-it takes 1.0008773803710938
-join : 0.049564780000000086
-plus : 0.2520939739999999
+time now : 2019-06-23 19:18:13
+it takes 1.0006353855133057
+join : 0.048995386999999946
+plus : 0.3593743920000001
 
 version : 3.7.1 (default, Dec 10 2018, 22:54:23) [MSC v.1915 64 bit (AMD64)]
 
@@ -117,7 +117,7 @@ name 'a' is not defined
 2
 3
 5
-<_ast.Module object at 0x0000027D327A0240>
+<_ast.Module object at 0x0000013764C80208>
 Module(
 	body=[FunctionDef(
 	name='hello', args=arguments(

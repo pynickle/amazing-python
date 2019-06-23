@@ -1,7 +1,7 @@
 for ... else ... : 
 2.without break
 
-º¯Êý×¢½â : def add(num1:int,num2:int)->int:
+annotation: def add(num1:int,num2:int)->int:
 {'num1': <class 'int'>, 'num2': <class 'int'>, 'return': <class 'int'>}
 3
 {'num1': <class 'str'>, 'num2': <class 'str'>, 'return': <class 'str'>}
@@ -11,11 +11,11 @@ with :
 enter!
 exc_type : <class 'TypeError'>
 exc_value : can only concatenate str (not "int") to str
-traceback : <traceback object at 0x0000027754760748>
+traceback : <traceback object at 0x000001B7434CF948>
 exit!
 
 yield : 
-<generator object yield_test at 0x0000027754706840>
+<generator object yield_test at 0x000001B743476840>
 0
 1
 2

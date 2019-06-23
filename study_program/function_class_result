@@ -13,7 +13,7 @@ method.__name__ :
 method
 
 method.__code__ : 
-<code object method at 0x000001BCD7591660, file "./study_program/function_class.py", line 3>
+<code object method at 0x000002C372491660, file "./study_program/function_class.py", line 3>
 
 dis.show_code(method) : 
 Name:              method
@@ -48,7 +48,7 @@ Base.__class__ :
 <class 'type'>
 
 Base.__dict__ : 
-{'__module__': '__main__', '__doc__': '\n\tdocument there\n\t', 'name': 'nick', '_Base__secret': '123456', '__repr__': <function Base.__repr__ at 0x000001BCD7944D08>, 'say_hello': <function Base.say_hello at 0x000001BCD7944D90>, '_secret_method': <function Base._secret_method at 0x000001BCD7944E18>, 'another': 'hello world'}
+{'__module__': '__main__', '__doc__': '\n\tdocument there\n\t', 'name': 'nick', '_Base__secret': '123456', '__repr__': <function Base.__repr__ at 0x000002C374404D08>, 'say_hello': <function Base.say_hello at 0x000002C374404D90>, '_secret_method': <function Base._secret_method at 0x000002C374404E18>, 'another': 'hello world'}
 
 Base.__bases__ : 
 (<class '__main__.A'>,)

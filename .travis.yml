@@ -10,6 +10,7 @@ before_install:
 - echo $Secret >> ~/.ssh/id_rsa.pub
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
+- git config --global credential.helper store
 script:
 - py.test study_program/test.py
 - python interesting_program/test.py
