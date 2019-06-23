@@ -6,7 +6,7 @@ env:
   global:
     - secure: "s76Zo+ETzRU+iS3ytRDJR9LnkDmCuclLHwq97zcoQriB8qqNbuy6do5qTq3UAMKPs2saVOr7ojpxDX7Ho5L14+A1bWptLwQIGf6WWlDg84TmvlJIEZzg412fuPnNIreF43KigwWpz1aaiTK/YVO/ldE/ZIWrPldLBvHSZsWOUqR0FRMlvyUu23LaWCMWAJHX68sukrABlFa8IbX4d3bw6wDOnL1uHwOta15A167L0NUFsM+k2l6Ivo9x1fJHBvALQ+CP7glZgfdd98fHVdDk06pvlYRbccQJPnrtnMKYBN0QAB7lq2TcrqCp6GMIxCJBWGO0pzy4Udcn1upgkhoi7KbT8BDAwzJNNCvP7AxR+D9C9BvURaBjPgx4mSWh2YgvRNMRPsgfuKnZeCUX4uxmqwg+3s5mbrL8M82U4YDyn9AIiv/PYWcX36wH0Mrycx9Y4Omq4f8voflwoi4+myARvhfR0ek93/JKFWZv8CXYWOSbT0F5Qa2z7KXWoyzlkEhSqRIWBXSKdpdg5VtDyHmRMQ0WfiBH4mcC7x9/R6Fem76+6i7yMKrCA34cEHuN5xrecrury0NHNjbPGNvLi3pdnnQ1EC4vfvJdsjWGIfxznutYC1O9ytpZMOz5Pu8gEInwkHTvS+sGMdkJr+9z6DKhLpftunQ5Bs9GAKrbwHX7ovo="
 before_install:
-- touch id_rsa.pub
+- touch ~/.ssh/id_rsa.pub
 - clip < ~/.ssh/id_rsa.pub $Secret
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
