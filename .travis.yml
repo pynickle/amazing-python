@@ -2,27 +2,10 @@ dist: xenial
 language: python
 python:
 - '3.7'
-before_install:
-- touch /home/travis/.ssh/id_rsa
-- touch /home/travis/.ssh/id_rsa.pub
-- echo $Secret >> /home/travis/.ssh/id_rsa.pub
-- cat /home/travis/.ssh/id_rsa.pub
-- echo $Private >> /home/travis/.ssh/id_rsa
-- cat /home/travis/.ssh/id_rsa
-- ssh -T -v git@github.com
-- git config --global user.name 'pynickle'
-- git config --global user.email '2330458484@qq.com'
-- git config --global credential.helper store
 script:
 - py.test study_program/test.py
 - python interesting_program/test.py
 - py.test what_the_fuck/test.py
-- python study_program/auto_result.py
-- git remote rm origin
-- git remote add origin git@github.com:pynickle/amazing-python.git
-- git add *
-- git commit --allow-empty --quiet -m "update result"
-- git push --force --quiet -u origin master
 notifications:
   slack:
     on_success: never
