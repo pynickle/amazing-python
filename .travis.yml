@@ -12,12 +12,12 @@ before_install:
 - git config --global user.email '2330458484@qq.com'
 script:
 - py.test study_program/test.py
-- cd interesting_program; python test.py
+- python interesting_program/test.py
 - py.test what_the_fuck/test.py
-- cd study_program; python auto_result.py
+- python study_program/auto_result.py
 - git add *
-- git commit -m "update result"
-- git push --force origin master
+- git commit --allow-empty --quiet -m "update result"
+- git push --force --quiet origin master
 notifications:
   slack:
     on_success: never
