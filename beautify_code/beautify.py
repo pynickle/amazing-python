@@ -54,24 +54,25 @@ def main():
     para_cust = tkinter.StringVar()
     para_cust.set("enter customized para if you want")
 
-    button1 = tkinter.Button(top, text="begin autopep8", command=lambda: beautify(
+    tkinter.Button(top, text="begin autopep8", command=lambda: beautify(
         ".py", "autopep8 --in-place {{root}}/{{file}}")).pack()
-    button2 = tkinter.Button(top, text="begin black", command=lambda: beautify(
+    tkinter.Button(top, text="begin black", command=lambda: beautify(
         ".py", "black {{root}}/{{file}}")).pack()
-    button3 = tkinter.Button(top, text="begin gofmt", command=lambda: beautify(
+    tkinter.Button(top, text="begin gofmt", command=lambda: beautify(
         ".go", "gofmt -w {{root}}/{{file}}")).pack()
-    button_cust = tkinter.Button(top, text="for customized", command=lambda: beautify(
+
+    tkinter.Button(top, text="for customized", command=lambda: beautify(
         para_cust.get().split(" ** ")[0], para_cust.get().split(" ** ")[1])).pack()
 
-    choose_path = tkinter.Button(
+    tkinter.Button(
         top, text="choose path", command=selectPath).pack()
 
-    para_customized = tkinter.Entry(
+    tkinter.Entry(
         top, textvariable=para_cust, width=150).pack()
-    path_show = tkinter.Entry(top, textvariable=path, width=150).pack()
-    success_entry = tkinter.Entry(top, textvariable=success, width=150).pack()
+    tkinter.Entry(top, textvariable=path, width=150).pack()
+    tkinter.Entry(top, textvariable=success, width=150).pack()
 
-    docs = tkinter.Label(
+    tkinter.Label(
         top, text="see my github for \n how to use customized parameter").pack()
 
     top.mainloop()

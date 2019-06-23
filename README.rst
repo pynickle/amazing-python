@@ -1,6 +1,21 @@
 Welcome to amazing-python!
 ==========================
 
+.. image:: https://pynickle.github.io/6A7BE72D-1425-4BFD-80CD-38D9B80D1610.jpeg
+
+-----
+
+Enjoy the amazing tools here!
+*****
+
+And study more from study program and interesting program!
+*****
+
+Do not forget to have fun from what the f*ck!
+*****
+
+-----
+
 **Code here all run in the latest python stable version python3.7**
 
 .. image:: https://codebeat.co/assets/svg/badges/A-398b39-669406e9e1b136187b91af587d4092b0160370f271f66a651f444b990c2730e9.svg
@@ -55,6 +70,10 @@ expert-python3_
 interesting\_program
 ^^^^^^^^^^^^^^^^^^^^
 *可以用来练手或有用的的小型python程序*
+
+what\_the\_fuck
+^^^^^^^^^^^^^^^
+*为wtfpython所启发，收集各种令人难以理解的输出并解释*
 
 pip\_update 
 ^^^^^^^^^^^
@@ -163,12 +182,22 @@ How to contribute
 3. **Change the document accordingly**
 4. **Use the document** `Pull_Requests_Template`_ **to pull requests**
 
+**PS : If you have any good idea, welcome talk and pull requests!**
+
 License
 ^^^^^^^
 
 author : **pynickle**
 
-license : **MIT License**
+license : 
+
+*FOR STUDY PROGRAM AND INTERESTING PROGRAM:*
+
+**MIT License**
+
+*FOR ELSE:*
+
+**WTFPL License**
 
 
 .. _expert-python3: https://github.com/pynickle/expert-python3

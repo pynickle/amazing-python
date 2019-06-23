@@ -18,7 +18,9 @@ ALL_GRAMMAR = (
     "assert",
     "raise",
     "nonlocal",
-    "...")
+    "...",
+    "print",
+    "iter")
 
 
 print("for ... else ... : ")
@@ -40,6 +42,13 @@ print("函数注解 : def add(num1:int,num2:int)->int:")
 
 def add(num1: int, num2: int) -> int:
     return num1 + num2
+print(add.__annotations__)
+print(add(1,2))
+add.__annotations__["num1"] = str
+add.__annotations__["num2"] = str
+add.__annotations__["return"] = str
+print(add.__annotations__)
+print(add("hello ", "world"))
 
 
 print()
@@ -258,8 +267,7 @@ print(dict_nums)
 print("lambda : ")
 
 
-def lambda_add(a, b): return a + b
-
+lambda_add = lambda a, b:a + b
 
 print(lambda_add(1, 4))
 
@@ -361,3 +369,50 @@ print(type(...))
 
 def ellipsis_test():
     ...
+
+    
+    
+print("a", "b", sep="", end="\nend\n")
+print("a", "b", sep="\t", end=" end\n")
+asc = "你好"
+print(f"ascii : {asc!a}")
+print(f"repr : {asc!r}")
+print(f"str : {asc!s}")
+dct = {"John":98, "Alice":89, "Steven":95}
+for i,j in dct.items():
+	print(f"{i:10} : {j:10d}")
+
+	from functools import lru_cache
+
+@lru_cache(None)
+def fibonacci(n):
+	if n < 2:
+		return 1
+	else:
+		return fibonacci(n - 1) + fibonacci(n - 2)
+	
+class Fibonacci:
+	def __init__(self, a, origin=False, reverse=False):
+		self.a = a
+		self.origin = origin
+		self.reverse = reverse
+	def __iter__(self):
+		return self
+ 
+	def __next__(self):
+		x = self.a
+		if self.reverse:
+			self.a -= 1
+		else:
+			self.a += 1
+		x = fibonacci(x)
+		if self.origin:
+			return (self.a, x)
+		else:
+			return x
+
+fibon = Fibonacci(50, origin=True, reverse=True)
+iterfibon = iter(fibon)
+
+for i in range(10):
+	print(next(iterfibon))

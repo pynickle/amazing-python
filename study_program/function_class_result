@@ -2,40 +2,44 @@ help(method) :
 Help on function method in module __main__:
 
 method()
-    this function print my name
+    this function print and return my name
 
 None
 
 method.__doc__ : 
-this function print my name
+this function print and return my name
 
 method.__name__ : 
 method
 
 method.__code__ : 
-<code object method at 0x7f01429c39c0, file "/tmp/133080033/main.py", line 3>
+<code object method at 0x7f5ac8c769c0, file "/tmp/912565505/main.py", line 3>
 
 dis.show_code(method) : 
 Name:              method
-Filename:          /tmp/133080033/main.py
+Filename:          /tmp/912565505/main.py
 Argument count:    0
 Kw-only arguments: 0
-Number of locals:  0
-Stack size:        2
+Number of locals:  1
+Stack size:        3
 Flags:             OPTIMIZED, NEWLOCALS, NOFREE
 Constants:
-   0: 'this function print my name'
-   1: 'l am nick'
-   2: None
+   0: 'this function print and return my name'
+   1: 'nick'
+   2: 'l am'
 Names:
    0: print
+Variable names:
+   0: name
 None
 
 Base.another : 
 hello world
 
 Base.__doc__ : 
-document there
+
+	document there
+	
 
 Base.__module__ : 
 __main__
@@ -44,5 +48,7 @@ Base.__class__ :
 <class 'type'>
 
 Base.__dict__ : 
-{'__module__': '__main__', '__doc__': 'document there', 'name': 'nick', '__secret__': '123456', 'say_hello': <function Base.say_hello at 0x7f014206b1e0>, '__dict__': <attribute '__dict__' of 'Base' objects>, '__weakref__': <attribute '__weakref__' of 'Base' objects>, 'another': 'hello world'}
+{'__module__': '__main__', '__doc__': '\n\tdocument there\n\t', 'name': 'nick', '_Base__secret': '123456', '__repr__': <function Base.__repr__ at 0x7f5ac83582f0>, 'say_hello': <function Base.say_hello at 0x7f5ac8358378>, '_secret_method': <function Base._secret_method at 0x7f5ac8358400>, 'another': 'hello world'}
 
+Base.__bases__ : 
+(<class '__main__.A'>,)
