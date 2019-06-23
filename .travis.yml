@@ -5,7 +5,6 @@ python:
 before_install:
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
-- git remote add origin https://github.com/pynickle/amazing-python.git
 script:
 - py.test study_program/test.py
 - cd interesting_program; python test.py
