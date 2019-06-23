@@ -19,10 +19,10 @@ def eval_cmd(path):
     for line in iter(p.stdout.readline, b''):
         try:
             line = bytes.decode(line)
-        except BaseException:
+        except Exception:
             try:
                 line = str(line, encoding="gbk")
-            except BaseException:
+            except Exception:
                 continue
         print(line)
         if write == True:
