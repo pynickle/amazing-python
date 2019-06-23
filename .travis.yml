@@ -2,12 +2,9 @@ dist: xenial
 language: python
 python:
 - '3.7'
-env:
-  global:
-  - secure: DCU5ENxwrM41YFhtUd+lIigIMsXb+VfEftvLpeDO0hRpV9r5doxbOsVjTfD8wdl9WQaJLxwHIJbEmeSkRhbxjAJT+Wmipf0QA8032HvgA79Cna2xRNPRWagz9kFzE5kOSfY+BR+PFtraAyj6sHxoqIZICtcCnhfMfVdN8AtoKoYE+pohW5Qf4kog5DNeHv5tgCGRauuPXrANo8NDUxLO/vW19gsF2VDoda02jJ6KAo8ecVoOWUfufkc0dneP/9wd+KjX310e7TThrMEfJjB3C+u2Bm/vYpbHGKIvs3ssT0eus4Bkc4vy+HbB8pCl4zcLAr0wlJI02+u5f94xqh+/0rqG1CSIhqlb0Fwjyr0DW2A9OEpbSJkrCZIA/ijD7WZv/KJgyXhJcLJ5yFCqIPdlBZx4f+inIWuMqrb9GR0HHBuCkF256EaEgb94F4j6wWQoGRE2ZnxLHOYcbXCmVWIThK1L2tx7sODYAhFewmk3HgCGV5jyMhDPcjmUOvx2CBlCweQhnbhYaLTpncrYkKKPqVxbRvGyGcPNvNSFLzPt45O8QIiKFE9pDe10olmZztO5d2tK+k+QLb2bhLO37Wl9yaE0ru1PN79dCodLLsW7iRRWRDT/zNC/S+rgL0Sf0RygJj7LGHIrQS2+laZ6dKSvri8W/ee4jRMoLcSvG6H0/5I=
 before_install:
 - touch ~/.ssh/id_rsa.pub
-- echo $Secret >> ~/.ssh/id_rsa.pub
+- echo ${Secret} >> ~/.ssh/id_rsa.pub
 - cat ~/.ssh/id_rsa.pub
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
