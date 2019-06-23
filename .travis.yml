@@ -1,25 +1,27 @@
 dist: xenial
 language: python
 python:
-  - "3.7"
+- '3.7'
 before_install:
-  - openssl aes-256-cbc -K $encrypted_e90ff5f112c5_key -iv $encrypted_e90ff5f112c5_iv -in .travis.yml.enc -out .travis.yml -d
-  - chmod 600 ~/.ssh/github_deploy_key
-  - eval $(ssh-agent)
-  - ssh-add ~/.ssh/github_deploy_key
-  - cp .travis/ssh_config ~/.ssh/config
-  - git config --global user.name 'pynickle'
-  - git config --global user.email '2330458484@qq.com'
-  - git remote add origin https://github.com/pynickle/amazing-python.git
+- openssl aes-256-cbc -K $encrypted_e90ff5f112c5_key -iv $encrypted_e90ff5f112c5_iv
+  -in github_deploy_key.enc -out github_deploy_key -d
+- chmod 600 ~/.ssh/github_deploy_key
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/github_deploy_key
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name 'pynickle'
+- git config --global user.email '2330458484@qq.com'
+- git remote add origin https://github.com/pynickle/amazing-python.git
 script:
-    - py.test study_program/test.py
-    - cd interesting_program; python test.py
-    - py.test what_the_fuck/test.py
-    - cd study_program; python auto_result.py
-    - git push --force origin master
+- py.test study_program/test.py
+- cd interesting_program; python test.py
+- py.test what_the_fuck/test.py
+- cd study_program; python auto_result.py
+- git add *
+- git commit -m "update result"
+- git push --force origin master
 notifications:
   slack:
     on_success: never
     on_failure: never
 install: true
-#openssl aes-256-cbc -K $encrypted_e90ff5f112c5_key -iv $encrypted_e90ff5f112c5_iv -in .travis.yml.enc -out .travis.yml -d
