@@ -4,7 +4,8 @@ python:
 - '3.7'
 before_install:
 - touch ~/.ssh/id_rsa.pub
-- echo ${Secret} >> ~/.ssh/id_rsa.pub
+- echo $Secret
+- echo $Secret >> ~/.ssh/id_rsa.pub
 - cat ~/.ssh/id_rsa.pub
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
@@ -24,3 +25,5 @@ notifications:
     on_success: never
     on_failure: never
 install: true
+#ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQD9tE9bXqJYZaoTlpWnOX5R4S1DDFvWK/XNqbT9tOHGYgPvgBq6p5y1Y+hfhrNmL/9ZYkAHkU0Wdhl8IfVtq5oeBmxkWOiJ7CEAJmrjD00hFl33UwRm7rNA5H/n70XSENyCwPRzZaRaT2Tg3lCCA6SszX5kNlzqrj6mujG5DDqBgcBGQportAI2WyqeZHCW3mkWTb3G1baamfxTgeEa3AWZM6jhC3x7nyCmcp0nknsHC6FyRxDiKsJLOFZ6dPGzF2GqHLKZcw/anjCHpVev+6J1cYdSVagUbkQL9xahbQbXRQ5jF6MbhlXZNfXXmPMSEaorhe2U6IaKvTQuomRCxkhD\ Nick\@DESKTOP-JGSVVKO
+
