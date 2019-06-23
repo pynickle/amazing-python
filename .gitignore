@@ -1,2 +1,4 @@
 #for VS Code
 .vscode/
+#for python
+*.pyc
