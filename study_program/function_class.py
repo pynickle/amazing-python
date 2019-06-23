@@ -28,15 +28,10 @@ class Base(A):
 	document there
 	"""
 	name="nick"
-<<<<<<< HEAD
-	__secret__="123456"
-	def say_hello(self, name):
-=======
 	__secret="123456"
 	def __repr__():
 		return name
 	def say_hello(name):
->>>>>>> fba5dd949fd7b36fcb299a3039a8234214cc215c
 		print("hello," + name)
 	def _secret_method():
 		return __secret__
