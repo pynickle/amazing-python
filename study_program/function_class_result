@@ -13,11 +13,11 @@ method.__name__ :
 method
 
 method.__code__ : 
-<code object method at 0x7f5ac8c769c0, file "/tmp/912565505/main.py", line 3>
+<code object method at 0x000001BCD7591660, file "./study_program/function_class.py", line 3>
 
 dis.show_code(method) : 
 Name:              method
-Filename:          /tmp/912565505/main.py
+Filename:          ./study_program/function_class.py
 Argument count:    0
 Kw-only arguments: 0
 Number of locals:  1
@@ -48,7 +48,31 @@ Base.__class__ :
 <class 'type'>
 
 Base.__dict__ : 
-{'__module__': '__main__', '__doc__': '\n\tdocument there\n\t', 'name': 'nick', '_Base__secret': '123456', '__repr__': <function Base.__repr__ at 0x7f5ac83582f0>, 'say_hello': <function Base.say_hello at 0x7f5ac8358378>, '_secret_method': <function Base._secret_method at 0x7f5ac8358400>, 'another': 'hello world'}
+{'__module__': '__main__', '__doc__': '\n\tdocument there\n\t', 'name': 'nick', '_Base__secret': '123456', '__repr__': <function Base.__repr__ at 0x000001BCD7944D08>, 'say_hello': <function Base.say_hello at 0x000001BCD7944D90>, '_secret_method': <function Base._secret_method at 0x000001BCD7944E18>, 'another': 'hello world'}
 
 Base.__bases__ : 
 (<class '__main__.A'>,)
+Base Meta prepare called
+Base Meta new called
+Base Meta init called
+Base Base new called
+Base Base init called
+<class '__main__.Meta'>
+__getattribute__ called.
+nick
+__getattribute__ called.
+__getattr__ called.
+Attribute gender not assgined!
+name = nick created.
+age = 13 created.
+{'name': 'nick', 'age': 13}
+age deleted.
+{'name': 'nick'}
+{'name': 'nick', 'age': 13}
+__getitem__ called.
+name
+{'name': 'nick', 'age': 13}
+__setitem__ called.
+{'name': 'pynickle', 'age': 13}
+__delitem__ called.
+{'name': 'pynickle'}

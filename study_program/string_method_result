@@ -18,7 +18,15 @@ blank position:2
 
 strip:test
 
-origin : 鎴戞槸涓枃
+origin : 我是中文
 after encode : b'\xe6\x88\x91\xe6\x98\xaf\xe4\xb8\xad\xe6\x96\x87'
-after decode : 鎴戞槸涓枃
-
+after decode : 我是中文
+True
+0000012345
+True
+True
+('Hello', '-', 'World-nick')
+('Hello-World', '-', 'nick')
+['Hello', 'World']
+hELLO wORLD
+H5llo,5v5ryon5.l 1m ni3k

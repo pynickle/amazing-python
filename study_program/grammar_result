@@ -1,0 +1,94 @@
+for ... else ... : 
+2.without break
+
+函数注解 : def add(num1:int,num2:int)->int:
+{'num1': <class 'int'>, 'num2': <class 'int'>, 'return': <class 'int'>}
+3
+{'num1': <class 'str'>, 'num2': <class 'str'>, 'return': <class 'str'>}
+hello world
+
+with : 
+enter!
+exc_type : <class 'TypeError'>
+exc_value : can only concatenate str (not "int") to str
+traceback : <traceback object at 0x0000027754760748>
+exit!
+
+yield : 
+<generator object yield_test at 0x0000027754706840>
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+decorator : 
+Hello World!
+l am a decorator!
+yield and send
+please tell me what you want to say
+l receive your words : hello
+with no super : 
+Hello,everyone!
+l am his friend
+
+with super : 
+Hello,everyone!
+l am his friend
+
+['sugar', 'pearl', 'water']
+['sugar', 'pearl', 'water', 'pearl', 'pearl']
+
+property : 
+170 50
+property_test(55,50)
+property_test(55,175)
+
+kwargs and args
+nick
+('foo', 'bar')
+{'sex': 'male'}
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+lambda : 
+5
+classmethod : 
+l am classmethod
+cls.name : nick
+l am called with classmethod cls
+1 2 [3, 4]
+1 [2, 3] 4
+num_use_ :　
+1000000500
+10
+slots in class : 
+you can't add attribute not defined in __slots__
+hello, nick
+your name is too short!
+1
+2
+<class 'ellipsis'>
+ab
+end
+a	b end
+ascii : '\u4f60\u597d'
+repr : '你好'
+str : 你好
+John       :         98
+Alice      :         89
+Steven     :         95
+(49, 20365011074)
+(48, 12586269025)
+(47, 7778742049)
+(46, 4807526976)
+(45, 2971215073)
+(44, 1836311903)
+(43, 1134903170)
+(42, 701408733)
+(41, 433494437)
+(40, 267914296)
