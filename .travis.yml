@@ -3,10 +3,10 @@ language: python
 python:
 - '3.7'
 before_install:
-- touch ~/.ssh/id_rsa.pub
+- touch ~/.ssh/id_rsa
 - echo $Secret
-- echo $Secret >> ~/.ssh/id_rsa.pub
-- cat ~/.ssh/id_rsa.pub
+- echo $Secret >> ~/.ssh/id_rsa
+- cat ~/.ssh/id_rsa
 - ssh -T -v git@github.com
 - git config --global user.name 'pynickle'
 - git config --global user.email '2330458484@qq.com'
