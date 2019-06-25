@@ -193,6 +193,10 @@ license :
 
 **MIT License**
 
+*FOR BOOK FOLDER:*
+
+**BSD-2-Clause License**
+
 *FOR ELSE:*
 
 **WTFPL License**
