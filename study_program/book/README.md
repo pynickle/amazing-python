@@ -16,6 +16,7 @@ All codes in this book can be find at [amazing-python/study_program](https://git
 - pep8-introduction : 介绍
 - pep8-1 : 基础
 - pep8-2 : 命名
+- pep8-3 : 工具
 
 ## chapter3-senior-grammar
 - grammar 1 : `for...else... , 函数注解`
