@@ -1,3 +1,19 @@
+
+## *和变量
+
+有时候我们会在变量命名前加上*，这代表什么意思呢？看一个例子你应该就明白了：
+```python
+first, second, *third = 1, 2, 3, 4
+print(first, second, third)
+first, *second, third = 1, 2, 3, 4
+print(first, second, third)
+```
+看看结果吧，其实就是取了剩余的部分：
+```python
+1 2 [3, 4]
+1 [2, 3] 4
+```
+
 ## int
 
 这次我们来点有趣的小例子，我们来探究一下int类的妙用。首先int类的self有一个叫做numerator的玩意，我们用代码来解释一下这到底是什么：
@@ -33,29 +49,3 @@ def add(x):
 print(add(1)(2)(3)(4))
 ```
 显而易见，结果是10
-
-## __slots__
-
-__slots__也被称为槽，这个槽定义了这个类中所有的可以被绑定的属性的方法，如果你尝试加入槽之外的属性，那么会报AttributeError，看一个例子：
-```python
-class SlotTest:
-    __slots__ = ("ice", "sugar")
-
-
-tea = SlotTest()
-tea.ice = "no ice"
-tea.sugar = "a little sugar"
-try:
-    tea.service = "send to my home"
-except Exception as e:
-	print(e)
-	print("you can't add attribute that is not in slots")
-```
-结果为：
-```python
-'SlotTest' object has no attribute 'service'
-you can't add attribute that is not in slots
-```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTQyNTA2NjldfQ==
--->
