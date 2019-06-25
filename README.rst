@@ -61,9 +61,7 @@ study\_program
 ^^^^^^^^^^^^^^
 *通过程序学习python及其高极用法*
 
-expert-python3_
-
-**这本书关联到此文件夹**
+这里面的book文件夹则是我对这些知识的解析。
 
 **-- written by me**
 
@@ -200,6 +198,5 @@ license :
 **WTFPL License**
 
 
-.. _expert-python3: https://github.com/pynickle/expert-python3
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
 .. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
