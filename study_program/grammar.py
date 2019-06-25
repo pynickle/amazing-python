@@ -1,6 +1,6 @@
 import traceback
 import time
-ALL_GRAMMAR = (
+ALL_GRAMMAR_HERE = (
     "for else",
     "函数注解",
     "with",
@@ -19,7 +19,6 @@ ALL_GRAMMAR = (
     "raise",
     "nonlocal",
     "...",
-    "print",
     "iter")
 
 
@@ -271,23 +270,6 @@ lambda_add = lambda a, b:a + b
 
 print(lambda_add(1, 4))
 
-print("classmethod : ")
-
-
-class klassmethod:
-    name = "nick"
-
-    def hello(self):
-        print("l am called with classmethod cls")
-
-    @classmethod
-    def kmethod(cls):
-        print("l am classmethod")
-        print("cls.name : " + cls.name)
-        cls().hello()
-
-
-klassmethod.kmethod()
 
 first, second, *third = 1, 2, 3, 4
 print(first, second, third)
@@ -308,17 +290,6 @@ def add_more_nums(x):
 
 print(add_more_nums(1)(2)(3)(4))
 
-print("slots in class : ")
-
-
-class SlotTest:
-    __slots__ = ("ice", "sugar")
-
-
-tea = SlotTest()
-tea.ice = "no ice"
-tea.sugar = "a little sugar"
-print("you can't add attribute not defined in __slots__")
 
 
 def assert_hello(name: str):
@@ -370,19 +341,9 @@ print(type(...))
 def ellipsis_test():
     ...
 
-    
-    
-print("a", "b", sep="", end="\nend\n")
-print("a", "b", sep="\t", end=" end\n")
-asc = "你好"
-print(f"ascii : {asc!a}")
-print(f"repr : {asc!r}")
-print(f"str : {asc!s}")
-dct = {"John":98, "Alice":89, "Steven":95}
-for i,j in dct.items():
-	print(f"{i:10} : {j:10d}")
 
-	from functools import lru_cache
+
+from functools import lru_cache
 
 @lru_cache(None)
 def fibonacci(n):

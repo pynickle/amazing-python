@@ -38,3 +38,18 @@ b'string'
 b'\xe6\x88\x91\xe6\x98\xaf\xe4\xb8\xad\xe6\x96\x87'
 [6, 8]
 [1, 4, 9, 16]
+1
+4
+10
+False
+False
+(1, 2)
+ab
+end
+a	b end
+ascii : '\u4f60\u597d'
+repr : '你好'
+str : 你好
+John       :         98
+Alice      :         89
+Steven     :         95

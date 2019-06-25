@@ -18,9 +18,9 @@ blank position:2
 
 strip:test
 
-origin : 我是中文
+origin : 鎴戞槸涓枃
 after encode : b'\xe6\x88\x91\xe6\x98\xaf\xe4\xb8\xad\xe6\x96\x87'
-after decode : 我是中文
+after decode : 鎴戞槸涓枃
 True
 0000012345
 True

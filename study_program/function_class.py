@@ -135,14 +135,17 @@ print(member.__dict__)
 class Item:
 	def __init__(self, *args):
 		self.name, self.age = args
+
 	def __getitem__(self, key):
 		print("__getitem__ called.")
 		self.__dict__.get(key, ValueError)
 		return key
+
 	def __setitem__(self, key, value):
 		print("__setitem__ called.")   
 		self.__dict__.update({key: value})
 		return {key:value}
+
 	def __delitem__(self, key):
 		print("__delitem__ called.")
 		del self.__dict__[key]
@@ -158,3 +161,27 @@ print(a.__dict__)
 
 del a["age"]
 print(a.__dict__)
+
+class klassmethod:
+    name = "nick"
+
+    def hello(self):
+        print("l am called with classmethod cls")
+
+    @classmethod
+    def kmethod(cls):
+        print("l am classmethod")
+        print("cls.name : " + cls.name)
+        cls().hello()
+
+
+klassmethod.kmethod()
+
+class SlotTest:
+    __slots__ = ("ice", "sugar")
+
+
+tea = SlotTest()
+tea.ice = "no ice"
+tea.sugar = "a little sugar"
+print("you can't add attribute not defined in __slots__")

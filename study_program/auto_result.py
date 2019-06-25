@@ -11,12 +11,10 @@ for root, dirs, files in os.walk("./study_program"):
         r = p.stdout.read()
         try:
             res = bytes.decode(r, encoding="gbk").replace("\r", "")
-            print("1")
         except Exception:
             res = str(r, encoding="utf-8").replace("\r", "")
-            print("2")
-        index = len(file) - 3
-        with open(root + "/" + file[:index] + "_result", "w") as f:
+        index = slice(len(file) - 3)
+        with open(root + "/" + file[index] + "_result", "w", encoding="utf-8") as f:
             f.write(res)
         p.stdout.close()
         p.wait()

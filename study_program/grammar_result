@@ -11,11 +11,11 @@ with :
 enter!
 exc_type : <class 'TypeError'>
 exc_value : can only concatenate str (not "int") to str
-traceback : <traceback object at 0x000001B7434CF948>
+traceback : <traceback object at 0x000001FCB2610508>
 exit!
 
 yield : 
-<generator object yield_test at 0x000001B743476840>
+<generator object yield_test at 0x000001FCB25B6840>
 0
 1
 2
@@ -57,31 +57,16 @@ nick
 {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 lambda : 
 5
-classmethod : 
-l am classmethod
-cls.name : nick
-l am called with classmethod cls
 1 2 [3, 4]
 1 [2, 3] 4
-num_use_ :¡¡
+num_use_ :ã€€
 1000000500
 10
-slots in class : 
-you can't add attribute not defined in __slots__
 hello, nick
 your name is too short!
 1
 2
 <class 'ellipsis'>
-ab
-end
-a	b end
-ascii : '\u4f60\u597d'
-repr : 'ÄãºÃ'
-str : ÄãºÃ
-John       :         98
-Alice      :         89
-Steven     :         95
 (49, 20365011074)
 (48, 12586269025)
 (47, 7778742049)
