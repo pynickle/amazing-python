@@ -72,12 +72,13 @@ def pyaudio_main():
     file_choose = tkinter.Entry(top).pack()
 
     choose_mp3 = tkinter.Radiobutton(
-        top, text=".mp3", variable=choice, value=".mp3").pack()
+        top, text=".mp3", variable=choice, value=".mp3"
+    ).pack()
     choose_wav = tkinter.Radiobutton(
-        top, text=".wav", variable=choice, value=".wav").pack()
+        top, text=".wav", variable=choice, value=".wav"
+    ).pack()
 
-    get_voice = tkinter.Button(
-        top, text="playback of audio", command=play_voice).pack()
+    get_voice = tkinter.Button(top, text="playback of audio", command=play_voice).pack()
 
     info = tkinter.Entry(top, textvariable=audio_info).pack()
     audio_info.set("提示信息")

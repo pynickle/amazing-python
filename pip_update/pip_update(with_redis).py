@@ -19,7 +19,7 @@ def pip_all():
         package_name = r.lpop("pip_packages")
         package_name = package_name.decode("ascii")
         try:
-            pip_upgrade = Popen("pip install --upgrade " + package_name, shell=True)
+            pip_upgrade = Popen("pip install --upgrade " + package_name + " -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com", shell=True)
             pip_upgrade.wait()
             print(f"update now : {package_name}")
         except:

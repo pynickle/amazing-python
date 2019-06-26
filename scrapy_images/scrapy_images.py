@@ -31,8 +31,7 @@ def scrapy():
     soup = BeautifulSoup(response.text, "lxml")
     img_list = soup.find_all("img")
     if img_list == []:
-        tkinter.messagebox.showinfo(
-            "wrong!", "no images on the website\n在网站上未发现图片")
+        tkinter.messagebox.showinfo("wrong!", "no images on the website\n在网站上未发现图片")
         return
     for img in img_list:
         img_url = img["src"]
@@ -78,8 +77,7 @@ def scrapy_main():
     choice = tkinter.StringVar()
     choice.set(".png")
 
-    button = tkinter.Button(
-        top, text="start scrapy images", command=is_entry_right)
+    button = tkinter.Button(top, text="start scrapy images", command=is_entry_right)
     button.pack()
 
     link_add = tkinter.Label(top, text="scrapy url:")
@@ -97,14 +95,11 @@ def scrapy_main():
     path_choose = tkinter.Button(top, text="choose path", command=selectPath)
     path_choose.place(x=110, y=145)
 
-    choose_jpg = tkinter.Radiobutton(
-        top, text=".jpg", variable=choice, value=".jpg")
+    choose_jpg = tkinter.Radiobutton(top, text=".jpg", variable=choice, value=".jpg")
     choose_jpg.place(x=25, y=180)
-    choose_png = tkinter.Radiobutton(
-        top, text=".png", variable=choice, value=".png")
+    choose_png = tkinter.Radiobutton(top, text=".png", variable=choice, value=".png")
     choose_png.place(x=125, y=180)
-    choose_png = tkinter.Radiobutton(
-        top, text=".gif", variable=choice, value=".gif")
+    choose_png = tkinter.Radiobutton(top, text=".gif", variable=choice, value=".gif")
     choose_png.place(x=225, y=180)
 
     top.mainloop()

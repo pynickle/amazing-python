@@ -3,12 +3,13 @@ import time
 
 def time_c(func):
     def wrapper(*args, **kwargs):
-        #start = time.perf_counter()
+        # start = time.perf_counter()
         start = time.time()
         func(*args, **kwargs)
-        #elapsed = (time.perf_counter() - start)
-        elapsed = (time.time() - start)
+        # elapsed = (time.perf_counter() - start)
+        elapsed = time.time() - start
         print("{} : Time used: {}".format(func.__name__, elapsed))
+
     return wrapper
 
 
