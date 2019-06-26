@@ -1,11 +1,11 @@
 Metadata-Version: 1.1
 Name: quicktranslate
-Version: 1.0.1
+Version: 1.0.2
 Summary: translate with youdao,baidu and google
 Home-page: https://github.com/code-nick-python/daily-tools/tree/master/translate_app
 Author: code-nick-python
 Author-email: 2330458484@qq.com
-License: Apache2.0 License
+License: MIT License
 Description: 
             you can use this in the command line,this is a example::
         
@@ -18,6 +18,6 @@ Description:
             'example' means what you want to translate
             
 Platform: any
-Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3

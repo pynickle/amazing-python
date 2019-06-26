@@ -4,6 +4,7 @@ examples.py
 quicktranslate.py
 setup.cfg
 setup.py
+translate_gooey.py
 quicktranslate.egg-info/PKG-INFO
 quicktranslate.egg-info/SOURCES.txt
 quicktranslate.egg-info/dependency_links.txt

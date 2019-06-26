@@ -1,13 +1,14 @@
 # -*- coding:UTF-8 -*-
 
 from __future__ import print_function, unicode_literals, absolute_import
+import requests
 import json
-import execjs
 import sys
 import argparse
 
+import execjs
 from bs4 import BeautifulSoup
-import requests
+from gooey import Gooey
 from langdetect import detect
 
 
@@ -177,7 +178,7 @@ def get_translate_google(text):
     finally:
         return res
 
-
+@Gooey
 def translate_main():
     parser = argparse.ArgumentParser(
         description="Translate with youdao,baidu and google")
