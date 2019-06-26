@@ -29,8 +29,10 @@ def analyze_code(codefile_source):
     print("在%s中:" % codefile_source)
     if total_line != 0:
         print("代码行数：", total_line)
-        print("注释行数:", comment_line, "占%0.2f%%" % (comment_line * 100 / total_line))
-        print("空行数:", blank_line, "占%0.2f%%" % (blank_line * 100 / total_line), "\n")
+        print("注释行数:", comment_line, "占%0.2f%%" %
+              (comment_line * 100 / total_line))
+        print("空行数:", blank_line, "占%0.2f%%" %
+              (blank_line * 100 / total_line), "\n")
     else:
         print("代码行数：", total_line)
     return [total_line, comment_line, blank_line]

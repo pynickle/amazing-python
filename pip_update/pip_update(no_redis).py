@@ -14,7 +14,8 @@ def pip_main():
                 + " -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host mirrors.aliyun.com",
                 shell=True,
             )
-            print("all package:{},update now:{}".format(package_number, update_now))
+            print("all package:{},update now:{}".format(
+                package_number, update_now))
             update_now += 1
         except Exception:
             continue

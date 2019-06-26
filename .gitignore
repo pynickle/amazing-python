@@ -2,4 +2,6 @@
 .vscode/
 #for python
 *.pyc
-
+#for pypi
+*.whl
+*.zip

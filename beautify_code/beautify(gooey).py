@@ -1,17 +1,30 @@
 import os
 from subprocess import call
-import argparse
 import sys
 
-from gooey import Gooey
+from gooey import Gooey, GooeyParser
 from traceback import print_exc
+
+
+file_num = 0
 
 
 def PathNotExistsError(Exception):
     pass
 
 
-def beautify_file(root, files, file_type, para, success_files):
+def calSize(path):
+    global file_num
+    for filename in os.listdir(path):
+        newpath = os.path.join(path, filename)
+        if os.path.isdir(newpath):
+            calSize(newpath)
+        elif newpath.endswith(".py"):
+            file_num += 1
+    return str(file_num)
+
+
+def beautify_file(root, files, file_type, para, success_files, file_num):
     try:
         para = para.replace("{{root}}", root)
     except Exception:
@@ -23,7 +36,8 @@ def beautify_file(root, files, file_type, para, success_files):
                     para = para.replace("{{file}}", file)
                     call(para)
                     success_files += 1
-                    print("success : " + str(success_files))
+                    print("success : " + str(file_num) +
+                          "/" + str(success_files))
                 except Exception as e:
                     print_exc()
                     continue
@@ -33,26 +47,34 @@ def beautify_file(root, files, file_type, para, success_files):
 
 
 def beautify(file_type, para, file_path):
+    calSize(file_path)
     success_files = 0
     if os.path.exists(file_path):
         try:
             for root, dirs, files in os.walk(file_path):
                 success_files = beautify_file(
-                    root, files, file_type, para, success_files
+                    root, files, file_type, para, success_files, file_num
                 )
-        except Exception as e:
+        except Exception:
             print_exc()
     else:
         raise PathNotExistsError("Path not exists!", file_path)
 
 
-@Gooey
+@Gooey(
+    progress_regex=r"success : (?P<all>\d+)/(?P<success>\d+)$",
+    progress_expr="success/all*100",
+)
 def main():
-    parser = argparse.ArgumentParser(
+    parser = GooeyParser(
         description="beautify your code with customized command or standard commands"
     )
     parser.add_argument(
-        "-p", "--path", help="the path you want to execute the command", required=True
+        "-p",
+        "--path",
+        help="the path you want to execute the command",
+        required=True,
+        widget="DirChooser",
     )
     group = parser.add_mutually_exclusive_group()
     group.add_argument(

@@ -180,9 +180,11 @@ def get_translate_google(text):
 
 def translate_main():
     parser = argparse.ArgumentParser(
-        description="Translate with youdao,baidu and google")
-    parser.add_argument('-t', '--trans', required=True,
-                        help="Enter what you want to translate")
+        description="Translate with youdao,baidu and google"
+    )
+    parser.add_argument(
+        "-t", "--trans", required=True, help="Enter what you want to translate"
+    )
     args = parser.parse_args()
     translate_text = args.trans
     js = Py4Js()

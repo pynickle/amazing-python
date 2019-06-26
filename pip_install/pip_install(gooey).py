@@ -30,7 +30,8 @@ def pip_main():
     group.add_argument("-k", "--keji", help="使用中国科技大学镜像", action="store_true")
     group.add_argument("-d", "--douban", help="使用豆瓣镜像", action="store_true")
     group.add_argument("-q", "--qinghua", help="使用清华大学镜像", action="store_true")
-    group.add_argument("-j", "--jishu", help="使用中国科学技术大学镜像", action="store_true")
+    group.add_argument("-j", "--jishu", help="使用中国科学技术大学镜像",
+                       action="store_true")
 
     args = parser.parse_args()
     package = args.package
