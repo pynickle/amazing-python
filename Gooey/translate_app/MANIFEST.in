@@ -1,0 +1,3 @@
+include *.py
+include *.rst
+recursive-include translate_gooey.py

@@ -1,4 +1,0 @@
-include *.py
-include *.rst
-include MANIFEST.in
-include .pypirc
