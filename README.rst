@@ -24,10 +24,10 @@ Do not forget to have fun from what the f*ck!
 .. image:: https://badges.gitter.im/amazing-python/community.svg
     :target: https://gitter.im/amazing-python/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 
-.. image:: https://hits.b3log.org/b3log/awesome-python-tools.svg
+.. image:: https://hits.b3log.org/b3log/amazing-python.svg
     :target: https://github.com/pynickle/amazing-python
     
-.. image:: https://img.shields.io/github/languages/code-size/b3log/awesome-python-tools.svg
+.. image:: https://img.shields.io/github/languages/code-size/pynickle/amazing-python.svg
     :target: https://github.com/pynickle/amazing-python
 
 =================== =====
