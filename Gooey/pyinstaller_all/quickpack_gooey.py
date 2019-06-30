@@ -6,7 +6,7 @@ import shutil
 import argparse
 from subprocess import call
 import colorama
-from gooey import Gooey
+from gooey import Gooey, GooeyParser
 
 
 colorama.init(autoreset=True)
@@ -74,21 +74,28 @@ def remove_exe(file_path):
 
 @Gooey(program_name="quickpack")
 def pyinstaller_main():
-    parser = argparse.ArgumentParser(
+    parser = GooeyParser(
         description="pack your python file")
     parser.add_argument('-p', '--path', required=True,
-                        help="Enter the file path you want to pack")
+                        help="Enter the file path you want to pack", widget="DirChooser")
     parser.add_argument(
         '-r',
         '--remove',
         action="store_true",
         help="remove all exe under the path")
+    parser.add_argument(
+        "-e",
+        "--exe",
+        action="store_true",
+        help="pack py file to exe by pyinstaller")
     args = parser.parse_args()
     file_path = args.path
     remove = args.remove
-    if remove == True:
+    exe = args.exe
+    if remove:
         remove_exe(file_path)
-    py_to_exe(file_path)
+    if exe:
+        py_to_exe(file_path)
 
 
 if __name__ == "__main__":

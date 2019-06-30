@@ -2,6 +2,8 @@
 .vscode/
 #for python
 *.pyc
+#for pycharm
+.idea/
 #for pypi
 *.whl
 *.zip

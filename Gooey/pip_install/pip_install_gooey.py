@@ -2,6 +2,7 @@ import argparse
 import sys
 from subprocess import call
 from gooey import Gooey
+from pip._internal.utils.misc import get_installed_distributions
 
 ALIYUN = "http://mirrors.aliyun.com/pypi/simple"
 ALIYUNHOST = "mirrors.aliyun.com"
