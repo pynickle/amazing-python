@@ -1,3 +1,11 @@
+"""
+Copyright: Copyright (c) 2019
+License : WTFPL License
+owner : pynickle
+title : amazing-python study projects
+description : projects for studying python
+"""
+
 x=int(input())
 choices="1234567890"
 for small in list(map(chr, range(ord('a'), ord('z') + 1))):

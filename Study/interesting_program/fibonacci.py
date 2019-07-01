@@ -1,3 +1,11 @@
+"""
+Copyright: Copyright (c) 2019
+License : WTFPL License
+owner : pynickle
+title : amazing-python study projects
+description : projects for studying python
+"""
+
 from functools import lru_cache
 
 

@@ -1,3 +1,11 @@
+"""
+Copyright: Copyright (c) 2019
+License : WTFPL License
+owner : pynickle
+title : amazing-python study projects
+description : projects for studying python
+"""
+
 symbol1 = ("+", "-", "*", "/", "//", "**", "(", ")")
 symbol2 = ("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 question=input(">>>")

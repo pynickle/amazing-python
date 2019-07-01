@@ -1,3 +1,11 @@
+"""
+Copyright: Copyright (c) 2019
+License : WTFPL License
+owner : pynickle
+title : amazing-python study projects
+description : projects for studying python
+"""
+
 def get_mcd(num1:int, num2:int)->str:
 	mcd = 0
 	if num1 > num2:
