@@ -263,6 +263,20 @@ license :
 
 **WTFPL License**
 
+Thanks
+^^^^^^
+
+- wtfpython 和 wtfpython-cn
+
+**wtfpython和wtfpython-cn给了我what_the_f*****ck项目的灵感**
+
+- Gooey
+
+**感谢我发现了Gooey项目，让我一键做出更好的GUI项目**
+
+- Python
+
+**归根结底，感谢我爱上了Python！**
 
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
 .. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
