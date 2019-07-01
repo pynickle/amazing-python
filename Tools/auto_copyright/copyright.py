@@ -8,15 +8,15 @@ def copyright_main():
     parser = argparse.ArgumentParser(
         description = "automatically set the copyright for you"
     )
-    parser.add_argument("-p", "--path", required=True,
+    parser.add_argument("-p", "--path",
         help = "choose the path you want to add the copyright")
-    parser.add_argument("-t", "--title", required=True,
+    parser.add_argument("-t", "--title",
         help = "add the copyright title")
-    parser.add_argument("-l", "--license", required=True,
+    parser.add_argument("-l", "--license", 
         help = "add the license name for the copyright")
-    parser.add_argument("-y", "--year", required=True,
+    parser.add_argument("-y", "--year",
         help = "add the year the production was made")
-    parser.add_argument("-o", "--owner", required=True,
+    parser.add_argument("-o", "--owner",
         help = "add the owner of the production")
     parser.add_argument("--config",
         help = "add the config file")
@@ -78,7 +78,7 @@ def copyright_main():
 
     for root, dirs, files in os.walk(args.path):
         for file in files:
-            with open(root + "/" + file, "r+") as f:
+            with open(root + "/" + file, "r+", encoding="utf-8") as f:
                 old = f.read()
                 f.seek(0)
                 f.write(data)
