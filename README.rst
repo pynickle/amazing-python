@@ -49,13 +49,19 @@ requirements.txt
     
 安装所有第三方库，pyaudio库由于会安装失败，请自行到 `pyaudio-install`_ 下载
 
+----
+
 Pull\_Requests\_Template
 ^^^^^^^^^^^^^^^^^^^^^^^^
 *用于pull requests的模板文档*
 
+----
+
 Python\_Use
 ^^^^^^^^^^^
 *Python的框架和它们的网站整理*
+
+----
 
 study\_program
 ^^^^^^^^^^^^^^
@@ -65,13 +71,19 @@ study\_program
 
 **-- written by me**
 
+----
+
 interesting\_program
 ^^^^^^^^^^^^^^^^^^^^
 *可以用来练手或有用的的小型python程序*
 
+----
+
 what\_the\_fuck
 ^^^^^^^^^^^^^^^
 *为wtfpython所启发，收集各种令人难以理解的输出并解释*
+
+----
 
 pip\_update 
 ^^^^^^^^^^^
@@ -81,11 +93,15 @@ no thread的文件代表不使用redis数据库，在速度方面会慢一些。
 
 而with thread使用redis数据库，在使用前请自行查询相关教程安装好redis！首先运行一遍主程序（注意，只运行一遍！）。然后在多个命令行里运行slave1.py，然后等待完成。
 
+----
+
 scrapy\_images 
 ^^^^^^^^^^^^^^
 *抓取任意网站图片并保存到指定路径* 
 
 你可以制定抓取网址，存储位置和存储格式。
+
+----
 
 translate\_app 
 ^^^^^^^^^^^^^^
@@ -99,17 +115,23 @@ translate\_app
 
     trans -t example
 
+----
+
 zip\_to\_see 
 ^^^^^^^^^^^^
 *快速解压zip文件* 
 
 选择zip文件并按下按钮，该文件会被解压到当前目录下
 
+----
+
 how\_many\_code
 ^^^^^^^^^^^^^^^
 *计算路径下你曾经写过多少python代码* 
 
 输入路径，程序会输出每个文件的注释行数，空行数和代码行数以及总的数据
+
+----
 
 beautify\_code
 ^^^^^^^^^^^^^^^^^^
@@ -131,6 +153,8 @@ file_type和parameters_run用 ** 分割
 
     .py ** autopep8 --in-place -a {{root}}/{{file}}
 
+----
+
 pyinstaller\_all
 ^^^^^^^^^^^^^^^^
 *批量以-F开启时使用pyinstaller打包文件并自动删除冗余文件，也可删除路径下所有exe文件*
@@ -147,19 +171,27 @@ pyinstaller\_all
 
 **注意，带tkinter的已经停止维护，以命令行使用为最新版本**
 
+----
+
 voice\_picture
 ^^^^^^^^^^^^^^
 *音频可视化每一帧，以图片形式更清晰*
 
+----
+
 test
 ^^^^
 *用cProfile测试你的代码并将结果写入csv文件*
+
+----
 
 pyaudio
 ^^^^^^^
 *录音并保存到文件，也可播放*
 
 可以选择秒数，文件名，按下按钮开始。保存到当前目录，也可以使用下面的按钮直接回收。
+
+----
 
 command\_to\_code
 ^^^^^^^^^^^^^^^^^^^^^
@@ -170,6 +202,8 @@ command\_to\_code
     https://code-nick-python.github.io/ctc.html
 
 左边的输入框用来输入命令行，右边会实时显现出转换后的代码
+
+----
 
 auto\_copyright
 ^^^^^^^^^^^^^^^
@@ -195,6 +229,8 @@ auto\_copyright
 
     --config "config file path"
 
+----
+
 -----------------
 How to contribute
 -----------------
@@ -205,6 +241,8 @@ How to contribute
 4. **Use the document** `Pull_Requests_Template`_ **to pull requests**
 
 **PS : If you have any good idea, welcome talk and pull requests!**
+
+----
 
 License
 ^^^^^^^
