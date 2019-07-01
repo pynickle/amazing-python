@@ -1,5 +1,8 @@
 import argparse
 import os
+import json
+import sys
+
 
 def copyright_main():
     parser = argparse.ArgumentParser(
@@ -15,6 +18,8 @@ def copyright_main():
         help = "add the year the production was made")
     parser.add_argument("-o", "--owner", required=True,
         help = "add the owner of the production")
+    parser.add_argument("--config",
+        help = "add the config file")
     parser.add_argument("-d", "--description",
         help = "add description of the program")
     parser.add_argument("-c", "--cversion",
@@ -24,6 +29,39 @@ def copyright_main():
     parser.add_argument("-f", "--file",
         help = "add the file name of the program")
     args = parser.parse_args()
+    if args.config:
+        try:
+            with open(args.config, "r", encoding="utf-8") as f:
+                content = f.read()
+                info = json.loads(content)
+                try:
+                    args.path = info["path"]
+                    args.title = info["title"]
+                    args.license = info["license"]
+                    args.year = info["year"]
+                    args.owner = info["owner"]
+                except Exception as e:
+                    print("Argument not find!")
+                    sys.exit()
+                try:
+                    args.description = info["description"]
+                except Exception as e:
+                    pass
+                try:
+                    args.cversion = info["cversion"]
+                except Exception as e:
+                    pass
+                try:
+                    args.update = info["update"]
+                except Exception as e:
+                    pass
+                try:
+                    args.file = info["file"]
+                except Exception as e:
+                    pass
+        except Exception as e:
+            print("File not exists!")
+            sys.exit()
     data = ""
     data += "Copyright: Copyright (c) " + args.year + "\n"
     data += "License : " + args.license + "\n"
@@ -40,7 +78,7 @@ def copyright_main():
 
     for root, dirs, files in os.walk(args.path):
         for file in files:
-            with open(file, "r+") as f:
+            with open(root + "/" + file, "r+") as f:
                 old = f.read()
                 f.seek(0)
                 f.write(data)
