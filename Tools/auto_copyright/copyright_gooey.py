@@ -65,7 +65,7 @@ def copyright_main():
         except Exception as e:
             print("File not exists!")
             sys.exit()
-    data = ""
+    data = '"""\n'
     data += "Copyright: Copyright (c) " + args.year + "\n"
     data += "License : " + args.license + "\n"
     data += "owner : " + args.owner + "\n"
@@ -78,6 +78,7 @@ def copyright_main():
         data += "time : " + args.update + "\n"
     if args.file:
         data += "file : " + args.file + "\n"
+    data += '"""\n\n'
 
     for root, dirs, files in os.walk(args.path):
         for file in files:
