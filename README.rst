@@ -1,21 +1,6 @@
 Welcome to amazing-python!
 ==========================
 
-.. image:: https://pynickle.github.io/amazing-python-logo.jpg
-
------
-
-Enjoy the amazing tools here!
-*****
-
-And study more from study program and interesting program!
-*****
-
-Do not forget to have fun from what the f*ck!
-*****
-
------
-
 **Code here all run in the latest python stable version python3.7**
 
 .. image:: https://codebeat.co/assets/svg/badges/A-398b39-669406e9e1b136187b91af587d4092b0160370f271f66a651f444b990c2730e9.svg
@@ -293,6 +278,7 @@ license :
 *FOR ELSE:*
 
 **MIT License**
+
 
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
 .. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
