@@ -117,8 +117,6 @@ translate\_app
 
     trans -t example
 
-由于google翻译国内已进不去，所以目前已不提供google翻译
-
 ----
 
 zip\_to\_see 
