@@ -57,6 +57,7 @@
 -  [tkinter](https://docs.python.org/3/library/tkinter.html)
 -  [wxpython](https://www.wxpython.org)
 -  [pyqt5](http://zetcode.com/gui/pyqt5/)
+
 ## environmental isolation
 -  [virtualenv](https://virtualenv.pypa.io/en/latest/)
 -  [pipenv](https://docs.pipenv.org)

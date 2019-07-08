@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: quicktranslate
-Version: 1.0.2
+Version: 1.0.3
 Summary: translate with youdao,baidu and google
 Home-page: https://github.com/code-nick-python/daily-tools/tree/master/translate_app
 Author: code-nick-python
@@ -19,5 +19,5 @@ Description:
             
 Platform: any
 Classifier: License :: OSI Approved :: Apache Software License
-Classifier: Programming Language :: Python :: 2
 Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 2

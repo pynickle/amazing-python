@@ -61,6 +61,23 @@ Python\_Use
 ^^^^^^^^^^^
 *Python的框架和它们的网站整理*
 
+- web-development
+- web-spider
+- data-analysis
+- artificial-intelligence
+- data-visualization
+- picture
+- game
+- internet
+- send-email
+- audio
+- GUI programming
+- environmental isolation
+- python2-3
+- python-shell
+- code-quality
+- python and c
+
 ----
 
 study\_program
@@ -81,7 +98,7 @@ interesting\_program
 
 what\_the\_fuck
 ^^^^^^^^^^^^^^^
-*为wtfpython所启发，收集各种令人难以理解的输出并解释*
+*为wtfpython所启发，收集各种令人难以理解的输出并给予好玩而微妙的注释*
 
 ----
 
@@ -115,6 +132,8 @@ translate\_app
 
     trans -t example
 
+由于google翻译国内已进不去，所以目前已不提供google翻译
+
 ----
 
 zip\_to\_see 
@@ -129,7 +148,7 @@ how\_many\_code
 ^^^^^^^^^^^^^^^
 *计算路径下你曾经写过多少python代码* 
 
-输入路径，程序会输出每个文件的注释行数，空行数和代码行数以及总的数据
+输入路径，程序会输出每个文件的注释行数，空行数和代码行数以及总的数据。
 
 ----
 
@@ -230,6 +249,16 @@ auto\_copyright
     --config "config file path"
 
 ----
+
+bilibili
+^^^^^^^^
+*爬取bilibili弹幕并制作爱心词云*
+
+av获取方式如下，如果bilibili视频网址为::
+
+    https://www.bilibili.com/video/av57841919?from=search&seid=6703067031502678934
+
+则av为57841919，输入即可
 
 -----------------
 How to contribute

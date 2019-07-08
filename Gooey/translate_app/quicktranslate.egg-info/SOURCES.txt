@@ -1,5 +1,6 @@
 MANIFEST.in
 README.rst
+__init__.py
 examples.py
 quicktranslate.py
 setup.cfg
