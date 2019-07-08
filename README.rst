@@ -260,6 +260,8 @@ av获取方式如下，如果bilibili视频网址为::
 
 则av为57841919，输入即可
 
+----
+
 -----------------
 How to contribute
 -----------------
@@ -282,7 +284,7 @@ license :
 
 *FOR STUDY PROGRAM(EXCEPT BOOK FOLDER), INTERESTING PROGRAM AND WHAT THE FUCK:*
 
-**MIT License**
+**WTFPL License**
 
 *FOR BOOK FOLDER:*
 
@@ -290,22 +292,7 @@ license :
 
 *FOR ELSE:*
 
-**WTFPL License**
-
-Thanks
-^^^^^^
-
-- wtfpython 和 wtfpython-cn
-
-**wtfpython和wtfpython-cn给了我what_the_f*****ck项目的灵感**
-
-- Gooey
-
-**感谢我发现了Gooey项目，让我一键做出更好的GUI项目**
-
-- Python
-
-**归根结底，感谢我爱上了Python！**
+**MIT License**
 
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
 .. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
