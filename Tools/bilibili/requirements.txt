@@ -1,0 +1,6 @@
+requests
+lxml
+numpy
+jieba
+wordcloud
+Pillow
