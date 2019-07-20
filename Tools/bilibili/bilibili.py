@@ -8,9 +8,8 @@ import wordcloud
 from PIL import Image
 
 
-cur_path = os.path.dirname(__file__)
 stopwords = ["!", "！", "?", "？", "。", ".", ",", "，", "\\", "/"]
-alice_mask = np.array(Image.open("wordcloud.jpg"))
+alice_mask = np.array(Image.open("../utils/wordcloud.jpg"))
 
 def get_word():
     aid = input("enter the av: ")
@@ -44,7 +43,7 @@ def make_cloud():
         txt = f.read()
         txt = chinese_jieba(txt)
         wc = wordcloud.WordCloud(
-            font_path = cur_path + 'wc.ttf',
+            font_path = '../utils/wc.ttf',
             max_words = 30,
             stopwords = stopwords,
             mask = alice_mask,
