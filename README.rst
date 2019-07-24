@@ -23,6 +23,15 @@ Welcome to amazing-python!
                         :target: https://github.com/pynickle/amazing-python
 =================== =====
 
+Contents
+^^^^^^^^
+
+requirements.txt_, `Pull_Requests_Template`_, Python_Use_, study_program_, interesting_program_
+what_the_fuck_, pip_update_, scrapy_images_, translate_app_, zip_to_see_
+how_many_code_, beautify_code_, pyinstaller_all_, voice_picture_, test_ 
+pyaudio_, command_to_code_, auto_copyright_, bilibili_, remove_
+equation_solver_
+
 Usage
 ^^^^^
 
@@ -251,6 +260,18 @@ remove
 
 file_path(-p, --path) : xxx
 file_type(-t, --type) : class
+
+equation_solver
+^^^^^^^^^^^^^^^
+*算出方程的所有根*
+
+目前支持：
+
+- 一元二次方程
+
+参数说明：
+
+- -e, --equation: **输入方程**
 
 ----
 

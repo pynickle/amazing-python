@@ -2,7 +2,7 @@ from subprocess import Popen, PIPE
 import os
 
 
-NO_PYTHON = ("test.py", "auto_result.py", "README.md")
+NO_PYTHON = ("equation.py", "auto_result.py", "README.md")
 for root, dirs, files in os.walk("./study_program"):
     for file in files:
         if file.endswith("_result") or file in NO_PYTHON:

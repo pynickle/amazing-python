@@ -1,9 +1,15 @@
-#for VS Code
+# for VS Code
 .vscode/
-#for python
+
+# for python
 *.pyc
-#for pycharm
+
+# for pycharm
 .idea/
-#for pypi
+
+# for pypi
 *.whl
 *.zip
+
+# for jupyter
+.ipynb_checkpoints/

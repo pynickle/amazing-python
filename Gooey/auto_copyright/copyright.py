@@ -62,6 +62,10 @@ def copyright_main():
         except Exception as e:
             print("File not exists!")
             sys.exit()
+    args_list = [args.year, args.license, args.owner, args.title]
+    if not all(args_list):
+        print("Error: lack of args!")
+        sys.exit()
     data = '"""\n'
     data += "Copyright: Copyright (c) " + args.year + "\n"
     data += "License : " + args.license + "\n"

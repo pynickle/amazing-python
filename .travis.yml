@@ -3,9 +3,9 @@ language: python
 python:
 - '3.7'
 script:
-- py.test Study/study_program/test.py
-- python Study/interesting_program/test.py
-- py.test Study/what_the_fuck/test.py
+- py.test Study/study_program/equation.py
+- python Study/interesting_program/equation.py
+- py.test Study/what_the_fuck/equation.py
 notifications:
   slack:
     on_success: never
