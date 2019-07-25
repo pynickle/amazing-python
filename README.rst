@@ -284,6 +284,15 @@ equation_solver
 
 ----
 
+po_operation
+^^^^^^^^^^^^
+*po文件操作*
+
+- generate_po.py: 用来根据rst文件生成po文件
+- get_po.py: 解析po文件并将翻译写入文档
+
+----
+
 -----------------
 How to contribute
 -----------------
