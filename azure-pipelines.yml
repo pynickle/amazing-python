@@ -24,8 +24,8 @@ steps:
   displayName: 'Upgrade Pip'
 
 - script: |
-    - pip install pytest pytest-azurepipelines
-    - py.test Study/study_program/test.py
-    - python Study/interesting_program/test.py
-    - py.test Study/what_the_fuck/test.py
+    pip install pytest pytest-azurepipelines
+    py.test Study/study_program/test.py
+    python Study/interesting_program/test.py
+    py.test Study/what_the_fuck/test.py
   displayName: 'pytest'
