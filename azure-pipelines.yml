@@ -21,12 +21,11 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
-  displayName: 'Install dependencies'
+  displayName: 'Upgrade Pip'
 
 - script: |
     pip install pytest pytest-azurepipelines
-    py.test Study/study_program/test.py
-    python Study/interesting_program/test.py
-    py.test Study/what_the_fuck/test.py
+    - py.test Study/study_program/test.py
+    - python Study/interesting_program/test.py
+    - py.test Study/what_the_fuck/test.py
   displayName: 'pytest'
