@@ -2,8 +2,10 @@ import math
 import re
 import sys
 import argparse
+from gooey import Gooey
 
 
+@Gooey(program_name = "equation solver")
 def main():
     parser = argparse.ArgumentParser(description="solve the maths equation")
     group = parser.add_mutually_exclusive_group()

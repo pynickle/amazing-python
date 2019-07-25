@@ -1,11 +1,14 @@
 # for VS Code
 .vscode/
 
-# for python
-*.pyc
-
 # for pycharm
 .idea/
+
+# for VS
+.vs/
+
+# for python
+*.pyc
 
 # for pypi
 *.whl

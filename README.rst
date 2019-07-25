@@ -15,21 +15,25 @@ Welcome to amazing-python!
 .. image:: https://img.shields.io/github/languages/code-size/pynickle/amazing-python.svg
     :target: https://github.com/pynickle/amazing-python
 
-=================== =====
+=================== ==========
 **Travis CI**       .. image:: https://travis-ci.org/pynickle/amazing-python.svg?branch=master
                         :target: https://travis-ci.org/pynickle/amazing-python  
-=================== =====
+=================== ==========
 **Azure Pipelines** .. image:: https://dev.azure.com/2330458484/2330458484/_apis/build/status/pynickle.amazing-python?branchName=master
                         :target: https://github.com/pynickle/amazing-python
-=================== =====
+=================== ==========
 
 Contents
 ^^^^^^^^
 
 requirements.txt_, `Pull_Requests_Template`_, Python_Use_, study_program_, interesting_program_
+
 what_the_fuck_, pip_update_, scrapy_images_, translate_app_, zip_to_see_
+
 how_many_code_, beautify_code_, pyinstaller_all_, voice_picture_, test_ 
+
 pyaudio_, command_to_code_, auto_copyright_, bilibili_, remove_
+
 equation_solver_
 
 Usage
@@ -45,13 +49,13 @@ requirements.txt
 
 ----
 
-Pull\_Requests\_Template
+Pull_Requests_Template
 ^^^^^^^^^^^^^^^^^^^^^^^^
 *用于pull requests的模板文档*
 
 ----
 
-Python\_Use
+Python_Use
 ^^^^^^^^^^^
 *Python的框架和它们的网站整理*
 
@@ -74,7 +78,7 @@ Python\_Use
 
 ----
 
-study\_program
+study_program
 ^^^^^^^^^^^^^^
 *通过程序学习python及其高极用法*
 
@@ -84,19 +88,19 @@ study\_program
 
 ----
 
-interesting\_program
+interesting_program
 ^^^^^^^^^^^^^^^^^^^^
 *可以用来练手或有用的的小型python程序*
 
 ----
 
-what\_the\_fuck
+what_the_fuck
 ^^^^^^^^^^^^^^^
 *为wtfpython所启发，收集各种令人难以理解的输出并给予好玩而微妙的注释*
 
 ----
 
-pip\_update 
+pip_update 
 ^^^^^^^^^^^
 *使用pip库一键升级python第三方库*
 
@@ -106,7 +110,7 @@ no thread的文件代表不使用redis数据库，在速度方面会慢一些。
 
 ----
 
-scrapy\_images 
+scrapy_images 
 ^^^^^^^^^^^^^^
 *抓取任意网站图片并保存到指定路径* 
 
@@ -114,7 +118,7 @@ scrapy\_images
 
 ----
 
-translate\_app 
+translate_app 
 ^^^^^^^^^^^^^^
 *多种方式翻译你的文本*
 
@@ -128,7 +132,7 @@ translate\_app
 
 ----
 
-zip\_to\_see 
+zip_to_see 
 ^^^^^^^^^^^^
 *快速解压zip文件* 
 
@@ -136,7 +140,7 @@ zip\_to\_see
 
 ----
 
-how\_many\_code
+how_many_code
 ^^^^^^^^^^^^^^^
 *计算路径下你曾经写过多少python代码* 
 
@@ -144,7 +148,7 @@ how\_many\_code
 
 ----
 
-beautify\_code
+beautify_code
 ^^^^^^^^^^^^^^^^^^
 *使用gofmt（格式化go代码），autopep8或black格式化你的代码，目前支持自定义参数*
 
@@ -166,7 +170,7 @@ file_type和parameters_run用 ** 分割
 
 ----
 
-pyinstaller\_all
+pyinstaller_all
 ^^^^^^^^^^^^^^^^
 *批量以-F开启时使用pyinstaller打包文件并自动删除冗余文件，也可删除路径下所有exe文件*
 
@@ -184,7 +188,7 @@ pyinstaller\_all
 
 ----
 
-voice\_picture
+voice_picture
 ^^^^^^^^^^^^^^
 *音频可视化每一帧，以图片形式更清晰*
 
@@ -204,7 +208,7 @@ pyaudio
 
 ----
 
-command\_to\_code
+command_to_code
 ^^^^^^^^^^^^^^^^^^^^^
 *将python命令行转换为可运行的python代码*
 
@@ -216,7 +220,7 @@ command\_to\_code
 
 ----
 
-auto\_copyright
+auto_copyright
 ^^^^^^^^^^^^^^^
 *自动为你的作品加上版权说明*
 
@@ -252,6 +256,8 @@ av获取方式如下，如果bilibili视频网址为::
 
 则av为57841919，输入即可
 
+----
+
 remove
 ^^^^^^
 *移除目录下所有已某个后缀结尾的文件*
@@ -260,6 +266,8 @@ remove
 
 file_path(-p, --path) : xxx
 file_type(-t, --type) : class
+
+----
 
 equation_solver
 ^^^^^^^^^^^^^^^
@@ -271,7 +279,7 @@ equation_solver
 
 参数说明：
 
-- -e, --equation: **输入方程**
+- -q, --quadratic: **输入方程**
 
 ----
 
@@ -309,4 +317,4 @@ license :
 
 
 .. _pyaudio-install: https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
-.. _`Pull_Requests_Template`: https://github.com/code-nick-python/awesome-python-tools/blob/master/Pull_Requests_Template.md
+.. _`Pull_Requests_Template`: https://github.com/pynickle/amazing-python/blob/master/.github/PULL_REQUESTS_TEMPLATE.md
