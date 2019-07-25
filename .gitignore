@@ -19,3 +19,4 @@
 
 # for pytest
 test-output.xml
+.pytest_cache/
