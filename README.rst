@@ -279,7 +279,8 @@ equation_solver
 
 参数说明：
 
-- -q, --quadratic: **输入方程**
+- -q, --quadratic: **输入一元二次方程**
+- -d, --dimensional: **输入一元一次方程**
 
 ----
 

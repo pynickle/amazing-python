@@ -28,6 +28,7 @@ def copyright_main():
         help = "add the latest time that you updated")
     parser.add_argument("-f", "--file",
         help = "add the file name of the program")
+
     args = parser.parse_args()
     if args.config:
         try:
@@ -60,7 +61,7 @@ def copyright_main():
                 except Exception as e:
                     pass
         except Exception as e:
-            print("File not exists!")
+            print("Config File not exists!")
             sys.exit()
     args_list = [args.year, args.license, args.owner, args.title]
     if not all(args_list):
