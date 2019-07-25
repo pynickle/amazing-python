@@ -16,3 +16,6 @@
 
 # for jupyter
 .ipynb_checkpoints/
+
+# for pytest
+test-output.xml
