@@ -23,7 +23,7 @@ steps:
     python -m pip install --upgrade pip
   displayName: 'Upgrade Pip'
 
-- script:
+- script: |
     - pip install pytest pytest-azurepipelines
     - py.test Study/study_program/test.py
     - python Study/interesting_program/test.py
