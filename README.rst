@@ -281,6 +281,9 @@ equation_solver
 
 - -q, --quadratic: **输入一元二次方程**
 - -d, --dimensional: **输入一元一次方程**
+- abc
+  - -aq, --quadratic: **输入一元二次方程三个参数**
+  - -ad, --dimensional: **输入一元一次方程二个参数**
 
 ----
 
