@@ -13,6 +13,7 @@
 # for pypi
 *.whl
 *.zip
+*.egg-info/
 
 # for jupyter
 .ipynb_checkpoints/
