@@ -1,0 +1,16 @@
+<!DOCTYPE htmk>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    </head>
+    <body>
+        <p>原词：{{ word.chinese }}</p>
+        <p>你的答案：{{ data }}</p>
+        <p>正确答案：{{ word.english }}</p>
+        <p>{{ status }}</p>
+        <form action='/recite-words' method="POST">
+            <input type="submit" class="button is-link is-outlined is-rounded" value="下一个">
+        </form>
+    </body>
+</html>

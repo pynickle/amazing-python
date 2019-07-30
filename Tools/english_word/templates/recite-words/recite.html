@@ -2,8 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='recite-words/recite.css') }}" type="text/css">
     </head>
     <body>
-        
+        <form action="/recite-words" method="POST">
+            <p>{{ words[choice].part_speech}} {{ words[choice].chinese }}</p>
+            <input class="data" name="data" autocomplete = "off" required>
+            <br>
+            <input class="button is-link is-outlined is-rounded" type="submit">
+        </form>
     </body>
 </html>

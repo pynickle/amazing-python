@@ -16,6 +16,8 @@ app.config["DEBUG"] = True
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = timedelta(seconds = 1)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.sqlite3'
 
+choice = 0
+
 
 db = SQLAlchemy(app)
 class Words(db.Model):
@@ -35,9 +37,18 @@ db.create_all()
 def main():
     return render_template("main.html")
 
-@app.route("/see-words")
+@app.route("/see-words", methods = ["GET", "POST"])
 def see():
-    return render_template("see-words/see.html", words = Words.query.all())
+    if request.method == "POST":
+        english = request.form.get("english")
+        chinese = request.form.get("chinese")
+        part_speech = request.form.get("part_speech")
+        u = Words.query.filter_by(english=english, chinese=chinese, part_speech=part_speech).first() 
+        db.session.delete(u)
+        db.session.commit()
+        return render_template("see-words/see.html", words = Words.query.all())
+    else:
+        return render_template("see-words/see.html", words = Words.query.all())
 
 @app.route("/add-new-word", methods=["GET", "POST"])
 def new():
@@ -52,9 +63,30 @@ def new():
         db.session.commit()
         return redirect("see-words")
 
-@app.route("/recite-words")
+@app.route("/recite-words", methods = ["GET", "POST"])
 def recite():
-    return render_template("recite-words/recite.html")
+    global choice
+    if request.method == "GET":
+        words = []
+        for i in Words.query.all():
+            words.append(i)
+        return render_template("recite-words/recite.html", words = words, choice = choice)
+    else:
+        words = []
+        for i in Words.query.all():
+            words.append(i)
+        data = request.form.get("data")
+        if data:
+            if data == words[choice].english:
+                return render_template("recite-words/result.html", data = data, word = words[choice], status="答对咯！")
+            else:
+                return render_template("recite-words/result.html", data = data, word = words[choice], status="答错了！")
+        else:
+            choice += 1
+            if choice >= len(words):
+                choice = 0
+                return redirect("/")
+            return render_template("recite-words/recite.html", words = words, choice = choice)
 
 @app.route("/search-words", methods = ["GET", "POST"])
 def search():
@@ -62,8 +94,7 @@ def search():
         return render_template("search-words/search.html")
     else:
         result = []
-        data = str(request.form.get("data"))
-        print(Words.query.all())
+        data = request.form.get("data")
         for i in Words.query.all():
             sm = difflib.SequenceMatcher(None, i.english, data)
             if sm.ratio() >= 0.5:

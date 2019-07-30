@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='hand.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='add-new-word/hand.css') }}" type="text/css">
     </head>
     <body>
-        <form action="../add-new-word" method="POST">
+        <form action="/add-new-word" method="POST">
             <h1>{{ form.words.label }}</h1>
             {{ form.words(rows=5, cols=10, class='textarea is-infois-focused') }}
             <br>

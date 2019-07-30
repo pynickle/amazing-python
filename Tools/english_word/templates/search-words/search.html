@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='search-words/search.css') }}" type="text/css">
     </head>
     <body>
         <form action="/search-words" method="POST">
             <input type='text' name="data">
             <br>
-            <input class="button is-link is-outlined is-rounded" type="submit">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="查询">
         </form>
     </body>
 </html>

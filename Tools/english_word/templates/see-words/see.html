@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='see.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='see-words/see.css') }}" type="text/css">
 </head>
 
 <body>
@@ -15,15 +15,24 @@
                 <th>英语</th>
                 <th>词性</th>
                 <th>中文</th>
+                <th>删除</th>
             </tr>
         </thead>
         <tbody>
             {% for word in words %}
-                <tr>
-                    <td>{{ word.english }}</td>
-                    <td>{{ word.part_speech }}</td>
-                    <td>{{ word.chinese }}</td>
-                </tr>
+            <tr>
+                <td>{{ word.english }}</td>
+                <td>{{ word.part_speech }}</td>
+                <td>{{ word.chinese }}</td>
+                <td>
+                    <form method="POST" action="/see-words">
+                        <input style="display:none;" value="{{ word.chinese }}" name="chinese">
+                        <input style="display:none;" value="{{ word.part_speech }}" name="part_speech">
+                        <input style="display:none;" value="{{ word.english }}" name="english">
+                        <input class="button is-link is-outlined is-rounded" type="submit" value="删除">
+                    </form>
+                </td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
