@@ -1,10 +1,12 @@
 from datetime import timedelta
+import difflib
 
 from flask import Flask, render_template, request, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 from forms import HandForm
 from validate import words_validate
+from werkzeug import secure_filename
 
 
 app = Flask(__name__)
@@ -45,25 +47,59 @@ def new():
     else:
         success, errors = words_validate(form.words.data)
         for data in success:
-            print(data)
             word = Words(data[0], data[1], data[2])
             db.session.add(word)
         db.session.commit()
-        print(Words.query.all())
         return redirect("see-words")
 
 @app.route("/recite-words")
 def recite():
     return render_template("recite-words/recite.html")
 
-@app.route("/search-words")
+@app.route("/search-words", methods = ["GET", "POST"])
 def search():
-    return render_template("search-words/search.html")
+    if request.method == "GET":
+        return render_template("search-words/search.html")
+    else:
+        result = []
+        data = str(request.form.get("data"))
+        print(Words.query.all())
+        for i in Words.query.all():
+            sm = difflib.SequenceMatcher(None, i.english, data)
+            if sm.ratio() >= 0.5:
+                result.append(i)
+        return render_template("search-words/result.html", result=result)
 
 @app.route("/add-new-word/hand")
 def hand():
     form = HandForm()
     return render_template("add-new-word/hand.html", form=form)
+
+@app.route("/add-new-word/file", methods = ["GET", "POST"])
+def file():
+    if request.method == "POST":
+        try:
+            f = request.files['file']
+            filename = f.filename
+            f.save(filename)
+            with open(filename, "r", encoding="utf-8") as f:
+                success, errors = words_validate(f.read())
+            for data in success:
+                word = Words(data[0], data[1], data[2])
+                db.session.add(word)
+            db.session.commit()
+            return render_template("see-words/see.html", words = Words.query.all())
+            
+        except UnicodeDecodeError:
+            return render_template("add-new-word/failure1.html", filename=filename)
+        except Exception:
+            return render_template("add-new-word/failure2.html", filename=filename)
+    else:
+        return render_template("add-new-word/file.html")
+
+@app.errorhandler(404)
+def four_zero_four(exception):
+    return render_template("404.html", exception = exception)
 
 if __name__ == '__main__':
     app.run()

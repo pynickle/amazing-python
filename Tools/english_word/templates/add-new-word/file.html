@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='file.css') }}" type="text/css">
+</head>
+
+<body>
+    <h1>上传文件</h1>
+    <form action="/add-new-word/file" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <br>
+        <input class="button is-link is-outlined is-rounded" type="submit"/>
+    </form>
+</body>
+</html>
