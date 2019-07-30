@@ -1,12 +1,11 @@
 from datetime import timedelta
 import difflib
 
-from flask import Flask, render_template, request, flash, redirect
+from flask import Flask, render_template, request, flash, redirect, get_flashed_messages
 from flask_sqlalchemy import SQLAlchemy
 
 from forms import HandForm
 from validate import words_validate
-from werkzeug import secure_filename
 
 
 app = Flask(__name__)
@@ -70,7 +69,11 @@ def recite():
         words = []
         for i in Words.query.all():
             words.append(i)
-        return render_template("recite-words/recite.html", words = words, choice = choice)
+        if words:
+            return render_template("recite-words/recite.html", words = words, choice = choice)
+        else:
+            flash("请先添加单词！")
+            return redirect("/")
     else:
         words = []
         for i in Words.query.all():
@@ -85,6 +88,7 @@ def recite():
             choice += 1
             if choice >= len(words):
                 choice = 0
+                flash("复习完成！")
                 return redirect("/")
             return render_template("recite-words/recite.html", words = words, choice = choice)
 
