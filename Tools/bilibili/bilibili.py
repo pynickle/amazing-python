@@ -2,7 +2,7 @@ import requests
 import json
 import os
 from lxml import etree
-import numpy as np 
+import numpy as np
 import jieba
 import wordcloud
 from PIL import Image
@@ -10,6 +10,7 @@ from PIL import Image
 
 stopwords = ["!", "！", "?", "？", "。", ".", ",", "，", "\\", "/"]
 alice_mask = np.array(Image.open("../utils/wordcloud.jpg"))
+
 
 def get_word():
     aid = input("enter the av: ")
@@ -34,27 +35,30 @@ def get_word():
 
 
 def chinese_jieba(txt):
-    wordlist_jieba = jieba.cut(txt) 
-    txt_jieba = " ".join(wordlist_jieba) 
+    wordlist_jieba = jieba.cut(txt)
+    txt_jieba = " ".join(wordlist_jieba)
     return txt_jieba
+
 
 def make_cloud():
     with open('comment.txt', encoding="utf-8") as f:
         txt = f.read()
         txt = chinese_jieba(txt)
         wc = wordcloud.WordCloud(
-            font_path = '../utils/wc.ttf',
-            max_words = 30,
-            stopwords = stopwords,
-            mask = alice_mask,
-            background_color = "white",
+            font_path='../utils/wc.ttf',
+            max_words=30,
+            stopwords=stopwords,
+            mask=alice_mask,
+            background_color="white",
         ).generate(txt)
         image = wc.to_file("bilibili.jpg")
         os.system("bilibili.jpg")
 
+
 def main():
     get_word()
     make_cloud()
+
 
 if __name__ == '__main__':
     main()
