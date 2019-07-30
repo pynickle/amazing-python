@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='see.css') }}" type="text/css">
+</head>
+
+<body>
+    <h1>总单词表</h1>
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+            <tr>
+                <th>英语</th>
+                <th>词性</th>
+                <th>中文</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+                <tr>
+                    <td>{{ word.english }}</td>
+                    <td>{{ word.part_speech }}</td>
+                    <td>{{ word.chinese }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="button is-link is-outlined is-rounded" onclick="window.location='/'">返回首页</button>
+</body>
+
+</html>

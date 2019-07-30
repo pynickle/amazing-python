@@ -1,7 +1,8 @@
 from wtforms import validators
 from flask_wtf import FlaskForm
-from wtforms import TextField
+from wtforms import TextAreaField, SubmitField
 
 
-class Form(FlaskForm):
-    name = TextField("", [validators.DataRequired("")])
+class HandForm(FlaskForm):
+    words = TextAreaField("输入单词", [validators.DataRequired("")])
+    submit = SubmitField("提交")

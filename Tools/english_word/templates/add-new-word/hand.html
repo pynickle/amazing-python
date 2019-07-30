@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='hand.css') }}" type="text/css">
+    </head>
+    <body>
+        <form action="../add-new-word" method="POST">
+            <h1>{{ form.words.label }}</h1>
+            {{ form.words(rows=5, cols=10, class='textarea is-infois-focused') }}
+            <br>
+            {{ form.submit(class='button is-rounded is-primary is-outlined') }}
+        </form>
+        <div>
+            <h2 class="example">示例：</h2>
+            <div class="example-data">
+                <p>book n. 书本</p>
+                <p>write v. 写,书写</p>
+            </div>
+        </div>
+    </body>
+</html>
