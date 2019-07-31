@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='settings/settings.css') }}" type="text/css">
+</head>
+
+<body>
+    <h1>设置</h1>
+    <form action="/settings" method="POST">
+        <p>每次背诵单词数</p>
+        <input type="number" name="words_count" value="{{ words_count }}">
+        <input type="submit">
+    </form>
+</body>
+
+</html>
