@@ -5,8 +5,8 @@ def words_validate(data):
     for word in data:
         if word:
             x = word.split()
-            if len(x) != 3:
+            if len(x) != 2:
                 errors.append(word)
             else:
-                success.append([x[0], x[1], x[2]])
+                success.append([x[0], x[1]])
     return success, errors

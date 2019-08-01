@@ -23,7 +23,7 @@ def client():
     os.close(db_fd)
     os.unlink(app.app.config['DATABASE'])
 
-def test_empty_db(client):
+def test_index(client):
     rv = client.get('/')
     assert '词神' in rv.data.decode(encoding="utf-8")
 
