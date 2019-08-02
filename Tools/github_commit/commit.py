@@ -66,4 +66,6 @@ def main(user="torvalds", repo="linux"):
 
 
 if __name__ == "__main__":
-    main(user="pynickle", repo="TensorFlow-Course-Zh-cn")
+    user = input("enter the github username: ")
+    repo = input("enter the github repo name: ")
+    main(user=user, repo=repo)

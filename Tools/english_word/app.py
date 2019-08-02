@@ -2,31 +2,50 @@ from datetime import timedelta
 import difflib
 import os
 
-from flask import Flask, render_template, request, flash, redirect, get_flashed_messages, session
+from flask import Flask, render_template, request, flash, redirect, get_flashed_messages, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
 from celery import Celery
+import threading
+import queue
 
-from forms import HandForm
+from forms import HandForm, SpiderForm
 from validate import words_validate
-from spider import youdict
+from spider import youdict, hujiang
 
 
-def make_celery(app):
-    celery = Celery(
-        app.import_name,
-        backend=app.config['CELERY_RESULT_BACKEND'],
-        broker=app.config['CELERY_BROKER_URL']
-    )
-    celery.conf.update(app.config)
+def youdict_spider(threadName, q):
+    words = youdict(threadName, q)
+    for i in words:
+        word = Words(i[0], i[1])
+        db.session.add(word)
+        db.session.commit()
 
-    class ContextTask(celery.Task):
-        def __call__(self, *args, **kwargs):
-            with app.app_context():
-                return self.run(*args, **kwargs)
+def hujiang_spider(threadName, q):
+    words = hujiang(threadName, q)
+    for i in words:
+        word = Words(i[0], i[1])
+        db.session.add(word)
+        db.session.commit()
 
-    celery.Task = ContextTask
-    return celery
+class SpiderThread(threading.Thread):
+    def __init__(self, name, q, website):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.q = q
+        self.website = website
+    # run
+    def run(self):
+        print("Starting " + self.name)
+        while True:
+            try:
+                if self.website == "youdict":
+                    youdict_spider(self.name, self.q)
+                elif self.website == "hujiang":
+                    hujiang_spider(self.name, self.q)
+            except:
+                break
+        print("Exiting" + self.name)
 
 
 app = Flask(__name__)
@@ -40,17 +59,6 @@ app.config.update(
     CELERY_BROKER_URL='redis://localhost:6379',
     CELERY_RESULT_BACKEND='redis://localhost:6379'
 )
-
-celery = make_celery(app)
-
-
-@celery.task(name="youdict_spider")
-def youdict_spider():
-    words = youdict()
-    for i in words:
-        word = Words(i[0], i[1])
-        db.session.add(word)
-    db.session.commit()
 
 
 @app.before_first_request
@@ -193,19 +201,63 @@ def search():
 
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
+    youdictform = SpiderForm()
+    hujiangform = SpiderForm()
     if request.method == "GET":
-        return render_template("settings/settings.html", words_count=session.get("words_count"))
+        return render_template("settings/settings.html", words_count=session.get("words_count"), 
+        youdictform = youdictform, hujiangform = hujiangform)
     else:
+        form = YoudictForm()
         session["words_count"] = int(request.form.get("words_count"))
         flash("修改设置成功")
-        return redirect("/")
+        return render_template("/settings/settings.html", words_count=session.get("words_count"), 
+        youdictform = youdictform, hujiangform = hujiangform)
 
+@app.route("/spider/<website>", methods = ["POST"])
+def youdict_spider_post(website):
+    print(website)
+    youdictform = SpiderForm()
+    hujiangform = SpiderForm()
+    link_list = []
+    if website == "youdict":
+        page_number_begin = youdictform.page_number_begin.data
+        page_number_all = youdictform.page_number_all.data
 
-@app.route("/spider", methods=["POST"])
-def spider():
-    result = youdict_spider.apply_async()
+        finish = page_number_begin + page_number_all
+    elif website == "hujiang":
+        page_number_begin = hujiangform.page_number_begin.data
+        page_number_all = hujiangform.page_number_all.data
+
+        finish = page_number_begin + page_number_all
+
+    if finish > 2239 or finish < 0 or finish % 1 != 0:
+        flash("非法的页数")
+        return redirect("/settings")
+
+    for i in range(page_number_begin, finish):
+        if website == "youdict":
+            url = f"https://www.youdict.com/ciku/id_0_0_0_0_{i}.html"
+        elif website == "hujiang":
+            url = f"https://www.hujiang.com/ciku/zuixinyingyudanci_{i}"
+        link_list.append(url)
+    print(link_list)
+
+    threadList = ["Thread-1", "Thread-2", "Thread-3", "Thread-4", "Thread-5"]
+    workQueue = queue.Queue(2500)
+    threads = []
+
+    for tName in threadList:
+        thread = SpiderThread(tName, workQueue, website)
+        thread.start()
+        threads.append(thread)
+
+    for url in link_list:
+        workQueue.put(url)
+
+    for t in threads:
+        t.join()
+    
     return redirect("/see-words")
-
 
 @app.route("/add-new-word/hand")
 def hand():

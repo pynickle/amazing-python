@@ -21,7 +21,7 @@ def analyze_code(codefile_source):
                         line = lines[line_index]
                         comment_line += 1
                         line_index += 1
-                    except BaseException:
+                    except Exception:
                         continue
             elif line == "\n":
                 blank_line += 1
