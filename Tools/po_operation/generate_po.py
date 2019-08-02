@@ -19,6 +19,7 @@ def origin(a):
             return False
     return True
 
+
 def generate(file_name, path):
     is_code = False
     is_code_first = False
@@ -28,7 +29,6 @@ def generate(file_name, path):
         os.remove(file_name)
     f = open(file_name, "a", encoding="utf-8")
     f.close()
-
 
     for root, dirs, files in os.walk(path):
         for file in files:
@@ -82,11 +82,13 @@ def generate(file_name, path):
                         else:
                             continue
 
+
 def main():
     print("Welcome to rst po generator!")
     file_name = input("enter the final file name: ")
     path = input("enter the docs path: ")
     generate(file_name, path)
+
 
 if __name__ == "__main__":
     main()

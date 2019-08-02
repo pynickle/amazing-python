@@ -26,7 +26,7 @@ Welcome to amazing-python!
 Contents
 ^^^^^^^^
 
-requirements.txt_, `Pull_Requests_Template`_, Python_Use_, study_program_, interesting_program_
+requirements.txt_, Pull_Requests_Template_, Python_Use_, study_program_, interesting_program_
 
 what_the_fuck_, pip_update_, scrapy_images_, translate_app_, zip_to_see_
 
@@ -34,7 +34,7 @@ how_many_code_, beautify_code_, pyinstaller_all_, voice_picture_, test_
 
 pyaudio_, command_to_code_, auto_copyright_, bilibili_, remove_
 
-equation_solver_
+equation_solver_, pip_install_
 
 Usage
 ^^^^^
@@ -276,6 +276,7 @@ equation_solver
 目前支持：
 
 - 一元二次方程
+- 一元一次方程
 
 参数说明：
 
@@ -295,6 +296,26 @@ po_operation
 - get_po.py: 解析po文件并将翻译写入文档
 
 ----
+
+pip_install
+^^^^^^^^^^^
+*使用镜像下载包*
+
+帮助::
+
+    usage: pipi.py [-h] [-p PACKAGE] [-a | -k | -d | -q | -j]
+
+    使用镜像下载python第三方库
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    -p PACKAGE, --package PACKAGE
+                            你想要下载的库
+    -a, --aliyun          使用阿里云镜像
+    -k, --keji            使用中国科技大学镜像
+    -d, --douban          使用豆瓣镜像
+    -q, --qinghua         使用清华大学镜像
+    -j, --jishu           使用中国科学技术大学镜像
 
 -----------------
 How to contribute

@@ -27,15 +27,16 @@ def main(user="torvalds", repo="linux"):
             is_first = False
         else:
             url = "https://github.com/" + user + "/" + repo + \
-                "/commits/master?after=" + latest_commit_id + "+" + str(index * 35 - 1)
+                "/commits/master?after=" + latest_commit_id + \
+                "+" + str(index * 35 - 1)
             index += 1
         print(url)
         r = requests.get(url, timeout=10, headers=headers)
         commit = re.findall(
-            r'class="message js-navigation-open" data-pjax="true" href="/' 
-            + user 
-            + '/' 
-            + repo 
+            r'class="message js-navigation-open" data-pjax="true" href="/'
+            + user
+            + '/'
+            + repo
             + '/commit/(.*)">.*</a>',
             r.text)
         # print(commit)

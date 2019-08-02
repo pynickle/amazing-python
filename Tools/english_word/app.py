@@ -11,6 +11,7 @@ from forms import HandForm
 from validate import words_validate
 from spider import youdict
 
+
 def make_celery(app):
     celery = Celery(
         app.import_name,
@@ -27,11 +28,12 @@ def make_celery(app):
     celery.Task = ContextTask
     return celery
 
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.jinja_env.auto_reload = True
 app.config["DEBUG"] = True
-app.config["SEND_FILE_MAX_AGE_DEFAULT"] = timedelta(seconds = 1)
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = timedelta(seconds=1)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.update(
@@ -41,6 +43,7 @@ app.config.update(
 
 celery = make_celery(app)
 
+
 @celery.task(name="youdict_spider")
 def youdict_spider():
     words = youdict()
@@ -49,6 +52,7 @@ def youdict_spider():
         db.session.add(word)
     db.session.commit()
 
+
 @app.before_first_request
 def before_first_request():
     global choice, failure, is_failure
@@ -56,23 +60,29 @@ def before_first_request():
     failure = []
     is_failure = False
 
+
 db = SQLAlchemy(app)
+
+
 class Words(db.Model):
-    id = db.Column("words_id", db.Integer, primary_key = True)
-    english = db.Column(db.String(30))  
+    id = db.Column("words_id", db.Integer, primary_key=True)
+    english = db.Column(db.String(30))
     chinese = db.Column(db.String(75))
 
     def __init__(self, english, chinese):
         self.english = english
         self.chinese = chinese
 
+
 db.create_all()
+
 
 @app.route("/")
 def main():
     return render_template("main.html")
 
-@app.route("/see-words", methods = ["GET", "POST"])
+
+@app.route("/see-words", methods=["GET", "POST"])
 def see():
     if request.method == "POST":
         delete_all = request.form.get("delete-all")
@@ -86,12 +96,13 @@ def see():
         else:
             english = request.form.get("english")
             chinese = request.form.get("chinese")
-            u = Words.query.filter_by(english=english, chinese=chinese).first() 
+            u = Words.query.filter_by(english=english, chinese=chinese).first()
             db.session.delete(u)
             db.session.commit()
-            return render_template("see-words/see.html", words = Words.query.all())
+            return render_template("see-words/see.html", words=Words.query.all())
     else:
-        return render_template("see-words/see.html", words = Words.query.all())
+        return render_template("see-words/see.html", words=Words.query.all())
+
 
 @app.route("/add-new-word", methods=["GET", "POST"])
 def new():
@@ -106,7 +117,8 @@ def new():
         db.session.commit()
         return redirect("see-words")
 
-@app.route("/recite-words", methods = ["GET", "POST"])
+
+@app.route("/recite-words", methods=["GET", "POST"])
 def recite():
     global choice, failure, is_failure
     if request.method == "GET":
@@ -114,7 +126,7 @@ def recite():
         for i in Words.query.all():
             words.append(i)
         if words:
-            return render_template("recite-words/recite.html", words = words, choice = choice, failure = False)
+            return render_template("recite-words/recite.html", words=words, choice=choice, failure=False)
         else:
             flash("请先添加单词！")
             return redirect("/")
@@ -132,10 +144,10 @@ def recite():
             if data == word.english:
                 if form_failure:
                     failure.remove(word)
-                return render_template("recite-words/result.html", data = data, word = word, status="答对咯！", failure = is_failure)
+                return render_template("recite-words/result.html", data=data, word=word, status="答对咯！", failure=is_failure)
             else:
                 failure.append(word)
-                return render_template("recite-words/result.html", data = data, word = word, status="答错了！", failure = is_failure)
+                return render_template("recite-words/result.html", data=data, word=word, status="答错了！", failure=is_failure)
         else:
             if form_failure:
                 is_failure = True
@@ -148,8 +160,9 @@ def recite():
                     flash("复习完成！")
                     return redirect("/")
             choice += 1
-            words_count = 20 if not session.get("words_count") else session.get("words_count")
-            lst_choice = words_count if not is_failure else len(failure) 
+            words_count = 20 if not session.get(
+                "words_count") else session.get("words_count")
+            lst_choice = words_count if not is_failure else len(failure)
             if choice >= len(words) or choice >= lst_choice:
                 choice = 0
                 if not failure:
@@ -160,10 +173,11 @@ def recite():
                     return redirect("/")
                 else:
                     is_failure = True
-                    return render_template("recite-words/recite.html", words = failure, choice = choice, failure = True)
-            return render_template("recite-words/recite.html", words = words, choice = choice)
+                    return render_template("recite-words/recite.html", words=failure, choice=choice, failure=True)
+            return render_template("recite-words/recite.html", words=words, choice=choice)
 
-@app.route("/search-words", methods = ["GET", "POST"])
+
+@app.route("/search-words", methods=["GET", "POST"])
 def search():
     if request.method == "GET":
         return render_template("search-words/search.html")
@@ -176,26 +190,30 @@ def search():
                 result.append(i)
         return render_template("search-words/result.html", result=result)
 
+
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
     if request.method == "GET":
-        return render_template("settings/settings.html", words_count = session.get("words_count"))
+        return render_template("settings/settings.html", words_count=session.get("words_count"))
     else:
-        session["words_count"] =int(request.form.get("words_count"))
+        session["words_count"] = int(request.form.get("words_count"))
         flash("修改设置成功")
         return redirect("/")
 
-@app.route("/spider", methods = ["POST"])
+
+@app.route("/spider", methods=["POST"])
 def spider():
     result = youdict_spider.apply_async()
     return redirect("/see-words")
+
 
 @app.route("/add-new-word/hand")
 def hand():
     form = HandForm()
     return render_template("add-new-word/hand.html", form=form)
 
-@app.route("/add-new-word/file", methods = ["GET", "POST"])
+
+@app.route("/add-new-word/file", methods=["GET", "POST"])
 def file():
     if request.method == "POST":
         try:
@@ -209,8 +227,8 @@ def file():
                 db.session.add(word)
             db.session.commit()
             os.remove(filename)
-            return render_template("see-words/see.html", words = Words.query.all())
-            
+            return render_template("see-words/see.html", words=Words.query.all())
+
         except UnicodeDecodeError:
             return render_template("add-new-word/failure1.html", filename=filename)
         except Exception:
@@ -218,9 +236,11 @@ def file():
     else:
         return render_template("add-new-word/file.html")
 
+
 @app.errorhandler(404)
 def four_zero_four(exception):
-    return render_template("404.html", exception = exception)
+    return render_template("404.html", exception=exception)
+
 
 if __name__ == '__main__':
-    app.run(port = 8080)
+    app.run(port=8080)

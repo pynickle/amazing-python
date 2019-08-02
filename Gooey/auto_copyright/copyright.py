@@ -6,28 +6,28 @@ import sys
 
 def copyright_main():
     parser = argparse.ArgumentParser(
-        description = "automatically set the copyright for you"
+        description="automatically set the copyright for you"
     )
     parser.add_argument("-p", "--path",
-        help = "choose the path you want to add the copyright")
+                        help="choose the path you want to add the copyright")
     parser.add_argument("-t", "--title",
-        help = "add the copyright title")
-    parser.add_argument("-l", "--license", 
-        help = "add the license name for the copyright")
+                        help="add the copyright title")
+    parser.add_argument("-l", "--license",
+                        help="add the license name for the copyright")
     parser.add_argument("-y", "--year",
-        help = "add the year the production was made")
+                        help="add the year the production was made")
     parser.add_argument("-o", "--owner",
-        help = "add the owner of the production")
+                        help="add the owner of the production")
     parser.add_argument("--config",
-        help = "add the config file")
+                        help="add the config file")
     parser.add_argument("-d", "--description",
-        help = "add description of the program")
+                        help="add description of the program")
     parser.add_argument("-c", "--cversion",
-        help = "add the version of the production")
+                        help="add the version of the production")
     parser.add_argument("-u", "--update",
-        help = "add the latest time that you updated")
+                        help="add the latest time that you updated")
     parser.add_argument("-f", "--file",
-        help = "add the file name of the program")
+                        help="add the file name of the program")
 
     args = parser.parse_args()
     if args.config:
@@ -89,6 +89,7 @@ def copyright_main():
                 f.seek(0)
                 f.write(data)
                 f.write(old)
+
 
 if __name__ == "__main__":
     copyright_main()

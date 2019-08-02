@@ -24,14 +24,15 @@ def pip_main():
     package_number = len(get_installed_distributions())
 
     parser = argparse.ArgumentParser(
-        description="use pypi mirrors to download the python package quickly")
+        description="使用镜像下载python第三方库")
     parser.add_argument("-p", "--package", help="你想要下载的库")
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-a", "--aliyun", help="使用阿里云镜像", action="store_true")
     group.add_argument("-k", "--keji", help="使用中国科技大学镜像", action="store_true")
     group.add_argument("-d", "--douban", help="使用豆瓣镜像", action="store_true")
     group.add_argument("-q", "--qinghua", help="使用清华大学镜像", action="store_true")
-    group.add_argument("-j", "--jishu", help="使用中国科学技术大学镜像", action="store_true")
+    group.add_argument("-j", "--jishu", help="使用中国科学技术大学镜像",
+                       action="store_true")
 
     args = parser.parse_args()
     package = args.package
@@ -58,7 +59,8 @@ def pip_main():
     print("host : " + host)
     print("package : " + package)
 
-    cmd = "pip install --upgrade " + package + " -i " + website + " --trusted-host " + host
+    cmd = "pip install --upgrade " + package + \
+        " -i " + website + " --trusted-host " + host
     try:
         call(cmd, shell=True)
         print("update...")
