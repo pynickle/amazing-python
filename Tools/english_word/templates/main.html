@@ -5,20 +5,56 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>词神</title>
 </head>
 
 <body>
     {% for msg in get_flashed_messages() %}
-        <article class="message is-info" id="info">
-            <div class="message-header">
+    <article class="message is-info" id="info">
+        <div class="message-header">
             <p>消息</p>
-            <button class="delete" aria-label="delete" onclick="document.getElementById('info').style.display = 'none'"></button>
-            </div>
-            <div class="message-body">
-                {{ msg }}
-            </div>
-        </article>
+            <button class="delete" aria-label="delete"
+                onclick="document.getElementById('info').style.display = 'none'"></button>
+        </div>
+        <div class="message-body">
+            {{ msg }}
+        </div>
+    </article>
     {% endfor %}
+    <nav id="navbar" class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <img src="{{ url_for('static', filename='favicon.ico') }}">
+                &nbsp;
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/add-new-word">
+                    <img src="{{ url_for('static', filename='add-new-word/icon.svg') }}" width="16px" height="16px">
+                    &ensp;加入新单词
+                </a>
+                <a class="navbar-item" href="recite-words">
+                    <img src="{{ url_for('static', filename='recite-words/icon.svg') }}" width="16px" height="16px">
+                    &ensp;背单词
+                </a>
+                <a class="navbar-item" href="search-words">
+                    <img src="{{ url_for('static', filename='search-words/icon.svg') }}" width="16px" height="16px">
+                    &ensp;查询单词
+                </a>
+                <a class="navbar-item" href="see-words">
+                    <img src="{{ url_for('static', filename='see-words/icon.svg') }}" width="16px" height="16px">
+                    &ensp;看单词
+                </a>
+                <a class="navbar-item" href="settings">
+                    <img src="{{ url_for('static', filename='settings/icon.svg') }}" width="16px" height="16px">
+                    &ensp;设置
+                </a>
+            </div>
+        </div>
+    </nav>
     <h1 class="title">词神</h1>
     <button class="button is-link is-outlined is-rounded" onclick="window.location='add-new-word'">加入新单词</button>
     <button class="button is-link is-outlined is-rounded" onclick="window.location='recite-words'">背单词</button>
