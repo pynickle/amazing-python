@@ -54,6 +54,9 @@ app.config["DEBUG"] = True
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = timedelta(seconds=1)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_BINDS"] = {
+    'wrongwords': 'sqlite:///wrongwords.sqlite3'
+}
 app.config.update(
     CELERY_BROKER_URL='redis://localhost:6379',
     CELERY_RESULT_BACKEND='redis://localhost:6379'
@@ -70,7 +73,6 @@ def before_first_request():
 
 db = SQLAlchemy(app)
 
-
 class Words(db.Model):
     id = db.Column("words_id", db.Integer, primary_key=True)
     english = db.Column(db.String(30))
@@ -80,8 +82,19 @@ class Words(db.Model):
         self.english = english
         self.chinese = chinese
 
+class WrongWords(db.Model):
+    __bind_key__ = "wrongwords"
+    id = db.Column("wrong_words_id", db.Integer, primary_key=True)
+    english = db.Column(db.String(30))
+    chinese = db.Column(db.String(75))
+
+    def __init__(self, english, chinese):
+        self.english = english
+        self.chinese = chinese
+
 
 db.create_all()
+db.create_all(bind = "wrongwords")
 
 
 @app.route("/")
@@ -161,7 +174,7 @@ def recite():
                 word = failure[choice]
                 failure.remove(word)
                 if not failure:
-                    print("2")
+                    choice = 0
                     is_failure = False
                     failure = []
                     flash("复习完成！")
@@ -173,12 +186,16 @@ def recite():
             if choice >= len(words) or choice >= lst_choice:
                 choice = 0
                 if not failure:
-                    print("3")
+                    choice = 0
                     is_failure = False
                     failure = []
                     flash("复习完成！")
                     return redirect("/")
                 else:
+                    for i in failure:
+                        wrongwords = WrongWords(i.english, i.chinese)
+                        db.session.add(wrongwords)
+                    db.session.commit()
                     is_failure = True
                     return render_template("recite-words/recite.html", words=failure, choice=choice, failure=True)
             return render_template("recite-words/recite.html", words=words, choice=choice)
@@ -191,12 +208,89 @@ def search():
     else:
         result = []
         data = request.form.get("data")
-        for i in Words.query.all():
+        for i in WrongWords.query.all():
             sm = difflib.SequenceMatcher(None, i.english, data)
             if sm.ratio() >= 0.5:
                 result.append(i)
         return render_template("search-words/result.html", result=result)
 
+@app.route("/wrong-words", methods=["GET", "POST"])
+def wrong_words():
+    if request.method == "POST":
+        delete_all = request.form.get("delete-all")
+        if delete_all:
+            words = WrongWords.query.all()
+            for i in words:
+                db.session.delete(i)
+            db.session.commit()
+            return redirect("/wrong-words")
+        else:
+            english = request.form.get("english")
+            chinese = request.form.get("chinese")
+            u = WrongWords.query.filter_by(english=english, chinese=chinese).first()
+            db.session.delete(u)
+            db.session.commit()
+            return render_template("wrong-words/wrong.html", words=WrongWords.query.all())
+    else:
+        return render_template("wrong-words/wrong.html", words=WrongWords.query.all())
+
+@app.route("/wrong-words/recite", methods = ["GET", "POST"])
+def wrong_words_recite():
+    global choice, failure, is_failure
+    if request.method == "GET":
+        words = []
+        for i in WrongWords.query.all():
+            words.append(i)
+        if words:
+            return render_template("wrong-words/recite.html", words=words, choice=choice, failure=False)
+        else:
+            flash("请先添加单词！")
+            return redirect("/")
+    else:
+        words = []
+        for i in WrongWords.query.all():
+            words.append(i)
+        data = request.form.get("data")
+        form_failure = request.form.get("is-failure")
+        word = words[choice]
+        if is_failure:
+            is_failure = True
+            word = failure[choice]
+        if data:
+            if data == word.english:
+                if form_failure:
+                    failure.remove(word)
+                return render_template("wrong-words/result.html", data=data, word=word, status="答对咯！", failure=is_failure)
+            else:
+                failure.append(word)
+                return render_template("wrong-words/result.html", data=data, word=word, status="答错了！", failure=is_failure)
+        else:
+            if form_failure:
+                is_failure = True
+                word = failure[choice]
+                failure.remove(word)
+                if not failure:
+                    choice = 0
+                    is_failure = False
+                    failure = []
+                    flash("复习完成！")
+                    return redirect("/")
+            choice += 1
+            words_count = 20 if not session.get(
+                "words_count") else session.get("words_count")
+            lst_choice = words_count if not is_failure else len(failure)
+            if choice >= len(words) or choice >= lst_choice:
+                choice = 0
+                if not failure:
+                    choice = 0
+                    is_failure = False
+                    failure = []
+                    flash("复习完成！")
+                    return redirect("/")
+                else:
+                    is_failure = True
+                    return render_template("wrong-words/recite.html", words=failure, choice=choice, failure=True)
+            return render_template("wrong-words/recite.html", words=words, choice=choice)
 
 @app.route("/settings", methods=["GET", "POST"])
 def settings():

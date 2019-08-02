@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='wrong-words/recite.css') }}" type="text/css">
+    </head>
+    <body>
+        <form action="/wrong-words/recite" method="POST">
+            <p>{{ words[choice].chinese }}</p>
+            <input class="data" name="data" autocomplete = "off" required>
+            <br>
+            <input class="button is-link is-outlined is-rounded" type="submit">
+        </form>
+    </body>
+</html>

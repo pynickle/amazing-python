@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='wrong-words/wrong.css') }}" type="text/css">
+</head>
+
+<body>
+    <h1>错题表</h1>
+    <form action="/see-words" method="POST">
+        <input style="display: none;" name="delete-all" value="delete all">
+        <input class="button is-link is-outlined is-rounded" type="submit" value="删除全部">
+    </form>
+    <button class="button is-link is-outlined is-rounded" onclick="window.location='/wrong-words/recite'">开始复习</button>
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+            <tr>
+                <th>英语</th>
+                <th>中文</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                <td>{{ word.english }}</td>
+                <td>{{ word.chinese }}</td>
+                <td>
+                    <form method="POST" action="/see-words">
+                        <input style="display:none;" value="{{ word.chinese }}" name="chinese">
+                        <input style="display:none;" value="{{ word.english }}" name="english">
+                        <input class="button is-link is-outlined is-rounded" type="submit" value="删除">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="button is-link is-outlined is-rounded" onclick="window.location='/'">返回首页</button>
+</body>
+
+</html>
