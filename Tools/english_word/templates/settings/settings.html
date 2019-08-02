@@ -17,27 +17,32 @@
         <input type="number" name="words_count" value="{{ words_count }}">
         <input class="button is-link is-outlined is-rounded" type="submit">
     </form>
-    <p><a href="https://www.youdict.com/ciku">优词网站</a>爬取</p>
-    <form action="/spider/youdict" method = "POST">
-        {{ youdictform.page_number_begin.label }}
-        {{ youdictform.page_number_begin }}
-        <br>
-        {{ youdictform.page_number_all.label }}
-        {{ youdictform.page_number_all }}
-        <br>
-        {{ youdictform.submit }}
-    </form>
-    <p><a href="https://www.hujiang.com/ciku/zuixinyingyudanci">沪江网站</a>爬取</p>
-    <form action="/spider/hujiang" method = "POST">
-        {{ hujiangform.page_number_begin.label }}
-        {{ hujiangform.page_number_begin }}
-        <br>
-        {{ hujiangform.page_number_all.label }}
-        {{ hujiangform.page_number_all }}
-        <br>
-        {{ hujiangform.submit }}
-    </form>
-    <div class="spider-progress">
+    <div class="box youdict">
+        <p><a href="https://www.youdict.com/ciku">优词网站</a>爬取</p>
+        <form action="/spider/youdict" method = "POST">
+            {{ youdictform.page_number_begin.label }}
+            {{ youdictform.page_number_begin }}
+            <br>
+            {{ youdictform.page_number_all.label }}
+            {{ youdictform.page_number_all }}
+            <br>
+            {{ youdictform.submit }}
+        </form>
+    </div>
+    <div class="box hujiang">
+        <p><a href="https://www.hujiang.com/ciku/zuixinyingyudanci">沪江网站</a>爬取</p>
+        <form action="/spider/hujiang" method = "POST">
+            {{ hujiangform.page_number_begin.label }}
+            {{ hujiangform.page_number_begin }}
+            <br>
+            {{ hujiangform.page_number_all.label }}
+            {{ hujiangform.page_number_all }}
+            <br>
+            {{ hujiangform.submit }}
+        </form>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+    <div class="box spider-progress">
         <p>爬取过程中请勿关闭页面！</p>
         <progress class="progress is-medium is-primary" max="100"></progress>
     </div>

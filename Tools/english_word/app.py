@@ -5,7 +5,6 @@ import os
 from flask import Flask, render_template, request, flash, redirect, get_flashed_messages, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
-from celery import Celery
 import threading
 import queue
 
@@ -207,7 +206,6 @@ def settings():
         return render_template("settings/settings.html", words_count=session.get("words_count"), 
         youdictform = youdictform, hujiangform = hujiangform)
     else:
-        form = YoudictForm()
         session["words_count"] = int(request.form.get("words_count"))
         flash("修改设置成功")
         return render_template("/settings/settings.html", words_count=session.get("words_count"), 

@@ -9,3 +9,15 @@ p{
 input{
     margin: 10px;
 }
+.youdict{
+    float:left;
+    margin: 10px;
+}
+.hujiang{
+    float:left;
+    margin: 10px;
+}
+.spider-progress{
+    margin: 10px;
+    width: 50%;
+}

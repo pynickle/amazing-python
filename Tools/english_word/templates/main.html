@@ -9,7 +9,15 @@
 
 <body>
     {% for msg in get_flashed_messages() %}
-        <p class="msg">{{ msg }}</p>
+        <article class="message is-info" id="info">
+            <div class="message-header">
+            <p>消息</p>
+            <button class="delete" aria-label="delete" onclick="document.getElementById('info').style.display = 'none'"></button>
+            </div>
+            <div class="message-body">
+                {{ msg }}
+            </div>
+        </article>
     {% endfor %}
     <h1 class="title">词神</h1>
     <button class="button is-link is-outlined is-rounded" onclick="window.location='add-new-word'">加入新单词</button>
