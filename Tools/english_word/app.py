@@ -2,7 +2,8 @@ from datetime import timedelta
 import difflib
 import os
 
-from flask import Flask, render_template, request, flash, redirect, get_flashed_messages, session, jsonify
+from flask import Flask, render_template, request, flash, redirect,\
+                  get_flashed_messages, session, jsonify, url_for, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
 import threading
@@ -385,6 +386,10 @@ def file():
 def four_zero_four(exception):
     return render_template("404.html", exception=exception)
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
-    app.run(port=8080)
+    app.run()

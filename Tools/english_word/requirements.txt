@@ -1,4 +1,4 @@
 flask
-werkzeug
-threading
-queue
+flask-sqlalchemy
+flask-wtf
+requests

@@ -1,0 +1,8 @@
+words.sqlite3
+wrongwords.sqlite3
+
+.idea/
+.pytest_cache/
+
+*.pyc
+test-output.xml
