@@ -1,40 +1,70 @@
-from datetime import timedelta
 import difflib
 import os
 
 from flask import Flask, render_template, request, flash, redirect,\
-                  get_flashed_messages, session, jsonify, url_for, send_from_directory
+    get_flashed_messages, session, jsonify, url_for,\
+    send_from_directory, current_app
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import secure_filename
 import threading
 import queue
+import requests
+import base64
 
-from forms import HandForm, SpiderForm
-from validate import words_validate
-from spider import youdict, hujiang
+from src import SpiderForm, youdict, hujiang, words_validate, mail
 
 
 def youdict_spider(threadName, q):
+    """
+    :param threadName: thread name of threading module
+    :param q: Queue object of queue
+
+    Usage::
+
+        get youdict words and store them in the sqlalchemy database
+    """
     words = youdict(threadName, q)
     for i in words:
         word = Words(i[0], i[1])
-        db.session.add(word)
-        db.session.commit()
+        try:
+            db.session.add(word)
+            db.session.commit()
+        except BaseException:
+            pass
+
 
 def hujiang_spider(threadName, q):
+    """
+    :param threadName: thread name of threading module
+    :param q: Queue object of queue module
+    
+    Usage::
+
+        get hujiang words and store them in the sqlalchemy database
+    """
     words = hujiang(threadName, q)
     for i in words:
         word = Words(i[0], i[1])
         db.session.add(word)
         db.session.commit()
 
+
 class SpiderThread(threading.Thread):
+    """
+    :param name: thread name
+    :param q: queue object of queue module
+    :param website: the words website to scrapy
+
+    :method run:
+
+        run the words scrapy program with threading and queue
+    """
     def __init__(self, name, q, website):
         threading.Thread.__init__(self)
         self.name = name
         self.q = q
         self.website = website
-    # run
+
     def run(self):
         print("Starting " + self.name)
         while True:
@@ -43,38 +73,24 @@ class SpiderThread(threading.Thread):
                     youdict_spider(self.name, self.q)
                 elif self.website == "hujiang":
                     hujiang_spider(self.name, self.q)
-            except:
+            except BaseException:
                 break
         print("Exiting" + self.name)
 
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
 app.jinja_env.auto_reload = True
-app.config["DEBUG"] = True
-app.config["SEND_FILE_MAX_AGE_DEFAULT"] = timedelta(seconds=1)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.sqlite3'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config["SQLALCHEMY_BINDS"] = {
-    'wrongwords': 'sqlite:///wrongwords.sqlite3'
-}
-app.config.update(
-    CELERY_BROKER_URL='redis://localhost:6379',
-    CELERY_RESULT_BACKEND='redis://localhost:6379'
-)
-
-
-@app.before_first_request
-def before_first_request():
-    global choice, failure, is_failure
-    choice = 0
-    failure = []
-    is_failure = False
-
+app.config.from_object("config")
 
 db = SQLAlchemy(app)
 
+
 class Words(db.Model):
+    """
+    :attr|param id: id for words
+    :attr|param english: english for words
+    :attr|param chinese: chinese explanation for english words
+    """
     id = db.Column("words_id", db.Integer, primary_key=True)
     english = db.Column(db.String(30))
     chinese = db.Column(db.String(75))
@@ -83,7 +99,13 @@ class Words(db.Model):
         self.english = english
         self.chinese = chinese
 
+
 class WrongWords(db.Model):
+    """
+    :attr|param id: id for 1wrong words
+    :attr|param english: english for wrong words
+    :attr|param chinese: chinese explanation for english wrong words
+    """
     __bind_key__ = "wrongwords"
     id = db.Column("wrong_words_id", db.Integer, primary_key=True)
     english = db.Column(db.String(30))
@@ -94,17 +116,50 @@ class WrongWords(db.Model):
         self.chinese = chinese
 
 
-db.create_all()
-db.create_all(bind = "wrongwords")
+@app.before_first_request
+def before_first_request():
+    """
+    Usage::
+
+        Before first request for the application, we need to
+        initialize some variables and create the databases.
+    """
+    global choice, failure, is_failure, first, wrong_word_choice
+    global db
+
+    choice = 0
+    failure = []
+    is_failure = False
+    first = True
+    wrong_word_choice=0
+
+    session.permanent = True
+    session["search_diff"] = 0.5
+    session["words_count"] = 20
+    session["recite_progress"] = 0
+
+    db.create_all()
+    db.create_all(bind="wrongwords")
 
 
 @app.route("/")
 def main():
+    """
+    Usage::
+
+        the index page for cishen application
+    """
     return render_template("main.html")
 
 
 @app.route("/see-words", methods=["GET", "POST"])
 def see():
+    """
+    Usage::
+
+        The page for seeing all words in the databases. It can delete
+        some words or all words.
+    """
     if request.method == "POST":
         delete_all = request.form.get("delete-all")
         print(delete_all)
@@ -120,18 +175,24 @@ def see():
             u = Words.query.filter_by(english=english, chinese=chinese).first()
             db.session.delete(u)
             db.session.commit()
-            return render_template("see-words/see.html", words=Words.query.all())
+            return render_template("see-words/see.html",
+                                   words=Words.query.all())
     else:
         return render_template("see-words/see.html", words=Words.query.all())
 
 
 @app.route("/add-new-word", methods=["GET", "POST"])
 def new():
-    form = HandForm()
+    """
+    Usage::
+
+        the page for href to use hand or file to add new words. Also accept
+        post from hand page.
+    """
     if request.method == "GET":
         return render_template("add-new-word/new.html")
     else:
-        success, errors = words_validate(form.words.data)
+        success, errors = words_validate(request.form.get("words"))
         for data in success:
             word = Words(data[0], data[1])
             db.session.add(word)
@@ -139,84 +200,119 @@ def new():
         return redirect("see-words")
 
 
-@app.route("/recite-words", methods=["GET", "POST"])
+@app.route("/recite-words")
 def recite():
-    global choice, failure, is_failure
-    if request.method == "GET":
-        words = []
-        for i in Words.query.all():
-            words.append(i)
-        if words:
-            return render_template("recite-words/recite.html", words=words, choice=choice, failure=False)
-        else:
-            flash("请先添加单词！")
-            return redirect("/")
-    else:
-        words = []
-        for i in Words.query.all():
-            words.append(i)
-        data = request.form.get("data")
-        form_failure = request.form.get("is-failure")
-        word = words[choice]
-        if is_failure:
-            is_failure = True
-            word = failure[choice]
-        if data:
-            if data == word.english:
-                if form_failure:
-                    failure.remove(word)
-                return render_template("recite-words/result.html", data=data, word=word, status="答对咯！", failure=is_failure)
-            else:
-                failure.append(word)
-                return render_template("recite-words/result.html", data=data, word=word, status="答错了！", failure=is_failure)
-        else:
-            if form_failure:
-                is_failure = True
-                word = failure[choice]
-                failure.remove(word)
-                if not failure:
-                    choice = 0
-                    is_failure = False
-                    failure = []
-                    flash("复习完成！")
-                    return redirect("/")
-            choice += 1
-            words_count = 20 if not session.get(
-                "words_count") else session.get("words_count")
-            lst_choice = words_count if not is_failure else len(failure)
-            if choice >= len(words) or choice >= lst_choice:
-                choice = 0
-                if not failure:
-                    choice = 0
-                    is_failure = False
-                    failure = []
-                    flash("复习完成！")
-                    return redirect("/")
-                else:
-                    for i in failure:
-                        wrongwords = WrongWords(i.english, i.chinese)
-                        db.session.add(wrongwords)
-                    db.session.commit()
-                    is_failure = True
-                    return render_template("recite-words/recite.html", words=failure, choice=choice, failure=True)
-            return render_template("recite-words/recite.html", words=words, choice=choice)
+    """
+    Usage::
 
+        The page for recite words in the words database. Accept the first
+        get and other post for data transmission.
+    """
+    global first, choice, failure
+
+    # get all words
+    words = []
+    for i in Words.query.all():
+        words.append([i.english, i.chinese])
+
+    #get recite progress to start from here
+    recite_progress = session.get("recite_progress")
+    if not recite_progress:
+        recite_progress = "0"
+    else:
+        recite_progress = str(recite_progress)
+
+    # get other args from url
+    choice = request.args.get("choice")
+    input_data = request.args.get("input")
+    data = request.args.get("data")
+    wrong = request.args.get("wrong")
+
+    # if you answered wrong, it will add the word to the wrong words database
+    if wrong == "True":
+        wrongword = words[int(choice)-1]
+        failure.append([wrongword[0], wrongword[1]])
+        wrongword = WrongWords(wrongword[0], wrongword[1])
+        db.session.add(wrongword)
+        db.session.commit()
+
+    choice = int(choice)
+
+    # judge if we have finished the recite
+    if choice >= int(recite_progress) + session.get("words_count") or choice >= len(words):
+        session["recite_progress"] = choice
+        if failure:
+            return redirect("/recite-wrong-words?choice=0")
+        else:
+            flash("复习完成！")
+            return redirect("/")
+    word = words[choice]
+
+    # other situations
+    if input_data and data:
+        return redirect("/recite-words")
+    elif choice != None:
+        return render_template("/recite-words/recite.html", word=word)
+
+@app.route("/recite-wrong-words")
+def recite_words_wrong():
+    global failure
+
+    # get args from url
+    wrong_word_choice = int(request.args.get("choice"))
+    input_data = request.args.get("input")
+    data = request.args.get("data")
+    wrong = request.args.get("wrong")
+
+    # judge if you answered right, if right, remove the word from failure list
+    if not wrong:
+        pass
+    elif wrong == "False":
+        failure.remove(failure[wrong_word_choice-1])
+    else:
+        failure.append(failure[wrong_word_choice-1])
+
+    # when failure is empty, it means you finished recite
+    if not failure:
+        flash("复习完成！")
+        return redirect("/")
+
+    # other situations
+    if input_data and data:
+        return redirect("/recite-wrong-words")
+    elif choice != None:
+        return render_template("/recite-words/recite.html", word=failure[wrong_word_choice], come="wrong")
 
 @app.route("/search-words", methods=["GET", "POST"])
 def search():
+    """
+    Usage::
+
+        The page for search words from words database. Accept get and post of 
+        key word for search.
+    """
     if request.method == "GET":
         return render_template("search-words/search.html")
     else:
         result = []
         data = request.form.get("data")
-        for i in WrongWords.query.all():
+        for i in Words.query.all():
             sm = difflib.SequenceMatcher(None, i.english, data)
-            if sm.ratio() >= 0.5:
+            search_diff = session.get("search_diff")
+            search_diff = 0.5 if not search_diff else search_diff
+            if sm.ratio() >= search_diff:
                 result.append(i)
         return render_template("search-words/result.html", result=result)
 
+
 @app.route("/wrong-words", methods=["GET", "POST"])
 def wrong_words():
+    """
+    Usage::
+
+        The page for show wrong words from wrongwords database. Accept get
+        and post for deleting.
+    """
     if request.method == "POST":
         delete_all = request.form.get("delete-all")
         if delete_all:
@@ -228,87 +324,65 @@ def wrong_words():
         else:
             english = request.form.get("english")
             chinese = request.form.get("chinese")
-            u = WrongWords.query.filter_by(english=english, chinese=chinese).first()
+            u = WrongWords.query.filter_by(
+                english=english, chinese=chinese).first()
             db.session.delete(u)
             db.session.commit()
-            return render_template("wrong-words/wrong.html", words=WrongWords.query.all())
+            return render_template(
+                "wrong-words/wrong.html", words=WrongWords.query.all())
     else:
-        return render_template("wrong-words/wrong.html", words=WrongWords.query.all())
+        return render_template("wrong-words/wrong.html",
+                               words=WrongWords.query.all())
 
-@app.route("/wrong-words/recite", methods = ["GET", "POST"])
-def wrong_words_recite():
-    global choice, failure, is_failure
-    if request.method == "GET":
-        words = []
-        for i in WrongWords.query.all():
-            words.append(i)
-        if words:
-            return render_template("wrong-words/recite.html", words=words, choice=choice, failure=False)
-        else:
-            flash("请先添加单词！")
-            return redirect("/")
-    else:
-        words = []
-        for i in WrongWords.query.all():
-            words.append(i)
-        data = request.form.get("data")
-        form_failure = request.form.get("is-failure")
-        word = words[choice]
-        if is_failure:
-            is_failure = True
-            word = failure[choice]
-        if data:
-            if data == word.english:
-                if form_failure:
-                    failure.remove(word)
-                return render_template("wrong-words/result.html", data=data, word=word, status="答对咯！", failure=is_failure)
-            else:
-                failure.append(word)
-                return render_template("wrong-words/result.html", data=data, word=word, status="答错了！", failure=is_failure)
-        else:
-            if form_failure:
-                is_failure = True
-                word = failure[choice]
-                failure.remove(word)
-                if not failure:
-                    choice = 0
-                    is_failure = False
-                    failure = []
-                    flash("复习完成！")
-                    return redirect("/")
-            choice += 1
-            words_count = 20 if not session.get(
-                "words_count") else session.get("words_count")
-            lst_choice = words_count if not is_failure else len(failure)
-            if choice >= len(words) or choice >= lst_choice:
-                choice = 0
-                if not failure:
-                    choice = 0
-                    is_failure = False
-                    failure = []
-                    flash("复习完成！")
-                    return redirect("/")
-                else:
-                    is_failure = True
-                    return render_template("wrong-words/recite.html", words=failure, choice=choice, failure=True)
-            return render_template("wrong-words/recite.html", words=words, choice=choice)
 
 @app.route("/settings", methods=["GET", "POST"])
 def settings():
+    """
+    Usage::
+
+        The settings page. Settings contains the words count you want to recite
+        one time, the scrapy program for two websites.
+    """
     youdictform = SpiderForm()
     hujiangform = SpiderForm()
     if request.method == "GET":
-        return render_template("settings/settings.html", words_count=session.get("words_count"), 
-        youdictform = youdictform, hujiangform = hujiangform)
+        return render_template("/settings/settings.html", words_count=session.get("words_count"),
+                               search_diff=session.get("search_diff"),
+                               youdictform=youdictform, hujiangform=hujiangform)
     else:
-        session["words_count"] = int(request.form.get("words_count"))
+        search_diff = request.form.get("search_diff")
+        words_count = request.form.get("words_count")
+        try:
+            search_diff = float(search_diff)
+            words_count = int(words_count)
+        except Exception:
+            flash("数值不合法")
+            return redirect("/settings")
+        if search_diff>1 or search_diff<0:
+            flash("查询单词相似度数值不合法！")
+            return redirect("/settings")
+        if words_count<=0 or words_count%1 != 0:
+            flash("每次背诵单词数数值不合法！")
+            return redirect("/settings")
+        session["search_diff"] = search_diff
+        session["words_count"] = words_count
         flash("修改设置成功")
-        return render_template("/settings/settings.html", words_count=session.get("words_count"), 
-        youdictform = youdictform, hujiangform = hujiangform)
+        return render_template("/settings/settings.html", words_count=session.get("words_count"),
+                               search_diff=session.get("search_diff"),
+                               youdictform=youdictform, hujiangform=hujiangform)
 
-@app.route("/spider/<website>", methods = ["POST"])
+
+@app.route("/spider/<website>", methods=["POST"])
 def youdict_spider_post(website):
-    print(website)
+    """
+    :param website: the website name to scrapy
+
+    Usage::
+
+        The page for scrapy website operation. Accept post
+        with website name.
+    """
+    # print(website)
     youdictform = SpiderForm()
     hujiangform = SpiderForm()
     link_list = []
@@ -333,7 +407,7 @@ def youdict_spider_post(website):
         elif website == "hujiang":
             url = f"https://www.hujiang.com/ciku/zuixinyingyudanci_{i}"
         link_list.append(url)
-    print(link_list)
+    # print(link_list)
 
     threadList = ["Thread-1", "Thread-2", "Thread-3", "Thread-4", "Thread-5"]
     workQueue = queue.Queue(2500)
@@ -349,13 +423,47 @@ def youdict_spider_post(website):
 
     for t in threads:
         t.join()
-    
+
     return redirect("/see-words")
+
+
+@app.route("/word-books")
+def word_books():
+    """
+    Usage::
+
+        The word books page. The word books is used for
+        download the prepared words. It is faster than scrapy.
+    """
+    return render_template("word-books/books.html")
+
+
+@app.route("/word-books/download/<name>", methods=["POST"])
+def word_books_download(name):
+    """
+    :param name: the name of the word book
+
+    Usage::
+
+        The word books download page for only post method. Word books can be
+        download here and added to the words databases.
+    """
+    file = "./static/word-books/" + name + ".txt"
+    f = open(file, "r", encoding="utf-8").read()
+    url = url_for("new", _external=True)
+    requests.post(url, data={"words": f})
+    return redirect("/see-words")
+
 
 @app.route("/add-new-word/hand")
 def hand():
-    form = HandForm()
-    return render_template("add-new-word/hand.html", form=form)
+    """
+    Usage::
+
+        The page for add new word by hand. Have a post for add new word
+        index page to transmit word data.
+    """
+    return render_template("add-new-word/hand.html")
 
 
 @app.route("/add-new-word/file", methods=["GET", "POST"])
@@ -367,29 +475,56 @@ def file():
             f.save(filename)
             with open(filename, "r", encoding="utf-8") as f:
                 success, errors = words_validate(f.read())
+            os.remove(filename)
             for data in success:
                 word = Words(data[0], data[1], data[2])
                 db.session.add(word)
             db.session.commit()
             os.remove(filename)
-            return render_template("see-words/see.html", words=Words.query.all())
+            return render_template("see-words/see.html",
+                                   words=Words.query.all())
 
         except UnicodeDecodeError:
-            return render_template("add-new-word/failure1.html", filename=filename)
+            return render_template(
+                "add-new-word/failure1.html", filename=filename)
         except Exception:
-            return render_template("add-new-word/failure2.html", filename=filename)
+            return render_template(
+                "add-new-word/failure2.html", filename=filename)
     else:
         return render_template("add-new-word/file.html")
 
 
 @app.errorhandler(404)
 def four_zero_four(exception):
-    return render_template("404.html", exception=exception)
+    """
+    Usage::
+
+        The 404 page for this flask application.
+    """
+    return render_template("error-handler/404.html", exception=exception)
+
+
+@app.errorhandler(500)
+def five_zero_zero(exception):
+    """
+    Usage::
+
+        The 500 page for this flask application.
+    """
+    mail(exception)
+    return render_template("error-handler/500.html")
+
 
 @app.route('/favicon.ico')
 def favicon():
+    """
+    Usage::
+
+        The favicon for every page.
+    """
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8080, debug = True)

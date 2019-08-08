@@ -9,12 +9,24 @@
 
 <body>
     {% for msg in get_flashed_messages() %}
-        <p class="msg">{{ msg }}</p>
+    <article class="message is-info" id="info">
+        <div class="message-header">
+            <p>消息</p>
+            <button class="delete" aria-label="delete"
+                onclick="document.getElementById('info').style.display = 'none'"></button>
+        </div>
+        <div class="message-body">
+            {{ msg }}
+        </div>
+    </article>
     {% endfor %}
     <h1>设置</h1>
     <form action="/settings" method="POST">
         <p>每次背诵单词数</p>
         <input type="number" name="words_count" value="{{ words_count }}">
+        <p>查询单词相似度(0-1)</p>
+        <input type="text" name="search_diff" value="{{ search_diff }}">
+        <br>
         <input class="button is-link is-outlined is-rounded" type="submit">
     </form>
     <div class="box youdict">

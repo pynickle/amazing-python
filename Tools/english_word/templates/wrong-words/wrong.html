@@ -9,11 +9,7 @@
 
 <body>
     <h1>错题表</h1>
-    <form action="/see-words" method="POST">
-        <input style="display: none;" name="delete-all" value="delete all">
-        <input class="button is-link is-outlined is-rounded" type="submit" value="删除全部">
-    </form>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='/wrong-words/recite'">开始复习</button>
+    <button class="button is-link is-outlined is-rounded" onclick="window.location='/'">返回首页</button>
     <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
         <thead>
             <tr>
@@ -28,7 +24,7 @@
                 <td>{{ word.english }}</td>
                 <td>{{ word.chinese }}</td>
                 <td>
-                    <form method="POST" action="/see-words">
+                    <form method="POST" action="/wrong-words">
                         <input style="display:none;" value="{{ word.chinese }}" name="chinese">
                         <input style="display:none;" value="{{ word.english }}" name="english">
                         <input class="button is-link is-outlined is-rounded" type="submit" value="删除">
@@ -38,7 +34,6 @@
             {% endfor %}
         </tbody>
     </table>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='/'">返回首页</button>
 </body>
 
 </html>

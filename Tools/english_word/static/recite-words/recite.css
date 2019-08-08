@@ -1,3 +1,6 @@
+*{
+    font-family: monospace;
+}
 p{
     margin: 10px;
 }
@@ -6,4 +9,23 @@ input{
 }
 .data{
     width: 200px;
+}
+.form{
+    text-align: center;
+}
+.chinese{
+    margin-top: 25px;
+    font-size: 24px;
+}
+.right{
+    display: none; 
+    font-size: 48px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.wrong{
+    display: none; 
+    font-size: 48px;
+    margin: 0 auto;
+    margin-top: 50px;
 }

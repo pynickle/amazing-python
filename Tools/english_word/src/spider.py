@@ -3,6 +3,7 @@ import re
 import time
 import random
 import pprint
+import os
 
 
 headers = {"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3858.0 Safari/537.36"}
@@ -42,5 +43,5 @@ def hujiang(threadName, q):
         time.sleep(1 + random.random())
     return res
 
-if __name__ == "__main__": 
-    pass
+if __name__ == "__main__":
+    main()

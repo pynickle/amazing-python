@@ -1,6 +1,20 @@
+*{
+    font-size: monospace;
+}
 p{
     margin: 10px;
 }
 input{
     margin: 10px;
+}
+table{
+    margin: 15px;
+}
+.button{
+    display: block;
+    margin: 0 auto;
+}
+.status{
+    font-size: 24px;
+    text-align: center;
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='word-books/books.css') }}" type="text/css">
+    </head>
+    <body>
+        <h1>词书</h1>
+        <form action="/word-books/download/youdict-siji" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict英语四级词汇">
+        </form>
+        <form action="/word-books/download/youdict-liuji" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict英语六级词汇">
+        </form>
+        <form action="/word-books/download/youdict-zhuansiji" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict英专四级词汇">
+        </form>
+        <form action="/word-books/download/youdict-zhuanbaji" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict英专八级词汇">
+        </form>
+        <form action="/word-books/download/youdict-kaoyan" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict考研词汇">
+        </form>
+        <form action="/word-books/download/youdict-tuofu" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict托福词汇">
+        </form>
+        <form action="/word-books/download/youdict-yasi" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict雅思词汇">
+        </form>
+        <form action="/word-books/download/youdict-gre" method="POST">
+            <input class="button is-link is-outlined is-rounded" type="submit" value="下载youdict GRE词汇">
+        </form>
+    </body>
+</html>

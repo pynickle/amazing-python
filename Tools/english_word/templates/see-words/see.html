@@ -9,9 +9,10 @@
 
 <body>
     <h1>总单词表</h1>
+    <button class="button is-link is-outlined is-rounded return-index" onclick="window.location='/'">返回首页</button>
     <form action="/see-words" method="POST">
         <input style="display: none;" name="delete-all" value="delete all">
-        <input class="button is-link is-outlined is-rounded" type="submit" value="删除全部">
+        <input class="button is-link is-outlined is-rounded delete-all" type="submit" value="删除全部">
     </form>
     <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
         <thead>
@@ -37,7 +38,6 @@
             {% endfor %}
         </tbody>
     </table>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='/'">返回首页</button>
 </body>
 
 </html>

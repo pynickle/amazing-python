@@ -9,3 +9,10 @@ h1{
     font-size: 24px;
     text-align: center;
 }
+.return-index{
+    float: left;
+}
+.delete-all{
+    float: left;
+    margin-top: 10px;
+}

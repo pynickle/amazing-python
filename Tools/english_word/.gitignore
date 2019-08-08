@@ -1,8 +1,17 @@
 words.sqlite3
 wrongwords.sqlite3
 
+*.pyc
+
 .idea/
 .pytest_cache/
-
-*.pyc
 test-output.xml
+
+spider_all.py
+sort.py
+
+word-books-origin/
+
+application.wsgi
+
+app.zip

@@ -13,7 +13,6 @@
         <thead>
             <tr>
                 <th>英语</th>
-                <th>词性</th>
                 <th>中文</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
             {% for word in result %}
             <tr>
                 <td>{{ word.english }}</td>
-                <td>{{ word.part_speech }}</td>
                 <td>{{ word.chinese }}</td>
             </tr>
             {% endfor %}

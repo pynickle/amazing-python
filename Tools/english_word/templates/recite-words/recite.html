@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
-        <link rel="stylesheet" href="{{ url_for('static', filename='recite-words/recite.css') }}" type="text/css">
-    </head>
-    <body>
-        <form action="/recite-words" method="POST">
-            <p>{{ words[choice].chinese }}</p>
-            <input class="data" name="data" autocomplete = "off" required>
-            <br>
-            <input class="button is-link is-outlined is-rounded" type="submit">
-        </form>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='recite-words/recite.css') }}" type="text/css">
+</head>
+
+<body>
+    <div class="form">
+        <p id="chinese" class="chinese">{{ word[1] }}</p>
+        <input id="input" class="input data is-primary is-medium is-rounded" name="data" autocomplete="off" required>
+        <br>
+        <button class="button is-link is-outlined is-rounded is-medium" id="submit" onclick="submit()">提交</button>
+        <i id="right" class="right fa fa-check"></i>
+        <i id="wrong" class="wrong fa fa-times"></i>
+        <p style="display:none" id="english">{{ word[0] }}</p>
+        {% if come %}
+        <p style="display: none" id="come">recite wrong words</p>
+        {% endif %}
+    </div>
+</body>
+<script src="{{ url_for('static', filename='recite-words/recite.js') }}"></script>
 </html>

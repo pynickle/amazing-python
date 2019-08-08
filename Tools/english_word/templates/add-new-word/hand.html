@@ -7,10 +7,10 @@
     </head>
     <body>
         <form action="/add-new-word" method="POST">
-            <h1>{{ form.words.label }}</h1>
-            {{ form.words(rows=5, cols=10, class='textarea is-infois-focused') }}
+            <h1><label for="words">输入单词</label></h1>
+            <textarea class="textarea is-info is-focused" cols="10" id="words" name="words" required="" rows="5"></textarea>
             <br>
-            {{ form.submit(class='button is-rounded is-primary is-outlined') }}
+            <input class="button is-rounded is-primary is-outlined" id="submit" name="submit" type="submit" value="提交">
         </form>
         <div>
             <h2 class="example">示例：</h2>

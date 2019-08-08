@@ -27,21 +27,26 @@
                 <img src="{{ url_for('static', filename='favicon.ico') }}">
                 &nbsp;
             </a>
+            <a id = "button" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="navbar-item" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/add-new-word">
                     <img src="{{ url_for('static', filename='add-new-word/icon.svg') }}" width="16px" height="16px">
-                    &ensp;加入新单词
+                    &ensp;新单词
                 </a>
-                <a class="navbar-item" href="/recite-words">
+                <a class="navbar-item" onclick="recite_words()">
                     <img src="{{ url_for('static', filename='recite-words/icon.svg') }}" width="16px" height="16px">
                     &ensp;背单词
                 </a>
                 <a class="navbar-item" href="/search-words">
                     <img src="{{ url_for('static', filename='search-words/icon.svg') }}" width="16px" height="16px">
-                    &ensp;查询单词
+                    &ensp;查单词
                 </a>
                 <a class="navbar-item" href="/see-words">
                     <img src="{{ url_for('static', filename='see-words/icon.svg') }}" width="16px" height="16px">
@@ -51,6 +56,10 @@
                     <img src="{{ url_for('static', filename='wrong-words/icon.svg') }}" width="16px" height="16px">
                     &ensp;错题库
                 </a>
+                <a class="navbar-item" href="/word-books">
+                    <img src="{{ url_for('static', filename='word-books/icon.svg') }}" width="16px" height="16px">
+                    &ensp;词书
+                </a>
                 <a class="navbar-item" href="/settings">
                     <img src="{{ url_for('static', filename='settings/icon.svg') }}" width="16px" height="16px">
                     &ensp;设置
@@ -58,12 +67,30 @@
             </div>
         </div>
     </nav>
-    <h1 class="title">词神</h1>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='add-new-word'">加入新单词</button>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='recite-words'">背单词</button>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='search-words'">查询单词</button>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='see-words'">看单词</button>
-    <button class="button is-link is-outlined is-rounded" onclick="window.location='settings'">设置</button>
+    <div class="box" id="box-one">
+        <div class="introduction">
+            <h1 class="intro">词神，一个专注于<br>背单词的网站</h1>
+            <div class="btn">
+                <button class="button-1 button is-link is-outlined is-rounded"
+                onclick="window.location='/word-books'">词书</button>
+                <button class="button-2 button is-link is-outlined is-rounded"
+                onclick="recite_words()">开始背单词</button>
+            </div>
+        </div>
+        <div class="logo">
+            <img class="" src="{{ url_for('static', filename='favicon.ico') }}">
+        </div>
+    </div>
 </body>
-
+<script>
+    function recite_words(){
+        recite_progress = {{ session.get('recite_progress') }}
+        if(!recite_progress){
+            recite_progress = 0
+        }
+        window.location="/recite-words?choice=" + recite_progress
+    }
+</script>
+<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 </html>

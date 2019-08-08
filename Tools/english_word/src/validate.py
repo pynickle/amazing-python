@@ -4,7 +4,7 @@ def words_validate(data):
     data = data.splitlines()
     for word in data:
         if word:
-            x = word.split()
+            x = word.split(" ", 1)
             if len(x) != 2:
                 errors.append(word)
             else:
