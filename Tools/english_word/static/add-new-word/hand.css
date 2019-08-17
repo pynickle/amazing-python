@@ -1,3 +1,6 @@
+*{
+    font-family: monospace;
+}
 #submit{
     margin: 10px;
 }

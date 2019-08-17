@@ -1,0 +1,39 @@
+* {
+    font-family: monospace;
+}
+
+.others {
+    text-align: center;
+}
+
+.admin-login {
+    margin: 20px;
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.input {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 100px;
+}
+
+.image {
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+
+.image:hover{
+    transform: scale(1.1);
+}
+
+.third-party {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+}

@@ -1,3 +1,6 @@
+*{
+    font-family: monospace;
+}
 button{
     margin: 5px;
 }

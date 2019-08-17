@@ -7,6 +7,8 @@ wrongwords.sqlite3
 .pytest_cache/
 test-output.xml
 
+*.sqlite3
+
 spider_all.py
 sort.py
 
@@ -15,3 +17,5 @@ word-books-origin/
 application.wsgi
 
 app.zip
+
+.env

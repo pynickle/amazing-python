@@ -1,18 +1,25 @@
+
+# -*- coding: utf-8 -*-
 import difflib
+import hashlib
 import os
+import threading
+import queue
 
 from flask import Flask, render_template, request, flash, redirect,\
     get_flashed_messages, session, jsonify, url_for,\
-    send_from_directory, current_app
+    send_from_directory, current_app, g
 from flask_sqlalchemy import SQLAlchemy
+from flask_github import GitHub
 from werkzeug import secure_filename
-import threading
-import queue
 import requests
-import base64
+from dotenv import find_dotenv,load_dotenv
+
+import traceback
 
 from src import SpiderForm, youdict, hujiang, words_validate, mail
 
+load_dotenv(find_dotenv())
 
 def youdict_spider(threadName, q):
     """
@@ -80,9 +87,10 @@ class SpiderThread(threading.Thread):
 
 app = Flask(__name__)
 app.jinja_env.auto_reload = True
-app.config.from_object("config")
 
+app.config.from_object("config")
 db = SQLAlchemy(app)
+github = GitHub(app)
 
 
 class Words(db.Model):
@@ -92,8 +100,8 @@ class Words(db.Model):
     :attr|param chinese: chinese explanation for english words
     """
     id = db.Column("words_id", db.Integer, primary_key=True)
-    english = db.Column(db.String(30))
-    chinese = db.Column(db.String(75))
+    english = db.Column(db.String(75))
+    chinese = db.Column(db.String(200))
 
     def __init__(self, english, chinese):
         self.english = english
@@ -108,13 +116,40 @@ class WrongWords(db.Model):
     """
     __bind_key__ = "wrongwords"
     id = db.Column("wrong_words_id", db.Integer, primary_key=True)
-    english = db.Column(db.String(30))
-    chinese = db.Column(db.String(75))
+    english = db.Column(db.String(75))
+    chinese = db.Column(db.String(200))
 
     def __init__(self, english, chinese):
         self.english = english
         self.chinese = chinese
 
+class GithubUsers(db.Model):
+    """
+    :attr|param id: id for users
+    :attr|param username: username of github
+    """
+    __bind_key__ = "github-users"
+    id = db.Column("github-users_id", db.Integer, primary_key=True)
+    username = db.Column(db.String(100))
+    access_token = db.Column(db.String(200))
+
+    def __init__(self, username, access_token):
+        self.username = username
+        self.access_token = access_token
+
+class AdminUsers(db.Model):
+    """
+    :attr|param id: id for users
+    :attr|param username: username of github
+    """
+    __bind_key__ = "admin-users"
+    id = db.Column("admin-users_id", db.Integer, primary_key=True)
+    username = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
 @app.before_first_request
 def before_first_request():
@@ -122,7 +157,7 @@ def before_first_request():
     Usage::
 
         Before first request for the application, we need to
-        initialize some variables and create the databases.
+        initialize some variables.
     """
     global choice, failure, is_failure, first, wrong_word_choice
     global db
@@ -140,7 +175,16 @@ def before_first_request():
 
     db.create_all()
     db.create_all(bind="wrongwords")
+    db.create_all(bind="github-users")
+    db.create_all(bind="admin-users")
 
+@app.before_request
+def before_request():
+    g.user = None
+    if 'users_id' in session:
+        g.user = GithubUsers.query.get(session['users_id'])
+    elif 'admin_users_id' in session:
+        g.user = AdminUsers.query.get(session["admin_users_id"])
 
 @app.route("/")
 def main():
@@ -149,11 +193,97 @@ def main():
 
         the index page for cishen application
     """
-    return render_template("main.html")
+    if g.user:
+        is_login = "true"
+        if isinstance(g.user, GithubUsers):
+            response = github.get('user')
+            username = response['name']
+        elif isinstance(g.user, AdminUsers):
+            username = g.user.username
+        return render_template('main.html', is_login=is_login, username=username)
+    is_login = "false"
+    return render_template("main.html", is_login = is_login)
 
+@app.route("/registe")
+def registe():
+    return render_template("registe/registe.html")
+
+@app.route("/registe/normal", methods=["POST"])
+def registe_normal():
+    md5 = hashlib.md5()
+    registe_username = request.form.get("username")
+    registe_password = request.form.get("password")
+    md5.update(registe_password.encode(encoding="utf-8"))
+    registe_password = md5.hexdigest()
+    if AdminUsers.query.filter_by(username=registe_username, password=registe_password).first() is not None:
+        flash("用户名已存在！")
+        return redirect("/registe")
+    user = AdminUsers(registe_username, registe_password)
+    db.session.add(user)
+    db.session.commit()
+    flash("注册成功")
+    return redirect("/")
+
+@app.route("/login")
+def login():
+    return render_template("login/login.html")
+
+@app.route("/login/normal", methods=["POST"])
+def login_normal():
+    md5 = hashlib.md5()
+    login_username = request.form.get("username")
+    login_password = request.form.get("password")
+    md5.update(login_password.encode(encoding="utf-8"))
+    login_password = md5.hexdigest()
+    user = AdminUsers.query.filter_by(username = login_username, password = login_password).first()
+    if user:
+        password = user.password
+        if password == login_password:
+            flash("登录成功！")
+            session["admin_users_id"] = user.id
+            return redirect("/")
+        else:
+            flash("用户名或密码错误！")
+    else:
+        flash("用户名或密码错误！")
+
+@app.route('/login/oauth2')
+def login_oauth2():
+    if session.get('users_id', None) is None:
+        return github.authorize()
+    flash('已经登录！')
+    return redirect("/")
+
+@app.route('/login/oauth2/callback')
+@github.authorized_handler
+def oauth2_callback(access_token):
+    if access_token is None:
+        flash('登陆失败！')
+        return redirect("/")
+
+    response = github.get('user', access_token=access_token)
+    username = response['login']  # get username
+    user = GithubUsers.query.filter_by(username=username).first()
+    if user is None:
+        user = GithubUsers(username=username, access_token=access_token)
+        db.session.add(user)
+    db.session.commit()
+    session["users_id"] = user.id
+    flash('登录成功！')
+    return redirect("/")
+
+@github.access_token_getter
+def token_getter():
+    user = g.user
+    if user is not None:
+        return user.access_token
 
 @app.route("/see-words", methods=["GET", "POST"])
-def see():
+def see_words_redirect():
+    return redirect("/see-words/1")
+
+@app.route("/see-words/<page>", methods=["GET", "POST"])
+def see(page):
     """
     Usage::
 
@@ -178,7 +308,8 @@ def see():
             return render_template("see-words/see.html",
                                    words=Words.query.all())
     else:
-        return render_template("see-words/see.html", words=Words.query.all())
+        info = Words.query.paginate(int(page), per_page = 30)
+        return render_template("see-words/see.html", words=info)
 
 
 @app.route("/add-new-word", methods=["GET", "POST"])
@@ -214,6 +345,10 @@ def recite():
     words = []
     for i in Words.query.all():
         words.append([i.english, i.chinese])
+
+    if not words:
+        flash("请先添加单词！")
+        return redirect("/")
 
     #get recite progress to start from here
     recite_progress = session.get("recite_progress")

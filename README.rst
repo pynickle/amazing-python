@@ -317,6 +317,14 @@ pip_install
     -q, --qinghua         使用清华大学镜像
     -j, --jishu           使用中国科学技术大学镜像
 
+----
+
+english_word
+^^^^^^^^^^^^
+*背单词的网站*
+
+网站地址：https://cishen.herokuapp.com
+
 -----------------
 How to contribute
 -----------------

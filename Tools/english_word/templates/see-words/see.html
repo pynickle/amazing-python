@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for word in words %}
+            {% for word in words.items %}
             <tr>
                 <td>{{ word.english }}</td>
                 <td>{{ word.chinese }}</td>
@@ -38,6 +38,34 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="prev-next">
+        {% if words.has_prev %}
+        <button onclick="previous_page()">上一页</button>
+        {% endif %}
+        <button onclick="previous_page()">{{ words.page }}</button>
+        {% if words.has_next %}
+        <button onclick="next_page()">下一页</button>
+        {% endif %}
+    </div>
 </body>
+<script>
+    function next_page() {
+        href = window.location.href
+        arr = href.split("/")
+        page = arr.pop()
+        new_href = arr.join("/") + "/"
+        new_href += (parseInt(page) + 1).toString()
+        window.location = new_href
+    }
+
+    function previous_page() {
+        href = window.location.href
+        arr = href.split("/")
+        page = arr.pop()
+        new_href = arr.join("/") + "/"
+        new_href += (parseInt(page) - 1).toString()
+        window.location = new_href
+    }
+</script>
 
 </html>

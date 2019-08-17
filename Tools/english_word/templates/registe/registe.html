@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login/login.css') }}" type="text/css">
+</head>
+
+<body>
+    <h1 class="title">注册</h1>
+    <form action="/registe/normal" method="POST" class="admin-login">
+        <p>用户名</p>
+        <input class="input is-rounded" type="text" name="username" required>
+        <br>
+        <p>密码</p>
+        <input class="input is-rounded" type="password" name="password" required>
+        <br>
+        <input class="button is-link is-outlined is-rounded" type="submit" value="登录">
+    </form>
+    <div class="others">
+        <p class="third-party">-- 第三方账号登录 --</p>
+        <div class="github">
+            <img id="third-party-image" class="image is-32x32 is-rounded"
+                src="{{ url_for('static', filename='login/github.jpg') }}" onclick="window.location='/login/oauth2'">
+        </div>
+    </div>
+</body>
+
+</html>
