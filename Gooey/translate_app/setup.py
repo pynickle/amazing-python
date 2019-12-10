@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name="quicktranslate",
-    version="1.0.5",
+    version="1.1.0",
     description="translate with youdao,baidu and google",
     long_description="""
     you can use this in the command line,this is a example::
@@ -14,9 +14,9 @@ setup(
     
     'example' means what you want to translate
     """,
-    author='code-nick-python',
+    author='pynickle',
     author_email='2330458484@qq.com',
-    url="https://github.com/code-nick-python/daily-tools/tree/master/translate_app",
+    url="https://github.com/pynickle/amazing-python/tree/master/Gooey/translate_app",
     license='MIT License',
     packages=find_packages(),
     platforms="any",
@@ -24,7 +24,8 @@ setup(
     install_requires=[
         'requests',
         'bs4',
-        'pyexecjs'
+        'pyexecjs',
+        'langdetect'
     ],
     classifiers={
         'License :: OSI Approved :: Apache Software License',
