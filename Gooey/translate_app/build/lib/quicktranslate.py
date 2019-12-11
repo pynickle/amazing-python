@@ -183,18 +183,20 @@ def translate_main():
         description="Translate with youdao,baidu and google")
     parser.add_argument('-t', '--trans', required=True,
                         help="Enter what you want to translate")
+    parser.add_argument("-g", "--google", action="store_true")
     args = parser.parse_args()
-    translate_text = args.trans
-    js = Py4Js()
+    translate_text = args.trans    
 
     youdao = get_translate_youdao(translate_text)
     baidu = get_translate_baidu(translate_text)
-    google = get_translate_google(translate_text)
 
     print("=========================")
     print("youdao translate result：", youdao)
     print("baidu translate result：", baidu)
-    print("google translate result：", google)
+    if args.google == True:
+        js = Py4Js()
+        google = get_translate_google(translate_text)
+        print("google translate result：", google)
     print("=========================")
 
 

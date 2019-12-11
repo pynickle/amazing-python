@@ -7,3 +7,7 @@
     trans --trans example
 
 **'example' means what you want to translate**
+
+**if you want to add google translation, use -g option**::
+
+    trans -t example -g

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name="quicktranslate",
-    version="1.1.0",
+    version="1.1.1",
     description="translate with youdao,baidu and google",
     long_description="""
     you can use this in the command line,this is a example::

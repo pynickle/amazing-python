@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: quicktranslate
-Version: 1.1.0
+Version: 1.1.1
 Summary: translate with youdao,baidu and google
 Home-page: https://github.com/pynickle/amazing-python/tree/master/Gooey/translate_app
 Author: pynickle
@@ -18,6 +18,6 @@ Description:
             'example' means what you want to translate
             
 Platform: any
-Classifier: License :: OSI Approved :: Apache Software License
 Classifier: Programming Language :: Python :: 3
 Classifier: Programming Language :: Python :: 2
+Classifier: License :: OSI Approved :: Apache Software License
